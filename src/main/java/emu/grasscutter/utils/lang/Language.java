@@ -361,7 +361,7 @@ public final class Language {
             } catch (NoSuchFileException ignored) {
                 // Cache doesn't exist, generate it.
             } catch (Exception exception) {
-                Grasscutter.getLogger().error("Error loading textmaps cache: " + exception.toString());
+                Grasscutter.getLogger().error("Error loading textmaps cache: " + exception);
             }
 
         // Regenerate cache
