@@ -17,14 +17,14 @@ import org.bson.types.ObjectId;
 public final class Mail {
     @Id private ObjectId id;
     @Indexed private int ownerUid;
-    public MailContent mailContent;
-    public List<MailItem> itemList;
-    public long sendTime;
+    public final MailContent mailContent;
+    public final List<MailItem> itemList;
+    public final long sendTime;
     public long expireTime;
     public int importance;
     public boolean isRead;
     public boolean isAttachmentGot;
-    public int stateValue;
+    public final int stateValue;
     @Transient private boolean shouldDelete;
 
     public Mail() {
@@ -122,9 +122,9 @@ public final class Mail {
 
     @Entity
     public static class MailItem {
-        public int itemId;
-        public int itemCount;
-        public int itemLevel;
+        public final int itemId;
+        public final int itemCount;
+        public final int itemLevel;
 
         public MailItem() {
             this.itemId = 11101;

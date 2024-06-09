@@ -7,7 +7,7 @@ import java.io.*;
 public class BasePacket {
     private static final int const1 = 17767; // 0x4567
     private static final int const2 = -30293; // 0x89ab
-    public boolean shouldEncrypt = true;
+    public final boolean shouldEncrypt = true;
     private int opcode;
     private boolean shouldBuildHeader = false;
     private byte[] header;

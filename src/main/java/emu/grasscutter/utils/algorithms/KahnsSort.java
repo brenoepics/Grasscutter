@@ -4,7 +4,8 @@ import java.util.*;
 
 public class KahnsSort {
     public static class Node {
-        int source, dest; // Dest is a value, and source too
+        final int source;
+        final int dest; // Dest is a value, and source too
 
         public Node(int source, int dest) {
             this.source = source;
@@ -13,10 +14,10 @@ public class KahnsSort {
     }
 
     public static class Graph {
-        Map<Integer, List<Integer>> mainList;
-        Map<Integer, Integer> degreeList;
+        final Map<Integer, List<Integer>> mainList;
+        final Map<Integer, Integer> degreeList;
 
-        List<Integer> nodeList;
+        final List<Integer> nodeList;
 
         public Graph(List<Node> nodes, List<Integer> nodeList) {
             mainList = new HashMap<>();

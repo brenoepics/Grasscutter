@@ -4,9 +4,9 @@ import emu.grasscutter.data.binout.AbilityModifier.AbilityModifierAction;
 import java.util.*;
 
 public class AbilityModifierEntry {
-    public List<AbilityModifierAction> onModifierAdded;
-    public List<AbilityModifierAction> onThinkInterval;
-    public List<AbilityModifierAction> onRemoved;
+    public final List<AbilityModifierAction> onModifierAdded;
+    public final List<AbilityModifierAction> onThinkInterval;
+    public final List<AbilityModifierAction> onRemoved;
     private final String name; // Custom value
 
     public AbilityModifierEntry(String name) {
