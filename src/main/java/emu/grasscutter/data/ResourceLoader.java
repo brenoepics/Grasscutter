@@ -837,7 +837,6 @@ public final class ResourceLoader {
             try {
                 JsonUtils.loadToList(getResourcePath("Server/SubfieldMapping.json"), SubfieldMapping.class)
                         .forEach(entry -> subfieldMap.put(entry.getEntityId(), entry));
-                ;
             } catch (IOException | NullPointerException ignored) {
             }
             Grasscutter.getLogger().debug("Loaded {} subfield mappings.", subfieldMap.size());
@@ -851,7 +850,6 @@ public final class ResourceLoader {
                 JsonUtils.loadToList(
                                 getResourcePath("Server/DropSubfieldMapping.json"), DropSubfieldMapping.class)
                         .forEach(entry -> dropSubfieldMap.put(entry.getDropId(), entry));
-                ;
             } catch (IOException | NullPointerException ignored) {
             }
             Grasscutter.getLogger().debug("Loaded {} drop subfield mappings.", dropSubfieldMap.size());
@@ -866,7 +864,6 @@ public final class ResourceLoader {
                                 getResourcePath("Server/DropTableExcelConfigData.json"),
                                 DropTableExcelConfigData.class)
                         .forEach(entry -> dropTableExcelConfigDataMap.put(entry.getId(), entry));
-                ;
             } catch (IOException | NullPointerException ignored) {
             }
             Grasscutter.getLogger()

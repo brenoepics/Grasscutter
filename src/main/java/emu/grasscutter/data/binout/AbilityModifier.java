@@ -264,7 +264,7 @@ public class AbilityModifier implements Serializable {
             TurnDirectionToPos,
             UpdateReactionDamage,
             UseSkillEliteSet,
-            WidgetSkillStart;
+            WidgetSkillStart
         }
 
         @SerializedName("$type")

@@ -13,7 +13,7 @@ public class AbilityMixinData implements Serializable {
         AttachToGadgetStateMixin,
         AttachToStateIDMixin,
         ShieldBarMixin,
-        TileAttackManagerMixin;
+        TileAttackManagerMixin
     }
 
     @SerializedName("$type")
