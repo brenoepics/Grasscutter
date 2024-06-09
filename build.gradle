@@ -261,7 +261,7 @@ clean {
 protobuf {
     protoc {
         // The artifact spec for the Protobuf Compiler
-        artifact = 'com.google.protobuf:protoc:3.18.1'
+        artifact = 'com.google.protobuf:protoc:4.27.1'
     }
 
     generatedFilesBaseDir = "$projectDir/src/generated/"
