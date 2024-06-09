@@ -143,8 +143,8 @@ public class Position implements Serializable {
 
     /** In radians */
     public Position translate(float dist, float angle) {
-        this.x += dist * Math.sin(angle);
-        this.y += dist * Math.cos(angle);
+        this.x += (float) (dist * Math.sin(angle));
+        this.y += (float) (dist * Math.cos(angle));
         return this;
     }
 
@@ -173,8 +173,8 @@ public class Position implements Serializable {
 
     public Position translateWithDegrees(float dist, float angle) {
         angle = (float) Math.toRadians(angle);
-        this.x += dist * Math.sin(angle);
-        this.y += -dist * Math.cos(angle);
+        this.x += (float) (dist * Math.sin(angle));
+        this.y += (float) (-dist * Math.cos(angle));
         return this;
     }
 
