@@ -231,6 +231,10 @@ public class Achievements {
                             });
 
             var a = this.getAchievement(i);
+            if(a == null) {
+                Grasscutter.getLogger().warn("null returned while getting achievement!");
+                return;
+            }
             a.setStatus(Status.STATUS_REWARD_TAKEN);
             this.save();
             this.sendUpdatePacket(a);

@@ -347,7 +347,7 @@ public final class Language {
                                                 return Files.getLastModifiedTime(path).toMillis();
                                             } catch (Exception ignored) {
                                                 Grasscutter.getLogger()
-                                                        .debug("Exception while checking modified time: ", path);
+                                                        .debug("Exception while checking modified time: {}", path);
                                                 return Long.MAX_VALUE; // Don't use cache, something has gone wrong
                                             }
                                         })
