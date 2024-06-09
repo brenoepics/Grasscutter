@@ -7,7 +7,7 @@ import emu.grasscutter.server.event.internal.ServerLogEvent;
 import java.nio.charset.StandardCharsets;
 
 public final class ServerLogEventAppender<E> extends AppenderBase<E> {
-    protected Encoder<E> encoder;
+    private Encoder<E> encoder;
 
     @Override
     protected void append(E event) {
