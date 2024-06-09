@@ -65,7 +65,7 @@ public class MailHandler extends BasePlayerManager {
     public void deleteMail(List<Integer> mailList) {
         List<Integer> sortedMailList = new ArrayList<>();
         sortedMailList.addAll(mailList);
-        Collections.sort(sortedMailList, Collections.reverseOrder());
+        sortedMailList.sort(Collections.reverseOrder());
 
         List<Integer> deleted = new ArrayList<>();
 
