@@ -83,7 +83,7 @@ public final class TeamManager extends BasePlayerDataManager {
         int embryoId = 0;
 
         // add from default
-        if (Arrays.stream(GameConstants.DEFAULT_TEAM_ABILITY_STRINGS).count() > 0) {
+        if (Arrays.stream(GameConstants.DEFAULT_TEAM_ABILITY_STRINGS).findAny().isPresent()) {
             List<String> teamAbilties =
                     Arrays.stream(GameConstants.DEFAULT_TEAM_ABILITY_STRINGS).toList();
             for (String skill : teamAbilties) {
