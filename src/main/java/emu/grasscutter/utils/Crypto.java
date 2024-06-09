@@ -10,7 +10,6 @@ import java.security.spec.*;
 import java.util.*;
 import java.util.regex.Pattern;
 import javax.crypto.Cipher;
-import javax.crypto.NoSuchPaddingException;
 
 public final class Crypto {
 
