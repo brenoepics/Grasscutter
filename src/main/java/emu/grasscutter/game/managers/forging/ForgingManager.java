@@ -299,7 +299,7 @@ public final class ForgingManager extends BasePlayerManager {
         // Determine if sending an update is necessary.
         // We only send an update if there are forges in the forge queue
         // that have changed since the last notification.
-        if (this.player.getActiveForges().size() <= 0) {
+        if (this.player.getActiveForges().size() == 0) {
             return;
         }
 

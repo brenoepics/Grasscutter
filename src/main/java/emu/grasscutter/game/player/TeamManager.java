@@ -363,7 +363,7 @@ public final class TeamManager extends BasePlayerDataManager {
 
     public void updateTeamEntities(BasePacket responsePacket) {
         // Sanity check - Should never happen
-        if (this.getCurrentTeamInfo().getAvatars().size() <= 0) {
+        if (this.getCurrentTeamInfo().getAvatars().size() == 0) {
             return;
         }
 
