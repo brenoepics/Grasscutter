@@ -169,8 +169,8 @@ public final class ResourceLoader {
     }
 
     @SuppressWarnings("rawtypes")
-    protected static void loadFromResource(
-            Class<?> c, ResourceType type, Int2ObjectMap map, boolean doReload) throws Exception {
+    private static void loadFromResource(
+        Class<?> c, ResourceType type, Int2ObjectMap map, boolean doReload) throws Exception {
         val simpleName = c.getSimpleName();
         if (doReload || !loadedResources.contains(simpleName)) {
             for (String name : type.name()) {
@@ -181,7 +181,7 @@ public final class ResourceLoader {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
-    protected static <T> void loadFromResource(Class<T> c, Path filename, Int2ObjectMap map)
+    private static <T> void loadFromResource(Class<T> c, Path filename, Int2ObjectMap map)
             throws Exception {
         val results =
                 switch (FileUtils.getFileExtension(filename)) {
@@ -200,7 +200,7 @@ public final class ResourceLoader {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
-    protected static <T> void loadFromResource(Class<T> c, String fileName, Int2ObjectMap map)
+    private static <T> void loadFromResource(Class<T> c, String fileName, Int2ObjectMap map)
             throws Exception {
         JsonUtils.loadToList(getResourcePath("ExcelBinOutput/" + fileName), c)
                 .forEach(
