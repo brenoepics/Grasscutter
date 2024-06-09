@@ -23,10 +23,10 @@ public class KahnsSort {
             mainList = new HashMap<>();
             this.nodeList = nodeList;
 
-            for (int i = 0; i < nodeList.size(); i++) mainList.put(nodeList.get(i), new ArrayList<>());
+            for (Integer value : nodeList) mainList.put(value, new ArrayList<>());
 
             degreeList = new HashMap<>();
-            for (int i = 0; i < nodeList.size(); i++) degreeList.put(nodeList.get(i), 0);
+            for (Integer integer : nodeList) degreeList.put(integer, 0);
 
             for (Node node : nodes) {
                 mainList.get(node.source).add(node.dest);
