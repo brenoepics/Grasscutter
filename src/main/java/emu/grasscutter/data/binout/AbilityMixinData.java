@@ -27,7 +27,7 @@ public class AbilityMixinData implements Serializable {
             List<String> list = (new Gson()).fromJson(modifierName, listType);
             return list;
         } else {
-            return Arrays.asList(modifierName.getAsString());
+            return Collections.singletonList(modifierName.getAsString());
         }
     }
 }
