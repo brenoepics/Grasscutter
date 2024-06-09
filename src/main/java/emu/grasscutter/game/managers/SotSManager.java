@@ -218,11 +218,7 @@ public class SotSManager extends BasePlayerManager {
 
     public CityInfoData getCityInfo(int cityId) {
         if (player.getCityInfoData() == null) player.setCityInfoData(new HashMap<>());
-        var cityInfo = player.getCityInfoData().get(cityId);
-        if (cityInfo == null) {
-            cityInfo = new CityInfoData(cityId);
-            player.getCityInfoData().put(cityId, cityInfo);
-        }
+        var cityInfo = player.getCityInfoData().computeIfAbsent(cityId, CityInfoData::new);
         return cityInfo;
     }
 

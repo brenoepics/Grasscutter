@@ -599,9 +599,7 @@ public class Player implements PlayerHook, FieldFetch {
         GameData.getSceneTagDataMap().values().stream()
                 .filter(SceneTagData::isDefaultValid)
                 .forEach(sceneTag -> {
-                    if (this.getSceneTags().get(sceneTag.getSceneId()) == null) {
-                        this.getSceneTags().put(sceneTag.getSceneId(), new HashSet<>());
-                    }
+                    this.getSceneTags().computeIfAbsent(sceneTag.getSceneId(), k -> new HashSet<>());
                     this.getSceneTags().get(sceneTag.getSceneId()).add(sceneTag.getId());
                 });
     }
