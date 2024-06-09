@@ -10,6 +10,7 @@ import java.security.spec.*;
 import java.util.*;
 import java.util.regex.Pattern;
 import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
 
 public final class Crypto {
 
@@ -100,8 +101,8 @@ public final class Crypto {
         if (key_id == null) {
             throw new Exception("Key ID was not set");
         }
+        Cipher cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding");
 
-        Cipher cipher = Cipher.getInstance("RSA/ECB/PKCS1Padding");
         cipher.init(Cipher.ENCRYPT_MODE, EncryptionKeys.get(Integer.valueOf(key_id)));
 
         // Encrypt regionInfo in chunks
