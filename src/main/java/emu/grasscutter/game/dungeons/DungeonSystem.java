@@ -8,7 +8,6 @@ import emu.grasscutter.game.dungeons.handlers.DungeonBaseHandler;
 import emu.grasscutter.game.player.Player;
 import emu.grasscutter.game.props.SceneType;
 import emu.grasscutter.game.world.*;
-import emu.grasscutter.net.packet.*;
 import emu.grasscutter.server.game.*;
 import emu.grasscutter.server.packet.send.PacketDungeonEntryInfoRsp;
 import it.unimi.dsi.fastutil.ints.*;

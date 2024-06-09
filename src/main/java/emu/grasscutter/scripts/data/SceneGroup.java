@@ -3,7 +3,7 @@ package emu.grasscutter.scripts.data;
 import emu.grasscutter.Grasscutter;
 import emu.grasscutter.game.world.Position;
 import emu.grasscutter.scripts.ScriptLoader;
-import java.io.*;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.script.*;
