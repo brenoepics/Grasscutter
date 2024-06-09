@@ -431,26 +431,26 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
     }
 
     private int getVirtualItemCount(int itemId) {
-        switch (itemId) {
-            case 201: // Primogem
-                return this.player.getPrimogems();
-            case 202: // Mora
-                return this.player.getMora();
-            case 203: // Genesis Crystals
-                return this.player.getCrystals();
-            case 106: // Resin
-                return this.player.getProperty(PlayerProperty.PROP_PLAYER_RESIN);
-            case 107: // Legendary Key
-                return this.player.getProperty(PlayerProperty.PROP_PLAYER_LEGENDARY_KEY);
-            case 204: // Home Coin
-                return this.player.getHomeCoin();
-            default:
+        return switch (itemId) {
+            case 201 -> // Primogem
+                this.player.getPrimogems();
+            case 202 -> // Mora
+                this.player.getMora();
+            case 203 -> // Genesis Crystals
+                this.player.getCrystals();
+            case 106 -> // Resin
+                this.player.getProperty(PlayerProperty.PROP_PLAYER_RESIN);
+            case 107 -> // Legendary Key
+                this.player.getProperty(PlayerProperty.PROP_PLAYER_LEGENDARY_KEY);
+            case 204 -> // Home Coin
+                this.player.getHomeCoin();
+            default -> {
                 GameItem item =
-                        getInventoryTab(ItemType.ITEM_MATERIAL)
-                                .getItemById(
-                                        itemId); // What if we ever want to operate on weapons/relics/furniture? :S
-                return (item == null) ? 0 : item.getCount();
-        }
+                    getInventoryTab(ItemType.ITEM_MATERIAL)
+                        .getItemById(
+                            itemId); // What if we ever want to operate on weapons/relics/furniture? :Syield (item == null) ? 0 : item.getCount(); // What if we ever want to operate on weapons/relics/furniture? :S
+            }
+        };
     }
 
     public synchronized boolean payItem(int id, int count) {
