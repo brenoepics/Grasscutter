@@ -25,7 +25,7 @@ import lombok.val;
 public class InventorySystem extends BaseGameSystem {
     private static final Int2IntMap weaponRefundMaterials = new Int2IntArrayMap();
 
-    {
+    static {
         // Use a sorted map, use exp as key to sort by exp
         // We want to have weaponRefundMaterials as (id, exp) in descending exp order
         var temp = new Int2IntRBTreeMap(Collections.reverseOrder());
