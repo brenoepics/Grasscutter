@@ -13,7 +13,6 @@ import lombok.experimental.FieldDefaults;
 
 @Getter
 @ResourceType(name = "QuestExcelConfigData.json")
-@Getter
 @ToString
 public class QuestData extends GameResource {
     private int subId;

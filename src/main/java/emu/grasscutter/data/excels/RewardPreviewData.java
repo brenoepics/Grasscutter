@@ -8,7 +8,7 @@ import lombok.Getter;
 
 @ResourceType(name = "RewardPreviewExcelConfigData.json", loadPriority = LoadPriority.HIGH)
 public class RewardPreviewData extends GameResource {
-    @Getter(onMethod_ = @Override)
+    @Getter(onMethod = @__(@Override))
     private int id;
 
     private ItemParamStringData[] previewItems;

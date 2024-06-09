@@ -2,20 +2,27 @@ package emu.grasscutter.net.packet;
 
 import com.google.protobuf.GeneratedMessageV3;
 import emu.grasscutter.net.proto.PacketHeadOuterClass.PacketHead;
-import java.io.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.*;
 
 public class BasePacket {
     private static final int const1 = 17767; // 0x4567
     private static final int const2 = -30293; // 0x89ab
     public final boolean shouldEncrypt = true;
-    @Setter @Getter private int opcode;
+    @Setter
+    @Getter
+    private int opcode;
     private boolean shouldBuildHeader = false;
-    @Setter @Getter private byte[] header;
-    @Setter @Getter private byte[] data;
+    @Setter
+    @Getter
+    private byte[] header;
+    @Getter
+    private byte[] data;
     // Encryption
-    @Setter private boolean useDispatchKey;
+    @Setter
+    private boolean useDispatchKey;
 
     public BasePacket(int opcode) {
         this.opcode = opcode;
@@ -46,6 +53,10 @@ public class BasePacket {
     @SuppressWarnings("rawtypes")
     public void setData(GeneratedMessageV3.Builder proto) {
         this.data = proto.build().toByteArray();
+    }
+
+    public void setData(byte[] packet) {
+        this.data = packet;
     }
 
     public BasePacket buildHeader(int clientSequence) {

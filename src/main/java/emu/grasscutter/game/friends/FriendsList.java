@@ -93,8 +93,8 @@ public class FriendsList extends BasePlayerManager {
 
         // Handle
         if (result == DealAddFriendResultType.DEAL_ADD_FRIEND_RESULT_TYPE_ACCEPT) { // Request accepted
-            myFriendship.setIsFriend(true);
-            theirFriendship.setIsFriend(true);
+            myFriendship.setFriend(true);
+            theirFriendship.setFriend(true);
 
             this.getPendingFriends().remove(myFriendship.getOwnerId());
             this.addFriend(myFriendship);
