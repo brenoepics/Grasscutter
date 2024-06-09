@@ -295,9 +295,7 @@ public class GameQuest {
         getMainQuest().getChildQuests().values().stream()
                 .filter(p -> p.getQuestData().getOrder() > this.getQuestData().getOrder())
                 .forEach(
-                        q -> {
-                            q.clearProgress(notifyDelete);
-                        });
+                        q -> q.clearProgress(notifyDelete));
         clearProgress(notifyDelete);
         this.start();
         return true;

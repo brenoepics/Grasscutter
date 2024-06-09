@@ -16,9 +16,7 @@ public enum ItemUseTarget {
     static {
         Stream.of(values())
                 .forEach(
-                        e -> {
-                            map.put(e.getValue(), e);
-                        });
+                        e -> map.put(e.getValue(), e));
     }
 
     private final int value;

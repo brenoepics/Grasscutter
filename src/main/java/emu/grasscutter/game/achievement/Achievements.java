@@ -61,11 +61,9 @@ public class Achievements {
         GameData.getAchievementDataMap().values().stream()
                 .filter(AchievementData::isUsed)
                 .forEach(
-                        a -> {
-                            map.put(
-                                    a.getId(),
-                                    new Achievement(Status.STATUS_UNFINISHED, a.getId(), a.getProgress(), 0, 0));
-                        });
+                        a -> map.put(
+                                a.getId(),
+                                new Achievement(Status.STATUS_UNFINISHED, a.getId(), a.getProgress(), 0, 0)));
         return map;
     }
 
@@ -177,14 +175,12 @@ public class Achievements {
         return this.getAchievementList()
                 .computeIfAbsent(
                         achievementId,
-                        id -> {
-                            return new Achievement(
-                                    Status.STATUS_UNFINISHED,
-                                    id,
-                                    GameData.getAchievementDataMap().get(id.intValue()).getProgress(),
-                                    0,
-                                    0);
-                        });
+                        id -> new Achievement(
+                                Status.STATUS_UNFINISHED,
+                                id,
+                                GameData.getAchievementDataMap().get(id.intValue()).getProgress(),
+                                0,
+                                0));
     }
 
     public boolean isInvalid(int achievementId) {

@@ -140,25 +140,23 @@ public final class ResourceLoader {
 
         getResourceDefClassesPrioritySets()
                 .forEach(
-                        classes -> {
-                            classes.stream()
-                                    .parallel()
-                                    .unordered()
-                                    .forEach(
-                                            c -> {
-                                                val type = c.getAnnotation(ResourceType.class);
-                                                if (type == null) return;
+                        classes -> classes.stream()
+                                .parallel()
+                                .unordered()
+                                .forEach(
+                                        c -> {
+                                            val type = c.getAnnotation(ResourceType.class);
+                                            if (type == null) return;
 
-                                                val map = GameData.getMapByResourceDef(c);
-                                                if (map == null) return;
+                                            val map = GameData.getMapByResourceDef(c);
+                                            if (map == null) return;
 
-                                                try {
-                                                    loadFromResource(c, type, map, doReload);
-                                                } catch (Exception e) {
-                                                    errors.add(Pair.of(Arrays.toString(type.name()), e));
-                                                }
-                                            });
-                        });
+                                            try {
+                                                loadFromResource(c, type, map, doReload);
+                                            } catch (Exception e) {
+                                                errors.add(Pair.of(Arrays.toString(type.name()), e));
+                                            }
+                                        }));
         errors.forEach(
                 pair ->
                         Grasscutter.getLogger()

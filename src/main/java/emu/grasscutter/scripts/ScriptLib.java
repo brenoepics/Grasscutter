@@ -632,9 +632,7 @@ public class ScriptLib {
         worktop.removeWorktopOption(callParams.param2);
 
         var scene = getSceneScriptManager().getScene();
-        Grasscutter.getGameServer().getScheduler().scheduleDelayedTask(() -> {
-            scene.broadcastPacket(new PacketWorktopOptionNotify(gadget));
-        }, 1);
+        Grasscutter.getGameServer().getScheduler().scheduleDelayedTask(() -> scene.broadcastPacket(new PacketWorktopOptionNotify(gadget)), 1);
 
         return 0;
     }

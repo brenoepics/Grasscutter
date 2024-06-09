@@ -34,16 +34,14 @@ public class PacketCreateVehicleRsp extends BasePacket {
 
                             vehicleMembers.stream()
                                     .forEach(
-                                            vehicleMember -> {
-                                                player
-                                                        .getScene()
-                                                        .broadcastPacket(
-                                                                new PacketVehicleInteractRsp(
-                                                                        ((EntityVehicle) entity),
-                                                                        vehicleMember,
-                                                                        VehicleInteractTypeOuterClass.VehicleInteractType
-                                                                                .VEHICLE_INTERACT_TYPE_OUT));
-                                            });
+                                            vehicleMember -> player
+                                                    .getScene()
+                                                    .broadcastPacket(
+                                                            new PacketVehicleInteractRsp(
+                                                                    ((EntityVehicle) entity),
+                                                                    vehicleMember,
+                                                                    VehicleInteractTypeOuterClass.VehicleInteractType
+                                                                            .VEHICLE_INTERACT_TYPE_OUT)));
 
                             player.getScene().killEntity(entity, 0);
                         });

@@ -776,12 +776,10 @@ public class Avatar {
             Stream.of(entry.getSkillPointModifiers())
                     .mapToInt(SkillPointModifier::getSkillId)
                     .forEach(
-                            skillId -> {
-                                this.getPlayer()
-                                        .sendPacket(
-                                                new PacketAvatarSkillMaxChargeCountNotify(
-                                                        this, skillId, this.getSkillExtraChargeMap().getOrDefault(skillId, 0)));
-                            });
+                            skillId -> this.getPlayer()
+                                    .sendPacket(
+                                            new PacketAvatarSkillMaxChargeCountNotify(
+                                                    this, skillId, this.getSkillExtraChargeMap().getOrDefault(skillId, 0))));
         }
     }
 
