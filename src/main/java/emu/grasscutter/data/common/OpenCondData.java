@@ -10,15 +10,15 @@ public class OpenCondData {
         return condType;
     }
 
-    public void setCondType(String condType) {
-        condType = condType;
+    public void setCondType(String cType) {
+        condType = cType;
     }
 
     public List<Integer> getParamList() {
         return paramList;
     }
 
-    public void setParamList(List<Integer> paramList) {
-        paramList = paramList;
+    public void setParamList(List<Integer> pList) {
+        paramList = pList;
     }
 }
