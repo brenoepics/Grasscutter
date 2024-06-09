@@ -13,13 +13,12 @@ import emu.grasscutter.game.world.Position;
 import it.unimi.dsi.fastutil.floats.FloatArrayList;
 import it.unimi.dsi.fastutil.ints.IntArrayList;
 import it.unimi.dsi.fastutil.ints.IntList;
-import lombok.val;
-
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
+import lombok.val;
 
 public interface JsonAdapters {
     class DynamicFloatAdapter extends TypeAdapter<DynamicFloat> {
@@ -40,25 +39,24 @@ public interface JsonAdapters {
                     val opStack = new ArrayList<DynamicFloat.StackOp>();
                     while (reader.hasNext()) {
                         opStack.add(
-                            switch (reader.peek()) {
-                                case STRING -> new DynamicFloat.StackOp(reader.nextString());
-                                case NUMBER -> new DynamicFloat.StackOp((float) reader.nextDouble());
-                                case BOOLEAN -> new DynamicFloat.StackOp(reader.nextBoolean());
-                                default -> throw new IOException(
-                                    "Invalid DynamicFloat definition - " + reader.peek().name());
-                            });
+                                switch (reader.peek()) {
+                                    case STRING -> new DynamicFloat.StackOp(reader.nextString());
+                                    case NUMBER -> new DynamicFloat.StackOp((float) reader.nextDouble());
+                                    case BOOLEAN -> new DynamicFloat.StackOp(reader.nextBoolean());
+                                    default -> throw new IOException(
+                                            "Invalid DynamicFloat definition - " + reader.peek().name());
+                                });
                     }
                     reader.endArray();
                     return new DynamicFloat(opStack);
                 }
                 default -> throw new IOException(
-                    "Invalid DynamicFloat definition - " + reader.peek().name());
+                        "Invalid DynamicFloat definition - " + reader.peek().name());
             }
         }
 
         @Override
-        public void write(JsonWriter writer, DynamicFloat f) {
-        }
+        public void write(JsonWriter writer, DynamicFloat f) {}
     }
 
     class IntListAdapter extends TypeAdapter<IntList> {
@@ -80,7 +78,7 @@ public interface JsonAdapters {
         public void write(JsonWriter writer, IntList l) throws IOException {
             writer.beginArray();
             for (val i : l) // .forEach() doesn't appreciate exceptions
-                writer.value(i);
+            writer.value(i);
             writer.endArray();
         }
     }
@@ -117,7 +115,7 @@ public interface JsonAdapters {
                 throw new IOException("Invalid GridPosition definition - " + in.peek().name());
 
             return new GridPosition(
-                Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]));
+                    Integer.parseInt(split[0]), Integer.parseInt(split[1]), Integer.parseInt(split[2]));
         }
     }
 

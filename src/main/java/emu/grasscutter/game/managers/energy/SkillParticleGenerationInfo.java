@@ -6,5 +6,4 @@ import lombok.Getter;
 public class SkillParticleGenerationInfo {
     private int value;
     private int chance;
-
 }

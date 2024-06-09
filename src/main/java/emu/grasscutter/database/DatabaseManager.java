@@ -14,8 +14,7 @@ import emu.grasscutter.game.Account;
 import lombok.Getter;
 
 public final class DatabaseManager {
-    @Getter
-    private static Datastore gameDatastore;
+    @Getter private static Datastore gameDatastore;
     private static Datastore dispatchDatastore;
 
     public static Datastore getAccountDatastore() {

@@ -8,13 +8,11 @@ import lombok.Setter;
 public class DropData {
     private int minWeight;
     private int maxWeight;
-    @Setter
-    private int itemId;
+    @Setter private int itemId;
     private int minCount;
     private int maxCount;
     private boolean share = false;
-    @Setter
-    private boolean give = false;
+    @Setter private boolean give = false;
 
     public void setIsShare(boolean share) {
         this.share = share;

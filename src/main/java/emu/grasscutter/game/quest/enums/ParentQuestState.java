@@ -14,5 +14,4 @@ public enum ParentQuestState {
     ParentQuestState(int id) {
         this.value = id;
     }
-
 }

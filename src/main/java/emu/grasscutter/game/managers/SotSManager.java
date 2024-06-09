@@ -180,7 +180,10 @@ public class SotSManager extends BasePlayerManager {
         public void run() {
             refillSpringVolume();
 
-            logger.trace("isAutoRecoveryEnabled: {}\tautoRecoverPercentage: {}", getIsAutoRecoveryEnabled(), getAutoRecoveryPercentage());
+            logger.trace(
+                    "isAutoRecoveryEnabled: {}\tautoRecoverPercentage: {}",
+                    getIsAutoRecoveryEnabled(),
+                    getAutoRecoveryPercentage());
 
             if (getIsAutoRecoveryEnabled()) {
                 List<EntityAvatar> activeTeam = player.getTeamManager().getActiveTeam();

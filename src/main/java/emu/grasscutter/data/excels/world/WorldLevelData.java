@@ -6,8 +6,7 @@ import lombok.Getter;
 @ResourceType(name = "WorldLevelExcelConfigData.json")
 public class WorldLevelData extends GameResource {
     private int level;
-    @Getter
-    private int monsterLevel;
+    @Getter private int monsterLevel;
 
     @Override
     public int getId() {

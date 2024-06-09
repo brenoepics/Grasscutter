@@ -12,6 +12,7 @@ import lombok.Getter;
 public class GameSessionManager {
     @Getter private static final DefaultEventLoop logicThread = new DefaultEventLoop();
     private static final ConcurrentHashMap<Ukcp, GameSession> sessions = new ConcurrentHashMap<>();
+
     @Getter
     private static final KcpListener listener =
             new KcpListener() {

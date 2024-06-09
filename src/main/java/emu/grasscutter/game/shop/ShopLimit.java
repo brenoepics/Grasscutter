@@ -12,5 +12,4 @@ public class ShopLimit {
     private int hasBought;
     private int hasBoughtInPeriod = 0;
     private int nextRefreshTime = 0;
-
 }

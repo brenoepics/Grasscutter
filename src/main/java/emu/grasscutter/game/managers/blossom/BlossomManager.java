@@ -203,7 +203,7 @@ public class BlossomManager {
                         RewardPreviewData blossomRewards = getRewardList(type, worldLevel);
                         if (blossomRewards == null) {
                             Grasscutter.getLogger()
-                                .error("Blossom could not support world level : {}", worldLevel);
+                                    .error("Blossom could not support world level : {}", worldLevel);
                             return null;
                         }
                         var rewards = blossomRewards.getPreviewItems();

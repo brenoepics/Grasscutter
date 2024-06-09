@@ -630,15 +630,21 @@ public final class GameData {
 
     // Non-nullable value getters
     public static int getAvatarLevelExpRequired(int level) {
-        return Optional.ofNullable(avatarLevelDataMap.get(level)).map(AvatarLevelData::getExp).orElse(0);
+        return Optional.ofNullable(avatarLevelDataMap.get(level))
+                .map(AvatarLevelData::getExp)
+                .orElse(0);
     }
 
     public static int getAvatarFetterLevelExpRequired(int level) {
-        return Optional.ofNullable(avatarFetterLevelDataMap.get(level)).map(AvatarFetterLevelData::getExp).orElse(0);
+        return Optional.ofNullable(avatarFetterLevelDataMap.get(level))
+                .map(AvatarFetterLevelData::getExp)
+                .orElse(0);
     }
 
     public static int getRelicExpRequired(int rankLevel, int level) {
-        return Optional.ofNullable(getRelicLevelData(rankLevel, level)).map(ReliquaryLevelData::getExp).orElse(0);
+        return Optional.ofNullable(getRelicLevelData(rankLevel, level))
+                .map(ReliquaryLevelData::getExp)
+                .orElse(0);
     }
 
     // Generic getter
@@ -655,7 +661,7 @@ public final class GameData {
             field.setAccessible(false);
         } catch (Exception e) {
             Grasscutter.getLogger()
-                .error("Error fetching resource map for {}", resourceDefinition.getSimpleName(), e);
+                    .error("Error fetching resource map for {}", resourceDefinition.getSimpleName(), e);
         }
 
         return map;

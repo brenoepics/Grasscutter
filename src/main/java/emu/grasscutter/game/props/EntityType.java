@@ -2,10 +2,9 @@ package emu.grasscutter.game.props;
 
 import emu.grasscutter.scripts.constants.IntValueEnum;
 import it.unimi.dsi.fastutil.ints.*;
-import lombok.Getter;
-
 import java.util.*;
 import java.util.stream.Stream;
+import lombok.Getter;
 
 @Getter
 public enum EntityType implements IntValueEnum {
@@ -104,5 +103,4 @@ public enum EntityType implements IntValueEnum {
     public static EntityType getTypeByName(String name) {
         return stringMap.getOrDefault(name, None);
     }
-
 }

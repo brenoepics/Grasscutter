@@ -2,25 +2,19 @@ package emu.grasscutter.data.excels;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.FightPropData;
-import lombok.Getter;
-
 import java.util.ArrayList;
+import lombok.Getter;
 
 @ResourceType(name = "EquipAffixExcelConfigData.json")
 public class EquipAffixData extends GameResource {
 
     private int affixId;
     private int id;
-    @Getter
-    private int level;
-    @Getter
-    private long nameTextMapHash;
-    @Getter
-    private String openConfig;
-    @Getter
-    private FightPropData[] addProps;
-    @Getter
-    private float[] paramList;
+    @Getter private int level;
+    @Getter private long nameTextMapHash;
+    @Getter private String openConfig;
+    @Getter private FightPropData[] addProps;
+    @Getter private float[] paramList;
 
     @Override
     public int getId() {

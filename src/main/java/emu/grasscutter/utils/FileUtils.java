@@ -41,7 +41,7 @@ public final class FileUtils {
                     break;
                 default:
                     Grasscutter.getLogger()
-                        .error("Invalid URI scheme for class resources: {}", uri.getScheme());
+                            .error("Invalid URI scheme for class resources: {}", uri.getScheme());
                     break;
             }
         } catch (URISyntaxException | IOException e) {
@@ -82,10 +82,10 @@ public final class FileUtils {
                     path = excelBinOutput.get().getParent();
                     if (path == null) path = root;
                     Grasscutter.getLogger()
-                        .debug("Resources will be loaded from \"" + resources + "/{}\"", path);
+                            .debug("Resources will be loaded from \"" + resources + "/{}\"", path);
                 } else {
                     Grasscutter.getLogger()
-                        .error("Failed to find ExcelBinOutput in resources zip \"" + resources + "\"");
+                            .error("Failed to find ExcelBinOutput in resources zip \"" + resources + "\"");
                 }
             } catch (IOException e) {
                 Grasscutter.getLogger().error("Failed to scan resources zip \"" + resources + "\"");

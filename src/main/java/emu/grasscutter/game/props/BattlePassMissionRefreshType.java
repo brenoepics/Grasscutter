@@ -14,5 +14,4 @@ public enum BattlePassMissionRefreshType {
     BattlePassMissionRefreshType(int value) {
         this.value = value;
     }
-
 }

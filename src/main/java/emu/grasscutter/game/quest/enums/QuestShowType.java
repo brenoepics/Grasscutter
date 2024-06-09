@@ -12,5 +12,4 @@ public enum QuestShowType {
     QuestShowType(int id) {
         this.value = id;
     }
-
 }

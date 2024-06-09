@@ -8,17 +8,14 @@ import emu.grasscutter.game.props.FightProperty;
 import emu.grasscutter.game.world.*;
 import emu.grasscutter.scripts.data.*;
 import emu.grasscutter.utils.Utils;
-import lombok.Getter;
-
 import java.util.*;
+import lombok.Getter;
 
 public final class BlossomActivity {
 
     private final SceneGroup tempSceneGroup;
-    @Getter
-    private final WorldChallenge challenge;
-    @Getter
-    private final EntityGadget gadget;
+    @Getter private final WorldChallenge challenge;
+    @Getter private final EntityGadget gadget;
     private EntityGadget chest;
     private int step;
     private final int goal;

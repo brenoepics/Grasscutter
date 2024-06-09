@@ -1,9 +1,8 @@
 package emu.grasscutter.game.player;
 
 import dev.morphia.annotations.Entity;
-import lombok.Getter;
-
 import java.util.*;
+import lombok.Getter;
 
 @Entity(useDiscriminator = false)
 public class PlayerCollectionRecords {
@@ -58,6 +57,5 @@ public class PlayerCollectionRecords {
             this.configId = configId;
             this.expiredTime = expiredTime;
         }
-
     }
 }

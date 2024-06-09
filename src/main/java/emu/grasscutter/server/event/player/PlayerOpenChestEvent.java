@@ -11,8 +11,7 @@ import lombok.Setter;
 @Getter
 public final class PlayerOpenChestEvent extends PlayerEvent implements Cancellable {
     private final GadgetChest chest;
-    @Setter
-    private ChestReward reward;
+    @Setter private ChestReward reward;
 
     public PlayerOpenChestEvent(Player player, GadgetChest chest, ChestReward reward) {
         super(player);
@@ -20,5 +19,4 @@ public final class PlayerOpenChestEvent extends PlayerEvent implements Cancellab
         this.chest = chest;
         this.reward = reward;
     }
-
 }

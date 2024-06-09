@@ -13,5 +13,4 @@ public class AvatarLevelData extends GameResource {
     public int getId() {
         return this.level;
     }
-
 }

@@ -1,9 +1,8 @@
 package emu.grasscutter.data.binout;
 
 import emu.grasscutter.data.ResourceLoader.OpenConfigData;
-import lombok.Getter;
-
 import java.util.*;
+import lombok.Getter;
 
 @Getter
 public class OpenConfigEntry {
@@ -46,6 +45,5 @@ public class OpenConfigEntry {
             this.skillId = skillId;
             this.delta = delta;
         }
-
     }
 }

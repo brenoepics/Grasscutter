@@ -7,8 +7,7 @@ import lombok.Getter;
 @ResourceType(name = "ReliquarySetExcelConfigData.json")
 public class ReliquarySetData extends GameResource {
     private int setId;
-    @Getter
-    private int[] setNeedNum;
+    @Getter private int[] setNeedNum;
 
     @Getter
     @SerializedName(

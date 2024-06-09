@@ -2,7 +2,6 @@ package emu.grasscutter.game.gacha;
 
 import dev.morphia.annotations.*;
 import java.util.Date;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.bson.types.ObjectId;

@@ -46,6 +46,5 @@ public class HandlerSetPlayerBirthdayReq extends PacketHandler {
             case 2 -> day > 0 & day <= 29;
             default -> false;
         };
-
     }
 }

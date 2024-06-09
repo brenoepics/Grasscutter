@@ -36,8 +36,7 @@ import org.luaj.vm2.*;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
 public class SceneScriptManager {
-    @Getter
-    private final Scene scene;
+    @Getter private final Scene scene;
     private final Map<String, Integer> variables;
     private SceneMeta meta;
     private boolean isInit;
@@ -56,13 +55,10 @@ public class SceneScriptManager {
     private final Map<Integer, SceneGroup> sceneGroups;
     private final Map<Integer, SceneGroupInstance> sceneGroupsInstances;
     private final Map<Integer, SceneGroupInstance> cachedSceneGroupsInstances;
-    @Getter
-    private ScriptMonsterTideService scriptMonsterTideService;
-    @Getter
-    private final ScriptMonsterSpawnService scriptMonsterSpawnService;
+    @Getter private ScriptMonsterTideService scriptMonsterTideService;
+    @Getter private final ScriptMonsterSpawnService scriptMonsterSpawnService;
     /** blockid - loaded groupSet */
-    @Getter
-    private final Map<Integer, Set<SceneGroup>> loadedGroupSetPerBlock;
+    @Getter private final Map<Integer, Set<SceneGroup>> loadedGroupSetPerBlock;
 
     private static final Int2ObjectMap<List<Grid>> groupGridsCache = new Int2ObjectOpenHashMap<>();
     public static final ExecutorService eventExecutor;
@@ -845,12 +841,12 @@ public class SceneScriptManager {
 
     public Future<?> callEvent(@Nonnull ScriptArgs params) {
         /*
-          We use ThreadLocal to trans SceneScriptManager context to ScriptLib, to avoid eval script for
-          every groups' trigger in every scene instances. But when callEvent is called in a ScriptLib
-          func, it may cause NPE because the inner call cleans the ThreadLocal so that outer call could
-          not get it. e.g. CallEvent -> set -> ScriptLib.xxx -> CallEvent -> set -> remove -> NPE ->
-          (remove) So we use thread pool to clean the stack to avoid this new issue.
-         */
+        We use ThreadLocal to trans SceneScriptManager context to ScriptLib, to avoid eval script for
+        every groups' trigger in every scene instances. But when callEvent is called in a ScriptLib
+        func, it may cause NPE because the inner call cleans the ThreadLocal so that outer call could
+        not get it. e.g. CallEvent -> set -> ScriptLib.xxx -> CallEvent -> set -> remove -> NPE ->
+        (remove) So we use thread pool to clean the stack to avoid this new issue.
+        */
         return eventExecutor.submit(() -> this.realCallEvent(params));
     }
 
@@ -884,7 +880,7 @@ public class SceneScriptManager {
             }
         } catch (Throwable throwable) {
             Grasscutter.getLogger()
-                .error("Condition Trigger {} triggered exception", params.type, throwable);
+                    .error("Condition Trigger {} triggered exception", params.type, throwable);
         } finally {
             // make sure it is removed
             ScriptLoader.getScriptLib().removeSceneScriptManager();
@@ -910,7 +906,7 @@ public class SceneScriptManager {
             return false;
         } catch (Throwable ex) {
             Grasscutter.getLogger()
-                .error("Condition Trigger {} triggered exception", trigger.getName(), ex);
+                    .error("Condition Trigger {} triggered exception", trigger.getName(), ex);
             return false;
         } finally {
             ScriptLoader.getScriptLib().removeCurrentGroup();

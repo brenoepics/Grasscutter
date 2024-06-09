@@ -17,5 +17,4 @@ public final class PlayerReceiveMailEvent extends PlayerEvent implements Cancell
 
         this.message = message;
     }
-
 }

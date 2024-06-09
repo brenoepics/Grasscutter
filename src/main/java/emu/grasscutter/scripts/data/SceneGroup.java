@@ -3,7 +3,6 @@ package emu.grasscutter.scripts.data;
 import emu.grasscutter.Grasscutter;
 import emu.grasscutter.game.world.Position;
 import emu.grasscutter.scripts.ScriptLoader;
-
 import java.util.*;
 import java.util.stream.Collectors;
 import javax.script.*;
@@ -37,13 +36,9 @@ public final class SceneGroup {
     public SceneReplaceable is_replaceable;
 
     /* These are not script variables. */
-    @Setter
-    @Getter
-    private transient boolean loaded;
-    @Getter
-    private transient CompiledScript script;
-    @Getter
-    private transient Bindings bindings;
+    @Setter @Getter private transient boolean loaded;
+    @Getter private transient CompiledScript script;
+    @Getter private transient Bindings bindings;
     public String overrideScriptPath;
 
     public static SceneGroup of(int groupId) {
@@ -156,7 +151,7 @@ public final class SceneGroup {
             this.suites.forEach(i -> i.init(this));
         } catch (ScriptException e) {
             Grasscutter.getLogger()
-                .error("An error occurred while loading group {} in scene {}.", this.id, sceneId, e);
+                    .error("An error occurred while loading group {} in scene {}.", this.id, sceneId, e);
         } catch (LuaError luaError) {
             Grasscutter.getLogger()
                     .error(

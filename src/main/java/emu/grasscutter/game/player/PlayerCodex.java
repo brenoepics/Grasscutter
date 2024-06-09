@@ -63,15 +63,15 @@ public class PlayerCodex {
                             MATERIAL_WIDGET,
                             MATERIAL_EXCHANGE,
                             MATERIAL_AVATAR_MATERIAL,
-                            MATERIAL_NOTICE_ADD_HP -> Optional.ofNullable(GameData.getCodexMaterialDataIdMap().get(itemId))
-                                    .ifPresent(
-                                            codexData -> {
-                                                if (this.getUnlockedMaterial().add(itemId)) {
-                                                    this.player.save();
-                                                    this.player.sendPacket(
-                                                            new PacketCodexDataUpdateNotify(4, codexData.getId()));
-                                                }
-                                            });
+                            MATERIAL_NOTICE_ADD_HP -> Optional.ofNullable(
+                                    GameData.getCodexMaterialDataIdMap().get(itemId))
+                            .ifPresent(
+                                    codexData -> {
+                                        if (this.getUnlockedMaterial().add(itemId)) {
+                                            this.player.save();
+                                            this.player.sendPacket(new PacketCodexDataUpdateNotify(4, codexData.getId()));
+                                        }
+                                    });
                     default -> {}
                 }
             }

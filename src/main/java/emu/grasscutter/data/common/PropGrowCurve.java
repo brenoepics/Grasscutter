@@ -6,5 +6,4 @@ import lombok.Getter;
 public class PropGrowCurve {
     private String type;
     private String growCurve;
-
 }

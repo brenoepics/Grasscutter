@@ -13,5 +13,4 @@ public class WeaponLevelData extends GameResource {
     public int getId() {
         return this.level;
     }
-
 }

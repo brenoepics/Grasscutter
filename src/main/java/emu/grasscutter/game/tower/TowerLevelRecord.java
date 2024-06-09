@@ -1,10 +1,9 @@
 package emu.grasscutter.game.tower;
 
 import dev.morphia.annotations.Entity;
+import java.util.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.*;
 
 @Setter
 @Getter
@@ -37,5 +36,4 @@ public class TowerLevelRecord {
     public int getStarCount() {
         return passedLevelMap.values().stream().mapToInt(Integer::intValue).sum();
     }
-
 }

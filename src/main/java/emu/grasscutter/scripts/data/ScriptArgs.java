@@ -5,12 +5,9 @@ import lombok.ToString;
 
 @ToString
 public class ScriptArgs {
-    @Getter
-    public int param1;
-    @Getter
-    public int param2;
-    @Getter
-    public int param3;
+    @Getter public int param1;
+    @Getter public int param2;
+    @Getter public int param3;
     public int source_eid; // Source entity
     public int target_eid;
     public int group_id;

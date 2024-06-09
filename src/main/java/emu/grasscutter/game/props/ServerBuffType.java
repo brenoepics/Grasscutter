@@ -1,9 +1,8 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
-import lombok.Getter;
-
 import java.util.stream.Stream;
+import lombok.Getter;
 
 @Getter
 public enum ServerBuffType {
@@ -15,9 +14,7 @@ public enum ServerBuffType {
     private static final Int2ObjectMap<ServerBuffType> map = new Int2ObjectOpenHashMap<>();
 
     static {
-        Stream.of(values())
-                .forEach(
-                        e -> map.put(e.getValue(), e));
+        Stream.of(values()).forEach(e -> map.put(e.getValue(), e));
     }
 
     private final int value;
@@ -29,5 +26,4 @@ public enum ServerBuffType {
     public static ServerBuffType getTypeByValue(int value) {
         return map.getOrDefault(value, SERVER_BUFF_NONE);
     }
-
 }

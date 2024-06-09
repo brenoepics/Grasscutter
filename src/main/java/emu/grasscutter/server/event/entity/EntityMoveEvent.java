@@ -19,5 +19,4 @@ public final class EntityMoveEvent extends EntityEvent {
         this.rotation = rotation;
         this.motionState = motionState;
     }
-
 }

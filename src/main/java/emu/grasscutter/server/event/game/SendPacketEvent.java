@@ -10,8 +10,7 @@ import lombok.Setter;
 @Getter
 public final class SendPacketEvent extends ServerEvent implements Cancellable {
     private final GameSession gameSession;
-    @Setter
-    private BasePacket packet;
+    @Setter private BasePacket packet;
 
     public SendPacketEvent(GameSession gameSession, BasePacket packet) {
         super(Type.GAME);
@@ -19,5 +18,4 @@ public final class SendPacketEvent extends ServerEvent implements Cancellable {
         this.gameSession = gameSession;
         this.packet = packet;
     }
-
 }

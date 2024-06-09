@@ -7,12 +7,9 @@ import lombok.Getter;
 public class GatherData extends GameResource {
     private int pointType;
     private int id;
-    @Getter
-    private int gadgetId;
-    @Getter
-    private int itemId;
-    @Getter
-    private int cd; // Probably hours
+    @Getter private int gadgetId;
+    @Getter private int itemId;
+    @Getter private int cd; // Probably hours
     private boolean isForbidGuest;
     private boolean initDisableInteract;
 

@@ -19,8 +19,7 @@ import emu.grasscutter.utils.Utils;
 import lombok.Getter;
 
 public final class GadgetGatherObject extends GadgetContent {
-    @Getter
-    private int itemId;
+    @Getter private int itemId;
     private boolean isForbidGuest;
 
     public GadgetGatherObject(EntityGadget gadget) {

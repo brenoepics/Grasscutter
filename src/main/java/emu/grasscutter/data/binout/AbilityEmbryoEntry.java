@@ -13,5 +13,4 @@ public class AbilityEmbryoEntry {
         this.name = avatarName;
         this.abilities = array;
     }
-
 }

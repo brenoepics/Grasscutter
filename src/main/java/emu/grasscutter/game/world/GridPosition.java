@@ -10,8 +10,7 @@ import lombok.*;
 @Getter
 @Entity
 public final class GridPosition implements Serializable {
-    @Serial
-    private static final long serialVersionUID = -2001232300615923575L;
+    @Serial private static final long serialVersionUID = -2001232300615923575L;
 
     private int x;
 

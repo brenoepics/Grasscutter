@@ -1,9 +1,8 @@
 package emu.grasscutter.game.dungeons;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 @Setter
 @Getter
@@ -13,5 +12,4 @@ public class DungeonDropEntry {
     private List<Integer> probabilities;
     private List<Integer> itemProbabilities;
     private boolean mpDouble;
-
 }

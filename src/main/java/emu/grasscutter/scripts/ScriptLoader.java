@@ -34,7 +34,8 @@ public class ScriptLoader {
     private static final Map<String, SoftReference<CompiledScript>> scriptsCache =
             new ConcurrentHashMap<>();
     /** sceneId - SceneMeta */
-    private static final Map<Integer, SoftReference<SceneMeta>> sceneMetaCache = new ConcurrentHashMap<>();
+    private static final Map<Integer, SoftReference<SceneMeta>> sceneMetaCache =
+            new ConcurrentHashMap<>();
 
     private static final AtomicReference<Bindings> currentBindings = new AtomicReference<>(null);
     private static final AtomicReference<ScriptContext> currentContext = new AtomicReference<>(null);

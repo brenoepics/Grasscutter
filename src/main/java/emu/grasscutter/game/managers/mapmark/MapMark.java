@@ -33,5 +33,4 @@ public class MapMark {
         this.mapMarkFromType = mapMarkPoint.getFromType();
         this.questId = mapMarkPoint.getQuestId();
     }
-
 }

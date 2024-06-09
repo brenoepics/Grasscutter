@@ -7,21 +7,19 @@ import emu.grasscutter.game.player.Player;
 import emu.grasscutter.server.game.GameServer;
 import emu.grasscutter.server.http.*;
 import emu.grasscutter.server.scheduler.ServerTaskScheduler;
-import lombok.Getter;
-
 import java.util.*;
 import java.util.stream.Stream;
+import lombok.Getter;
 
 /** Hooks into the {@link GameServer} class, adding convenient ways to do certain things. */
 public final class ServerHelper {
     /**
-     * -- GETTER --
-     *  Gets the server hook instance.
+     * -- GETTER -- Gets the server hook instance.
      *
      * @return A {@link ServerHelper} singleton.
      */
-    @Getter
-    private static ServerHelper instance;
+    @Getter private static ServerHelper instance;
+
     private final GameServer gameServer;
     private final HttpServer httpServer;
 

@@ -15,19 +15,12 @@ import org.bson.types.ObjectId;
 public class Friendship {
     @Id private ObjectId id;
 
-    @Setter
-    @Getter
-    @Transient private Player owner;
+    @Setter @Getter @Transient private Player owner;
 
-    @Getter
-    @Indexed private int ownerId;
-    @Getter
-    @Indexed private int friendId;
-    @Setter
-    private boolean isFriend;
-    @Setter
-    @Getter
-    private int askerId;
+    @Getter @Indexed private int ownerId;
+    @Getter @Indexed private int friendId;
+    @Setter private boolean isFriend;
+    @Setter @Getter private int askerId;
 
     private PlayerProfile profile;
 

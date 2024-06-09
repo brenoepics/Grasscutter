@@ -18,7 +18,6 @@ import emu.grasscutter.server.packet.send.PacketCompoundDataNotify;
 import emu.grasscutter.server.packet.send.PacketGetCompoundDataRsp;
 import emu.grasscutter.server.packet.send.PacketPlayerCompoundMaterialRsp;
 import emu.grasscutter.utils.Utils;
-
 import java.util.*;
 
 public class CookingCompoundManager extends BasePlayerManager {
@@ -34,24 +33,33 @@ public class CookingCompoundManager extends BasePlayerManager {
     public static void initialize() {
         defaultUnlockedCompounds = new HashSet<>();
         compoundGroups = new HashMap<>();
-        GameData.getCompoundDataMap().forEach((id, compound) -> {
-            if (compound.isDefaultUnlocked()) {
-                defaultUnlockedCompounds.add(id);
-            }
-            compoundGroups.computeIfAbsent(compound.getGroupId(), gid -> new HashSet<>()).add(id);
-        });
+        GameData.getCompoundDataMap()
+                .forEach(
+                        (id, compound) -> {
+                            if (compound.isDefaultUnlocked()) {
+                                defaultUnlockedCompounds.add(id);
+                            }
+                            compoundGroups.computeIfAbsent(compound.getGroupId(), gid -> new HashSet<>()).add(id);
+                        });
         // TODO:Because we haven't implemented fishing feature,unlock all compounds related to
         // fish.Besides,it should be bound to player rather than manager.
         unlocked = new HashSet<>(defaultUnlockedCompounds);
         if (compoundGroups.containsKey(3)) // Avoid NPE from Resources error
-            unlocked.addAll(compoundGroups.get(3));
+        unlocked.addAll(compoundGroups.get(3));
     }
 
     private synchronized List<CompoundQueueData> getCompoundQueueData() {
-        List<CompoundQueueData> compoundQueueData = new ArrayList<>(player.getActiveCookCompounds().size());
+        List<CompoundQueueData> compoundQueueData =
+                new ArrayList<>(player.getActiveCookCompounds().size());
         int currentTime = Utils.getCurrentSeconds();
         for (var item : player.getActiveCookCompounds().values()) {
-            var data = CompoundQueueData.newBuilder().setCompoundId(item.getCompoundId()).setOutputCount(item.getOutputCount(currentTime)).setOutputTime(item.getOutputTime(currentTime)).setWaitCount(item.getWaitCount(currentTime)).build();
+            var data =
+                    CompoundQueueData.newBuilder()
+                            .setCompoundId(item.getCompoundId())
+                            .setOutputCount(item.getOutputCount(currentTime))
+                            .setOutputTime(item.getOutputTime(currentTime))
+                            .setWaitCount(item.getWaitCount(currentTime))
+                            .build();
             compoundQueueData.add(data);
         }
         return compoundQueueData;
@@ -73,14 +81,16 @@ public class CookingCompoundManager extends BasePlayerManager {
             return;
         }
         // check whether the queue is full
-        if (activeCompounds.containsKey(id) && activeCompounds.get(id).getTotalCount() + count > compound.getQueueSize()) {
+        if (activeCompounds.containsKey(id)
+                && activeCompounds.get(id).getTotalCount() + count > compound.getQueueSize()) {
             player.sendPacket(new PacketPlayerCompoundMaterialRsp(Retcode.RET_COMPOUND_QUEUE_FULL_VALUE));
             return;
         }
         // try to consume raw materials
         if (!player.getInventory().payItems(compound.getInputVec(), count)) {
             // TODO:I'm not sure whether retcode is correct.
-            player.sendPacket(new PacketPlayerCompoundMaterialRsp(Retcode.RET_ITEM_COUNT_NOT_ENOUGH_VALUE));
+            player.sendPacket(
+                    new PacketPlayerCompoundMaterialRsp(Retcode.RET_ITEM_COUNT_NOT_ENOUGH_VALUE));
             return;
         }
         ActiveCookCompoundData c;
@@ -92,7 +102,13 @@ public class CookingCompoundManager extends BasePlayerManager {
             c = new ActiveCookCompoundData(id, compound.getCostTime(), count, currentTime);
             activeCompounds.put(id, c);
         }
-        var data = CompoundQueueData.newBuilder().setCompoundId(id).setOutputCount(c.getOutputCount(currentTime)).setOutputTime(c.getOutputTime(currentTime)).setWaitCount(c.getWaitCount(currentTime)).build();
+        var data =
+                CompoundQueueData.newBuilder()
+                        .setCompoundId(id)
+                        .setOutputCount(c.getOutputCount(currentTime))
+                        .setOutputTime(c.getOutputTime(currentTime))
+                        .setWaitCount(c.getWaitCount(currentTime))
+                        .build();
         player.sendPacket(new PacketPlayerCompoundMaterialRsp(data));
     }
 
@@ -124,9 +140,20 @@ public class CookingCompoundManager extends BasePlayerManager {
         // give player the rewards
         if (success) {
             player.getInventory().addItems(allRewards.values(), ActionReason.Compound);
-            player.sendPacket(new PackageTakeCompoundOutputRsp(allRewards.values().stream().map(i -> ItemParam.newBuilder().setItemId(i.getItemId()).setCount(i.getCount()).build()).toList(), Retcode.RET_SUCC_VALUE));
+            player.sendPacket(
+                    new PackageTakeCompoundOutputRsp(
+                            allRewards.values().stream()
+                                    .map(
+                                            i ->
+                                                    ItemParam.newBuilder()
+                                                            .setItemId(i.getItemId())
+                                                            .setCount(i.getCount())
+                                                            .build())
+                                    .toList(),
+                            Retcode.RET_SUCC_VALUE));
         } else {
-            player.sendPacket(new PackageTakeCompoundOutputRsp(null, Retcode.RET_COMPOUND_NOT_FINISH_VALUE));
+            player.sendPacket(
+                    new PackageTakeCompoundOutputRsp(null, Retcode.RET_COMPOUND_NOT_FINISH_VALUE));
         }
     }
 

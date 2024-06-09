@@ -151,7 +151,7 @@ public final class Utils {
             return true;
         } catch (Exception exception) {
             Grasscutter.getLogger()
-                .warn("Unable to copy resource {} to {}", resource, destination, exception);
+                    .warn("Unable to copy resource {} to {}", resource, destination, exception);
             return false;
         }
     }

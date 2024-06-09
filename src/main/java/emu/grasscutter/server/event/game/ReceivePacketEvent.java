@@ -10,8 +10,7 @@ import lombok.Setter;
 public final class ReceivePacketEvent extends ServerEvent implements Cancellable {
     private final GameSession gameSession;
     private final int packetId;
-    @Setter
-    private byte[] packetData;
+    @Setter private byte[] packetData;
 
     public ReceivePacketEvent(GameSession gameSession, int packetId, byte[] packetData) {
         super(Type.GAME);
@@ -20,5 +19,4 @@ public final class ReceivePacketEvent extends ServerEvent implements Cancellable
         this.packetId = packetId;
         this.packetData = packetData;
     }
-
 }

@@ -29,12 +29,9 @@ public final class Language {
     private static boolean scannedTextmaps =
             false; // Ensure that we don't infinitely rescan on cache misses that don't exist
     private static Int2ObjectMap<TextStrings> textMapStrings;
-    /**
-     * -- GETTER --
-     * get language code
-     */
-    @Getter
-    private final String languageCode;
+    /** -- GETTER -- get language code */
+    @Getter private final String languageCode;
+
     private final Map<String, String> translations = new ConcurrentHashMap<>();
 
     /** Reads a file and creates a language instance. */
@@ -50,7 +47,7 @@ public final class Language {
                     .forEach(entry -> putFlattenedKey(translations, entry.getKey(), entry.getValue()));
         } catch (Exception exception) {
             Grasscutter.getLogger()
-                .warn("Failed to load language file: {}", description.getLanguageCode(), exception);
+                    .warn("Failed to load language file: {}", description.getLanguageCode(), exception);
         }
     }
 
@@ -200,7 +197,7 @@ public final class Language {
 
         if (file == null) { // Provided fallback language.
             Grasscutter.getLogger()
-                .warn("Failed to load language file: {}, falling back to: {}", fileName, fallback);
+                    .warn("Failed to load language file: {}, falling back to: {}", fileName, fallback);
             actualLanguageCode = fallbackLanguageCode;
             if (cachedLanguages.containsKey(actualLanguageCode)) {
                 return new LanguageStreamDescription(actualLanguageCode, null);
@@ -211,7 +208,7 @@ public final class Language {
 
         if (file == null) { // Fallback the fallback language.
             Grasscutter.getLogger()
-                .warn("Failed to load language file: {}, falling back to: en-US.json", fallback);
+                    .warn("Failed to load language file: {}, falling back to: en-US.json", fallback);
             actualLanguageCode = "en-US";
             if (cachedLanguages.containsKey(actualLanguageCode)) {
                 return new LanguageStreamDescription(actualLanguageCode, null);
@@ -259,30 +256,27 @@ public final class Language {
                 TextStrings.LIST_LANGUAGES.parallelStream()
                                 .collect(
                                         Collectors.toConcurrentMap(
-                                            TextStrings.MAP_LANGUAGES::getInt,
-                                                s -> loadTextMapFile(s, nameHashes)));
+                                                TextStrings.MAP_LANGUAGES::getInt, s -> loadTextMapFile(s, nameHashes)));
         List<Int2ObjectMap<String>> languageMaps =
-                IntStream.range(0, TextStrings.NUM_LANGUAGES)
-                        .mapToObj(mapLanguageMaps::get)
-                        .toList();
+                IntStream.range(0, TextStrings.NUM_LANGUAGES).mapToObj(mapLanguageMaps::get).toList();
 
         Map<TextStrings, TextStrings> canonicalTextStrings = new HashMap<>();
         return new Int2ObjectOpenHashMap<>(
-            nameHashes
-                .intStream()
-                .boxed()
-                .collect(
-                    Collectors.toMap(
-                        key -> key,
-                        key -> {
-                            TextStrings t =
-                                new TextStrings(
-                                    IntStream.range(0, TextStrings.NUM_LANGUAGES)
-                                        .mapToObj(i -> languageMaps.get(i).get((int) key))
-                                        .collect(Collectors.toList()),
-                                    key);
-                            return canonicalTextStrings.computeIfAbsent(t, x -> t);
-                        })));
+                nameHashes
+                        .intStream()
+                        .boxed()
+                        .collect(
+                                Collectors.toMap(
+                                        key -> key,
+                                        key -> {
+                                            TextStrings t =
+                                                    new TextStrings(
+                                                            IntStream.range(0, TextStrings.NUM_LANGUAGES)
+                                                                    .mapToObj(i -> languageMaps.get(i).get((int) key))
+                                                                    .collect(Collectors.toList()),
+                                                            key);
+                                            return canonicalTextStrings.computeIfAbsent(t, x -> t);
+                                        })));
     }
 
     @SuppressWarnings("unchecked")

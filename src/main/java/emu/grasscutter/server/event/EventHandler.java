@@ -59,13 +59,12 @@ public final class EventHandler<T extends Event> {
     private final Class<T> eventClass;
     private EventConsumer<T> listener;
     /**
-     * -- GETTER --
-     *  Returns the handler's priority.
+     * -- GETTER -- Returns the handler's priority.
      *
      * @return The priority of the handler.
      */
-    @Getter
-    private HandlerPriority priority;
+    @Getter private HandlerPriority priority;
+
     private boolean handleCanceled;
     private Plugin plugin;
 

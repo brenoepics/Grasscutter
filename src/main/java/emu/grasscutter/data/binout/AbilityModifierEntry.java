@@ -1,18 +1,14 @@
 package emu.grasscutter.data.binout;
 
 import emu.grasscutter.data.binout.AbilityModifier.AbilityModifierAction;
-import lombok.Getter;
-
 import java.util.*;
+import lombok.Getter;
 
 public class AbilityModifierEntry {
     public final List<AbilityModifierAction> onModifierAdded;
-    @Getter
-    public final List<AbilityModifierAction> onThinkInterval;
-    @Getter
-    public final List<AbilityModifierAction> onRemoved;
-    @Getter
-    private final String name; // Custom value
+    @Getter public final List<AbilityModifierAction> onThinkInterval;
+    @Getter public final List<AbilityModifierAction> onRemoved;
+    @Getter private final String name; // Custom value
 
     public AbilityModifierEntry(String name) {
         this.name = name;
@@ -24,5 +20,4 @@ public class AbilityModifierEntry {
     public List<AbilityModifierAction> getOnAdded() {
         return onModifierAdded;
     }
-
 }

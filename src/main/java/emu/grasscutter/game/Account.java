@@ -7,16 +7,13 @@ import emu.grasscutter.database.DatabaseHelper;
 import emu.grasscutter.utils.*;
 import java.util.*;
 import java.util.stream.Stream;
-
 import lombok.Getter;
 import lombok.Setter;
 import org.bson.Document;
 
 @Entity(value = "accounts", useDiscriminator = false)
 public class Account {
-    @Setter
-    @Getter
-    @Id private String id;
+    @Setter @Getter @Id private String id;
 
     @Setter
     @Getter
@@ -24,38 +21,21 @@ public class Account {
     @Collation(locale = "simple", caseLevel = true)
     private String username;
 
-    @Setter
-    @Getter
-    private String password; // Unused for now
+    @Setter @Getter private String password; // Unused for now
 
     private int reservedPlayerId;
-    @Setter
-    private String email;
+    @Setter private String email;
 
-    @Setter
-    @Getter
-    private String token;
-    @Getter
-    private String sessionKey; // Session token for dispatch server
-    /**
-     * -- GETTER --
-     * The collection of a player's permissions.
-     */
-    @Getter
-    private final List<String> permissions;
-    @Setter
-    @Getter
-    private Locale locale;
+    @Setter @Getter private String token;
+    @Getter private String sessionKey; // Session token for dispatch server
+    /** -- GETTER -- The collection of a player's permissions. */
+    @Getter private final List<String> permissions;
 
-    @Setter
-    @Getter
-    private String banReason;
-    @Setter
-    @Getter
-    private int banEndTime;
-    @Setter
-    @Getter
-    private int banStartTime;
+    @Setter @Getter private Locale locale;
+
+    @Setter @Getter private String banReason;
+    @Setter @Getter private int banEndTime;
+    @Setter @Getter private int banStartTime;
     private boolean isBanned;
 
     @Deprecated

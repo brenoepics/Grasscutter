@@ -5,8 +5,7 @@ import lombok.Getter;
 
 public class ItemUseData {
     private ItemUseOp useOp;
-    @Getter
-    private String[] useParam;
+    @Getter private String[] useParam;
 
     public ItemUseOp getUseOp() {
         if (useOp == null) {
@@ -14,5 +13,4 @@ public class ItemUseData {
         }
         return useOp;
     }
-
 }

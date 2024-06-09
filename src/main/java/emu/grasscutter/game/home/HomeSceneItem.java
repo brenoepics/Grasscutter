@@ -103,11 +103,12 @@ public class HomeSceneItem {
                         homeAnimalItem ->
                                 GameData.getHomeWorldAnimalDataMap().containsKey(homeAnimalItem.getFurnitureId()))
                 .map(
-                        homeAnimalItem -> new EntityHomeAnimal(
-                                scene,
-                                GameData.getHomeWorldAnimalDataMap().get(homeAnimalItem.getFurnitureId()),
-                                homeAnimalItem.getSpawnPos(),
-                                homeAnimalItem.getSpawnRot()))
+                        homeAnimalItem ->
+                                new EntityHomeAnimal(
+                                        scene,
+                                        GameData.getHomeWorldAnimalDataMap().get(homeAnimalItem.getFurnitureId()),
+                                        homeAnimalItem.getSpawnPos(),
+                                        homeAnimalItem.getSpawnRot()))
                 .toList();
     }
 

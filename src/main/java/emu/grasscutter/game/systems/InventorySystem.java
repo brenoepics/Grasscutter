@@ -82,7 +82,10 @@ public class InventorySystem extends BaseGameSystem {
         val avatarData = avatar.getSkillDepot();
         if (avatarData == null) {
             Grasscutter.getLogger()
-                .error("Attempted to check constellation level for UID{}'s avatar {} but avatar has no skillDepot!", player.getUid(), avatarId);
+                    .error(
+                            "Attempted to check constellation level for UID{}'s avatar {} but avatar has no skillDepot!",
+                            player.getUid(),
+                            avatarId);
             return 0;
         }
         int constItemId = avatarData.getTalentCostItemId();

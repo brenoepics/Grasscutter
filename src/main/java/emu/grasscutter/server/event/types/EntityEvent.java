@@ -12,5 +12,4 @@ public abstract class EntityEvent extends Event {
     public EntityEvent(GameEntity entity) {
         this.entity = entity;
     }
-
 }

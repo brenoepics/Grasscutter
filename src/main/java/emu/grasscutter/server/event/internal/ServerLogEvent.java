@@ -15,5 +15,4 @@ public final class ServerLogEvent extends ServerEvent {
         this.loggingEvent = loggingEvent;
         this.consoleMessage = consoleMessage;
     }
-
 }

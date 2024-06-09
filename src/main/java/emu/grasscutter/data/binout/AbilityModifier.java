@@ -3,14 +3,12 @@ package emu.grasscutter.data.binout;
 import com.google.gson.annotations.SerializedName;
 import emu.grasscutter.data.common.DynamicFloat;
 import emu.grasscutter.game.props.ElementType;
-
 import java.io.Serial;
 import java.io.Serializable;
 import lombok.ToString;
 
 public class AbilityModifier implements Serializable {
-    @Serial
-    private static final long serialVersionUID = -2001232313615923575L;
+    @Serial private static final long serialVersionUID = -2001232313615923575L;
 
     public State state;
 

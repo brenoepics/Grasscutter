@@ -12,5 +12,4 @@ public abstract class PlayerEvent extends Event {
     public PlayerEvent(Player player) {
         this.player = player;
     }
-
 }

@@ -1,9 +1,8 @@
 package emu.grasscutter.data.excels.tower;
 
 import emu.grasscutter.data.*;
-import lombok.Getter;
-
 import java.util.List;
+import lombok.Getter;
 
 @Getter
 @ResourceType(name = "TowerScheduleExcelConfigData.json")
@@ -28,6 +27,5 @@ public class TowerScheduleData extends GameResource {
     @Getter
     public static class ScheduleDetail {
         private List<Integer> floorList;
-
     }
 }

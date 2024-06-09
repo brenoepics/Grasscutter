@@ -129,7 +129,11 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
         int maxDelay = 200;
         long actualDelay = System.currentTimeMillis() - cachedLandingTimeMillisecond;
         Grasscutter.getLogger()
-            .trace("MOTION_FALL_ON_GROUND received after {}/{}ms.{}", actualDelay, maxDelay, actualDelay > maxDelay ? " Discard" : "");
+                .trace(
+                        "MOTION_FALL_ON_GROUND received after {}/{}ms.{}",
+                        actualDelay,
+                        maxDelay,
+                        actualDelay > maxDelay ? " Discard" : "");
         if (actualDelay > maxDelay) {
             return;
         }
@@ -155,7 +159,14 @@ public class HandlerCombatInvocationsNotify extends PacketHandler {
         }
         if (damageFactor > 0) {
             Grasscutter.getLogger()
-                .debug("{}/{}\tLandingSpeed: {}\tDamageFactor: {}\tDamage: {}\tNewHP: {}", currentHP, maxHP, cachedLandingSpeed, damageFactor, damage, newHP);
+                    .debug(
+                            "{}/{}\tLandingSpeed: {}\tDamageFactor: {}\tDamage: {}\tNewHP: {}",
+                            currentHP,
+                            maxHP,
+                            cachedLandingSpeed,
+                            damageFactor,
+                            damage,
+                            newHP);
         } else {
             Grasscutter.getLogger().trace("{}/{}\tLandingSpeed: 0\tNo damage", currentHP, maxHP);
         }

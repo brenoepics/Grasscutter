@@ -7,8 +7,7 @@ import lombok.Getter;
 @ResourceType(name = "FetterCharacterCardExcelConfigData.json", loadPriority = LoadPriority.HIGHEST)
 public class FetterCharacterCardData extends GameResource {
     private int avatarId;
-    @Getter
-    private int rewardId;
+    @Getter private int rewardId;
 
     @Override
     public int getId() {

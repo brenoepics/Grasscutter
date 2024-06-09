@@ -8,12 +8,9 @@ import lombok.Getter;
 
 @Entity
 public class BattlePassReward {
-    @Getter
-    private int level;
-    @Getter
-    private int rewardId;
-    @Getter
-    private boolean paid;
+    @Getter private int level;
+    @Getter private int rewardId;
+    @Getter private boolean paid;
 
     @Transient private BattlePassMissionData data;
 

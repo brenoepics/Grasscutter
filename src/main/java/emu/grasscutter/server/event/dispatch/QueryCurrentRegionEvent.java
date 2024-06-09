@@ -14,5 +14,4 @@ public final class QueryCurrentRegionEvent extends ServerEvent {
 
         this.regionInfo = regionInfo;
     }
-
 }

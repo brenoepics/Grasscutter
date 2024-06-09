@@ -37,7 +37,9 @@ public class PacketVehicleInteractRsp extends BasePacket {
                                     QuestContent.QUEST_CONTENT_ENTER_VEHICLE,
                                     ((EntityVehicle) vehicle).getGadgetId());
                 }
-                case VEHICLE_INTERACT_TYPE_OUT -> ((EntityVehicle) vehicle).getVehicleMembers().remove(vehicleMember);
+                case VEHICLE_INTERACT_TYPE_OUT -> ((EntityVehicle) vehicle)
+                        .getVehicleMembers()
+                        .remove(vehicleMember);
                 default -> {}
             }
         }

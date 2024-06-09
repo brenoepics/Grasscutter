@@ -21,14 +21,12 @@ import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.longs.*;
 import java.util.*;
 import javax.annotation.Nullable;
-
 import lombok.Getter;
 import lombok.val;
 
 public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
     private final Long2ObjectMap<GameItem> store;
-    @Getter
-    private final Int2ObjectMap<InventoryTab> inventoryTypes;
+    @Getter private final Int2ObjectMap<InventoryTab> inventoryTypes;
 
     public Inventory(Player player) {
         super(player);
@@ -321,7 +319,9 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
                     case MATERIAL_COSTUME:
                     case MATERIAL_NAMECARD:
                         Grasscutter.getLogger()
-                            .warn("Attempted to add a {} to inventory, but item definition lacks isUseOnGain. This indicates a Resources error.", item.getItemData().getMaterialType().name());
+                                .warn(
+                                        "Attempted to add a {} to inventory, but item definition lacks isUseOnGain. This indicates a Resources error.",
+                                        item.getItemData().getMaterialType().name());
                         return null;
                     default:
                         if (tab == null) {
@@ -429,22 +429,24 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
     private int getVirtualItemCount(int itemId) {
         return switch (itemId) {
             case 201 -> // Primogem
-                this.player.getPrimogems();
+            this.player.getPrimogems();
             case 202 -> // Mora
-                this.player.getMora();
+            this.player.getMora();
             case 203 -> // Genesis Crystals
-                this.player.getCrystals();
+            this.player.getCrystals();
             case 106 -> // Resin
-                this.player.getProperty(PlayerProperty.PROP_PLAYER_RESIN);
+            this.player.getProperty(PlayerProperty.PROP_PLAYER_RESIN);
             case 107 -> // Legendary Key
-                this.player.getProperty(PlayerProperty.PROP_PLAYER_LEGENDARY_KEY);
+            this.player.getProperty(PlayerProperty.PROP_PLAYER_LEGENDARY_KEY);
             case 204 -> // Home Coin
-                this.player.getHomeCoin();
+            this.player.getHomeCoin();
             default -> {
                 GameItem item =
-                    getInventoryTab(ItemType.ITEM_MATERIAL)
-                        .getItemById(
-                            itemId); // What if we ever want to operate on weapons/relics/furniture? :Syield (item == null) ? 0 : item.getCount(); // What if we ever want to operate on weapons/relics/furniture? :S
+                        getInventoryTab(ItemType.ITEM_MATERIAL)
+                                .getItemById(
+                                        itemId); // What if we ever want to operate on weapons/relics/furniture? :Syield
+                // (item == null) ? 0 : item.getCount(); // What if we ever want to
+                // operate on weapons/relics/furniture? :S
             }
         };
     }

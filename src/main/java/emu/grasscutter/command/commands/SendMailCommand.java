@@ -24,8 +24,7 @@ public final class SendMailCommand implements CommandHandler {
     //  the command system (again). For now this will do
 
     // Key = User that is constructing the mail.
-    private static final HashMap<Integer, MailBuilder> mailBeingConstructed =
-        new HashMap<>();
+    private static final HashMap<Integer, MailBuilder> mailBeingConstructed = new HashMap<>();
 
     // Yes this is awful and I hate it.
     @Override

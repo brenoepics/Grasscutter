@@ -1,8 +1,7 @@
 package emu.grasscutter.game.props;
 
-import lombok.Getter;
-
 import java.util.*;
+import lombok.Getter;
 
 @Getter
 public enum EntityIdType {
@@ -37,5 +36,4 @@ public enum EntityIdType {
     public static EntityType toEntityType(int entityId) {
         return map.getOrDefault(entityId, EntityType.None);
     }
-
 }

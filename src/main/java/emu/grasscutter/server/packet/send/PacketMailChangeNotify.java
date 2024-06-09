@@ -15,11 +15,11 @@ public class PacketMailChangeNotify extends BasePacket {
     public PacketMailChangeNotify(Player player, Mail message) {
         this(
                 player,
-            new ArrayList<>() {
-                {
-                    add(message);
-                }
-            });
+                new ArrayList<>() {
+                    {
+                        add(message);
+                    }
+                });
     }
 
     public PacketMailChangeNotify(Player player, List<Mail> mailList) {

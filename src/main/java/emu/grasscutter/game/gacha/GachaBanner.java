@@ -96,7 +96,10 @@ public class GachaBanner {
 
     private void warnDeprecated(String name, String replacement) {
         Grasscutter.getLogger()
-            .error("Deprecated field found in Banners config: {} was replaced back in early May 2022, use {} instead. You MUST remove this field from your config.", name, replacement);
+                .error(
+                        "Deprecated field found in Banners config: {} was replaced back in early May 2022, use {} instead. You MUST remove this field from your config.",
+                        name,
+                        replacement);
         this.deprecated = true;
     }
 

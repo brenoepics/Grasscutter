@@ -5,9 +5,8 @@ import com.github.davidmoten.rtreemulti.geometry.Geometry;
 import emu.grasscutter.Grasscutter;
 import emu.grasscutter.game.world.*;
 import emu.grasscutter.scripts.SceneIndexManager;
-import lombok.Getter;
-
 import java.util.*;
+import lombok.Getter;
 
 public class Grid {
     public transient RTree<Map.Entry<GridPosition, Set<Integer>>, Geometry> gridOptimized = null;
@@ -18,8 +17,7 @@ public class Grid {
      *
      * @return The correctly loaded grid map.
      */
-    @Getter
-    public Map<GridPosition, Set<Integer>> grid = new LinkedHashMap<>();
+    @Getter public Map<GridPosition, Set<Integer>> grid = new LinkedHashMap<>();
 
     /** Creates an optimized cache of the grid. */
     private void optimize() {

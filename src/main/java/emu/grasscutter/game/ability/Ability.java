@@ -22,7 +22,8 @@ public class Ability {
     @Getter private final Object2FloatMap<String> abilitySpecials = new Object2FloatOpenHashMap<>();
 
     @Getter
-    private static final Map<String, Object2FloatMap<String>> abilitySpecialsModified = new HashMap<>();
+    private static final Map<String, Object2FloatMap<String>> abilitySpecialsModified =
+            new HashMap<>();
 
     @Getter private final int hash;
     @Getter private final Set<Integer> avatarSkillStartIds;

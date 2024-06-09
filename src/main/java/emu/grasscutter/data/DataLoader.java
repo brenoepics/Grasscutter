@@ -4,8 +4,6 @@ import emu.grasscutter.Grasscutter;
 import emu.grasscutter.utils.FileUtils;
 import emu.grasscutter.utils.JsonUtils;
 import emu.grasscutter.utils.TsvUtils;
-import lombok.val;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
+import lombok.val;
 
 public class DataLoader {
 
@@ -36,7 +35,7 @@ public class DataLoader {
      *
      * @param resourcePath The path to the data file to be loaded.
      * @return InputStreamReader of the data file.
-     * @throws IOException           If the file is not found.
+     * @throws IOException If the file is not found.
      * @throws FileNotFoundException If the file is not found.
      * @see #load(String, boolean)
      */
@@ -50,19 +49,22 @@ public class DataLoader {
      * Load a data file by its name.
      *
      * @param resourcePath The path to the data file to be loaded.
-     * @param useFallback  If the file does not exist in the /data directory, should it use the default
-     *                     file in the jar?
+     * @param useFallback If the file does not exist in the /data directory, should it use the default
+     *     file in the jar?
      * @return InputStream of the data file.
      * @throws FileNotFoundException If the file is not found.
      */
-    public static InputStream load(String resourcePath, boolean useFallback) throws FileNotFoundException {
-        Path path = useFallback ? FileUtils.getDataPath(resourcePath) : FileUtils.getDataUserPath(resourcePath);
+    public static InputStream load(String resourcePath, boolean useFallback)
+            throws FileNotFoundException {
+        Path path =
+                useFallback ? FileUtils.getDataPath(resourcePath) : FileUtils.getDataUserPath(resourcePath);
         if (Files.exists(path)) {
             // Data is in the resource directory
             try {
                 return Files.newInputStream(path);
             } catch (IOException e) {
-                throw new FileNotFoundException(e.getMessage()); // This is evil but so is changing the function signature at this point
+                throw new FileNotFoundException(
+                        e.getMessage()); // This is evil but so is changing the function signature at this point
             }
         }
         return null;
@@ -80,13 +82,15 @@ public class DataLoader {
         }
     }
 
-    public static <T1, T2> Map<T1, T2> loadMap(String resourcePath, Class<T1> keyType, Class<T2> valueType) throws IOException {
+    public static <T1, T2> Map<T1, T2> loadMap(
+            String resourcePath, Class<T1> keyType, Class<T2> valueType) throws IOException {
         try (InputStreamReader reader = loadReader(resourcePath)) {
             return JsonUtils.loadToMap(reader, keyType, valueType);
         }
     }
 
-    public static <T> List<T> loadTableToList(String resourcePath, Class<T> classType) throws IOException {
+    public static <T> List<T> loadTableToList(String resourcePath, Class<T> classType)
+            throws IOException {
         val path = FileUtils.getDataPathTsjJsonTsv(resourcePath);
         Grasscutter.getLogger().trace("Loading data table from: {}", path);
         return switch (FileUtils.getFileExtension(path)) {

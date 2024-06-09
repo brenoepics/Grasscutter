@@ -23,5 +23,4 @@ public enum QuestState implements IntValueEnum {
     QuestState(int id) {
         this.value = id;
     }
-
 }

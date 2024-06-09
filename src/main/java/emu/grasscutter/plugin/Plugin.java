@@ -45,7 +45,7 @@ public abstract class Plugin {
 
         if (!this.dataFolder.exists() && !this.dataFolder.mkdirs()) {
             Grasscutter.getLogger()
-                .warn("Failed to create plugin data folder for {}", this.identifier.name);
+                    .warn("Failed to create plugin data folder for {}", this.identifier.name);
         }
     }
 

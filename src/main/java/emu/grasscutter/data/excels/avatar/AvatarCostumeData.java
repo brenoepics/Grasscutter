@@ -9,12 +9,9 @@ public class AvatarCostumeData extends GameResource {
     @SerializedName(value = "skinId", alternate = "costumeId")
     private int skinId;
 
-    @Getter
-    private int itemId;
-    @Getter
-    private int characterId;
-    @Getter
-    private int quality;
+    @Getter private int itemId;
+    @Getter private int characterId;
+    @Getter private int quality;
 
     @Override
     public int getId() {

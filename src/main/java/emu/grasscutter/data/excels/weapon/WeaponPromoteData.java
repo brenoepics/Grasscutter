@@ -2,9 +2,8 @@ package emu.grasscutter.data.excels.weapon;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.*;
-import lombok.Getter;
-
 import java.util.ArrayList;
+import lombok.Getter;
 
 @Getter
 @ResourceType(name = "WeaponPromoteExcelConfigData.json")

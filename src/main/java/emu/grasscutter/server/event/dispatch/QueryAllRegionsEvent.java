@@ -14,5 +14,4 @@ public final class QueryAllRegionsEvent extends ServerEvent {
 
         this.regionList = regionList;
     }
-
 }

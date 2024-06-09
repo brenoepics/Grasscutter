@@ -5,14 +5,10 @@ import lombok.Getter;
 
 @ResourceType(name = {"QuestCodexExcelConfigData.json"})
 public class CodexQuestData extends GameResource {
-    @Getter
-    private int Id;
-    @Getter
-    private int parentQuestId;
-    @Getter
-    private int chapterId;
-    @Getter
-    private int sortOrder;
+    @Getter private int Id;
+    @Getter private int parentQuestId;
+    @Getter private int chapterId;
+    @Getter private int sortOrder;
     private boolean isDisuse;
 
     public boolean getIsDisuse() {

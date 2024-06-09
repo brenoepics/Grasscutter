@@ -22,7 +22,6 @@ import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
-
 import lombok.Getter;
 import org.slf4j.Logger;
 
@@ -332,7 +331,6 @@ public final class RegionHandler implements Router {
             this.regionQuery = prq;
             this.base64 = b64;
         }
-
     }
 
     /**

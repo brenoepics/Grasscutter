@@ -6,5 +6,4 @@ import lombok.Getter;
 public class EnergyDropInfo {
     private int ballId;
     private int count;
-
 }

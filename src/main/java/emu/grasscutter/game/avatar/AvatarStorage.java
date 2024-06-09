@@ -15,14 +15,12 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectMap;
 import it.unimi.dsi.fastutil.longs.Long2ObjectOpenHashMap;
-import lombok.Getter;
-
 import java.util.Iterator;
 import java.util.List;
+import lombok.Getter;
 
 public class AvatarStorage extends BasePlayerManager implements Iterable<Avatar> {
-    @Getter
-    private final Int2ObjectMap<Avatar> avatars;
+    @Getter private final Int2ObjectMap<Avatar> avatars;
     private final Long2ObjectMap<Avatar> avatarsGuid;
 
     public AvatarStorage(Player player) {

@@ -6,27 +6,15 @@ import lombok.Setter;
 
 @Entity
 public class ActiveForgeData {
-    @Setter
-    @Getter
-    private int forgeId;
-    @Setter
-    @Getter
-    private int avatarId;
-    @Setter
-    @Getter
-    private int count;
+    @Setter @Getter private int forgeId;
+    @Setter @Getter private int avatarId;
+    @Setter @Getter private int count;
 
-    @Setter
-    @Getter
-    private int startTime;
-    @Setter
-    @Getter
-    private int forgeTime;
+    @Setter @Getter private int startTime;
+    @Setter @Getter private int forgeTime;
 
     private int lastUnfinishedCount;
-    @Setter
-    @Getter
-    private boolean changed;
+    @Setter @Getter private boolean changed;
 
     public int getFinishedCount(int currentTime) {
         int timeDelta = currentTime - this.startTime;

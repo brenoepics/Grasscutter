@@ -7,5 +7,4 @@ public class CurveInfo {
     private String type;
     private String arith;
     private float value;
-
 }

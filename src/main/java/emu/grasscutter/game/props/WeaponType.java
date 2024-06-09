@@ -1,10 +1,9 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
-import lombok.Getter;
-
 import java.util.*;
 import java.util.stream.Stream;
+import lombok.Getter;
 
 @Getter
 public enum WeaponType {
@@ -56,5 +55,4 @@ public enum WeaponType {
     public static WeaponType getTypeByName(String name) {
         return stringMap.getOrDefault(name, WEAPON_NONE);
     }
-
 }

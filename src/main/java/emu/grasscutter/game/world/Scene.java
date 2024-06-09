@@ -392,7 +392,8 @@ public class Scene {
     }
 
     public void updateEntity(GameEntity entity, VisionType type) {
-        this.broadcastPacket(new PacketSceneEntityUpdateNotify(Collections.singletonList(entity), type));
+        this.broadcastPacket(
+                new PacketSceneEntityUpdateNotify(Collections.singletonList(entity), type));
     }
 
     private static <T> List<List<T>> chopped(List<T> list, final int L) {

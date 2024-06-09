@@ -8,25 +8,17 @@ import lombok.Data;
 import lombok.Getter;
 
 public class MainQuestData {
-    @Getter
-    private int id;
+    @Getter private int id;
     private int ICLLDPJFIMA;
-    @Getter
-    private int series;
-    @Getter
-    private QuestType type;
+    @Getter private int series;
+    @Getter private QuestType type;
 
-    @Getter
-    private long titleTextMapHash;
-    @Getter
-    private int[] suggestTrackMainQuestList;
-    @Getter
-    private int[] rewardIdList;
+    @Getter private long titleTextMapHash;
+    @Getter private int[] suggestTrackMainQuestList;
+    @Getter private int[] rewardIdList;
 
-    @Getter
-    private SubQuestData[] subQuests;
-    @Getter
-    private List<TalkData> talks;
+    @Getter private SubQuestData[] subQuests;
+    @Getter private List<TalkData> talks;
     private long[] preloadLuaList;
 
     public void onLoad() {

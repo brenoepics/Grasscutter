@@ -1,8 +1,7 @@
 package emu.grasscutter.data.common;
 
-import lombok.Getter;
-
 import java.util.List;
+import lombok.Getter;
 
 @Getter
 public class OpenCondData {

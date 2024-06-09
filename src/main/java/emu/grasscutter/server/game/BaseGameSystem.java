@@ -9,5 +9,4 @@ public abstract class BaseGameSystem {
     public BaseGameSystem(GameServer server) {
         this.server = server;
     }
-
 }

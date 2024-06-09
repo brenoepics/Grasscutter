@@ -9,13 +9,9 @@ import lombok.Setter;
 
 @Entity
 public class BattlePassMission {
-    @Getter
-    private int id;
-    @Setter
-    @Getter
-    private int progress;
-    @Setter
-    private BattlePassMissionStatus status;
+    @Getter private int id;
+    @Setter @Getter private int progress;
+    @Setter private BattlePassMissionStatus status;
 
     @Transient private BattlePassMissionData data;
 

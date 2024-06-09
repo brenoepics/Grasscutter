@@ -52,9 +52,7 @@ public class World implements Iterable<Player> {
     @Getter private final EntityWorld entity;
     private int nextEntityId = 0;
     private int nextPeerId = 0;
-    @Setter
-    @Getter
-    private int worldLevel;
+    @Setter @Getter private int worldLevel;
 
     @Getter private boolean isMultiplayer = false;
     @Getter private boolean timeLocked;

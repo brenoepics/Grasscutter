@@ -2,35 +2,24 @@ package emu.grasscutter.data.excels;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.ItemParamData;
-import lombok.Getter;
-
 import java.util.List;
 import java.util.stream.Collectors;
+import lombok.Getter;
 
 @ResourceType(name = "CombineExcelConfigData.json")
 public class CombineData extends GameResource {
 
-    @Getter
-    private int combineId;
-    @Getter
-    private int playerLevel;
+    @Getter private int combineId;
+    @Getter private int playerLevel;
     private boolean isDefaultShow;
-    @Getter
-    private int combineType;
-    @Getter
-    private int subCombineType;
-    @Getter
-    private int resultItemId;
-    @Getter
-    private int resultItemCount;
-    @Getter
-    private int scoinCost;
-    @Getter
-    private List<ItemParamData> randomItems;
-    @Getter
-    private List<ItemParamData> materialItems;
-    @Getter
-    private String recipeType;
+    @Getter private int combineType;
+    @Getter private int subCombineType;
+    @Getter private int resultItemId;
+    @Getter private int resultItemCount;
+    @Getter private int scoinCost;
+    @Getter private List<ItemParamData> randomItems;
+    @Getter private List<ItemParamData> materialItems;
+    @Getter private String recipeType;
 
     @Override
     public int getId() {
@@ -50,5 +39,4 @@ public class CombineData extends GameResource {
     public boolean isDefaultShow() {
         return isDefaultShow;
     }
-
 }

@@ -57,8 +57,7 @@ public class KahnsSort {
             }
         }
 
-        if (degreeList.values().stream().anyMatch(value -> value != 0))
-            return null; // Loop found
+        if (degreeList.values().stream().anyMatch(value -> value != 0)) return null; // Loop found
 
         return orderedList;
     }

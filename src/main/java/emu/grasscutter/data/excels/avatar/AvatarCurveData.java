@@ -2,15 +2,13 @@ package emu.grasscutter.data.excels.avatar;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.CurveInfo;
-import lombok.Getter;
-
 import java.util.*;
 import java.util.stream.Stream;
+import lombok.Getter;
 
 @ResourceType(name = "AvatarCurveExcelConfigData.json")
 public class AvatarCurveData extends GameResource {
-    @Getter
-    private int level;
+    @Getter private int level;
     private CurveInfo[] curveInfos;
 
     private Map<String, Float> curveInfoMap;

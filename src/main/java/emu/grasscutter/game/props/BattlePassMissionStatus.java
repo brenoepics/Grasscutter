@@ -17,5 +17,4 @@ public enum BattlePassMissionStatus {
         this.value = value;
         this.missionStatus = missionStatus; // In case proto enum values change later
     }
-
 }

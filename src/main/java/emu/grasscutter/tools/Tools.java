@@ -54,7 +54,8 @@ public final class Tools {
                         GameData.getMainQuestDataMap().int2ObjectEntrySet().stream()
                                 .collect(
                                         Collectors.toMap(
-                                            Int2ObjectMap.Entry::getIntKey, e -> (int) e.getValue().getTitleTextMapHash())));
+                                                Int2ObjectMap.Entry::getIntKey,
+                                                e -> (int) e.getValue().getTitleTextMapHash())));
         // val questDescs = new
         // Int2IntRBTreeMap(GameData.getQuestDataMap().int2ObjectEntrySet().stream().collect(Collectors.toMap(e -> (int) e.getIntKey(), e -> (int) e.getValue().getDescTextMapHash())));
 
@@ -189,10 +190,11 @@ public final class Tools {
         achievementDataMap.values().stream()
                 .filter(AchievementData::isUsed)
                 .forEach(
-                        data -> h.newTranslatedLine(
-                                padAchievementId.formatted(data.getId()) + "{0} - {1}",
-                                data.getTitleTextMapHash(),
-                                data.getDescTextMapHash()));
+                        data ->
+                                h.newTranslatedLine(
+                                        padAchievementId.formatted(data.getId()) + "{0} - {1}",
+                                        data.getTitleTextMapHash(),
+                                        data.getDescTextMapHash()));
 
         // Write txt files
         for (int i = 0; i < TextStrings.NUM_LANGUAGES; i++) {
@@ -350,12 +352,13 @@ public final class Tools {
         try {
             Files.newDirectoryStream(getResourcePath("TextMap"), "TextMap*.json")
                     .forEach(
-                            path -> availableLangList.add(
-                                    path.getFileName()
-                                            .toString()
-                                            .replace("TextMap", "")
-                                            .replace(".json", "")
-                                            .toLowerCase()));
+                            path ->
+                                    availableLangList.add(
+                                            path.getFileName()
+                                                    .toString()
+                                                    .replace("TextMap", "")
+                                                    .replace(".json", "")
+                                                    .toLowerCase()));
         } catch (IOException e) {
             Grasscutter.getLogger().error("Failed to get available languages:", e);
         }

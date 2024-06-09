@@ -11,9 +11,8 @@ import emu.grasscutter.game.world.*;
 import emu.grasscutter.server.game.*;
 import emu.grasscutter.utils.Utils;
 import it.unimi.dsi.fastutil.ints.*;
-import lombok.Getter;
-
 import java.util.List;
+import lombok.Getter;
 
 @Getter
 @SuppressWarnings("deprecation")

@@ -13,5 +13,4 @@ public class ItemDef {
         this.itemId = itemId;
         this.count = count;
     }
-
 }

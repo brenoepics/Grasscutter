@@ -13,5 +13,4 @@ public enum ShowQuestGuideType {
     ShowQuestGuideType(int id) {
         this.value = id;
     }
-
 }

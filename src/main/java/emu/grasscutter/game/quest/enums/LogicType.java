@@ -3,7 +3,6 @@ package emu.grasscutter.game.quest.enums;
 import emu.grasscutter.Grasscutter;
 import java.util.*;
 import java.util.function.BooleanSupplier;
-
 import lombok.Getter;
 import org.jetbrains.annotations.NotNull;
 
@@ -91,5 +90,4 @@ public enum LogicType {
             }
         }
     }
-
 }

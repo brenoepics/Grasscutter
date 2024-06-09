@@ -7,8 +7,7 @@ import lombok.*;
 @Getter
 @Entity
 public class Location extends Position {
-    @Transient
-    private Scene scene;
+    @Transient private Scene scene;
 
     public Location(Scene scene, Position position) {
         this.set(position);

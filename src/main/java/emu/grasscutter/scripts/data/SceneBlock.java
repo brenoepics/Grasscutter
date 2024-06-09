@@ -22,9 +22,7 @@ public class SceneBlock {
     public Map<Integer, SceneGroup> groups;
     public RTree<SceneGroup, Geometry> sceneGroupIndex;
 
-    @Setter
-    @Getter
-    private transient boolean loaded; // Not an actual variable in the scripts either
+    @Setter @Getter private transient boolean loaded; // Not an actual variable in the scripts either
 
     public boolean contains(Position pos) {
         int range = Grasscutter.getConfig().server.game.loadEntitiesForPlayerRange;
@@ -67,7 +65,8 @@ public class SceneBlock {
                     SceneIndexManager.buildIndex(3, this.groups.values(), g -> g.pos.toPoint());
         } catch (ScriptException exception) {
             Grasscutter.getLogger()
-                .error("An error occurred while loading block {} in scene {}", this.id, sceneId, exception);
+                    .error(
+                            "An error occurred while loading block {} in scene {}", this.id, sceneId, exception);
         }
         Grasscutter.getLogger().trace("Successfully loaded block {} in scene {}.", this.id, sceneId);
         return this;
