@@ -896,10 +896,8 @@ public class Player implements PlayerHook, FieldFetch {
     }
 
     public ShopLimit getGoodsLimit(int goodsId) {
-        Optional<ShopLimit> shopLimit = this.shopLimit.stream().filter(x -> x.getShopGoodId() == goodsId).findFirst();
-        if (shopLimit.isEmpty())
-            return null;
-        return shopLimit.get();
+        Optional<ShopLimit> limitOptional = this.shopLimit.stream().filter(x -> x.getShopGoodId() == goodsId).findFirst();
+        return limitOptional.orElse(null);
     }
 
     public void addShopLimit(int goodsId, int boughtCount, int nextRefreshTime) {
