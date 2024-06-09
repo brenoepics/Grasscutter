@@ -103,7 +103,7 @@ public class BattlePassManager extends BasePlayerDataManager {
 
     // Will return a new empty mission if the mission id is not found
     public BattlePassMission loadMissionById(int id) {
-        return getMissions().computeIfAbsent(id, i -> new BattlePassMission(i));
+        return getMissions().computeIfAbsent(id, BattlePassMission::new);
     }
 
     public boolean hasMission(int id) {

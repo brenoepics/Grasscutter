@@ -11,7 +11,7 @@ public enum BlossomType {
 
     private static final Int2ObjectMap<BlossomType> map =
             new Int2ObjectOpenHashMap<>(
-                    Stream.of(values()).collect(Collectors.toMap(x -> x.getGadgetId(), x -> x)));
+                    Stream.of(values()).collect(Collectors.toMap(BlossomType::getGadgetId, x -> x)));
     @Getter private final int gadgetId;
     @Getter private final int circleCampId;
     @Getter private final int blossomChestId;

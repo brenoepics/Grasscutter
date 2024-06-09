@@ -67,7 +67,7 @@ public class AvatarSkillDepotData extends GameResource {
         Optional.ofNullable(this.talents)
                 .map(talents -> talents.get(0))
                 .map(i -> GameData.getAvatarTalentDataMap().get((int) i))
-                .map(talentData -> talentData.getMainCostItemId())
+                .map(AvatarTalentData::getMainCostItemId)
                 .ifPresent(itemId -> this.talentCostItemId = itemId);
     }
 

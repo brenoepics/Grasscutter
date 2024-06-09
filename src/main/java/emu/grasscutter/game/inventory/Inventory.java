@@ -8,6 +8,7 @@ import emu.grasscutter.data.common.ItemParamData;
 import emu.grasscutter.data.excels.ItemData;
 import emu.grasscutter.database.DatabaseHelper;
 import emu.grasscutter.game.avatar.*;
+import emu.grasscutter.game.entity.EntityAvatar;
 import emu.grasscutter.game.player.*;
 import emu.grasscutter.game.props.*;
 import emu.grasscutter.game.props.ItemUseAction.UseItemParams;
@@ -370,7 +371,7 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
         switch (itemId) {
             case 101 -> // Character exp
             this.player.getTeamManager().getActiveTeam().stream()
-                    .map(e -> e.getAvatar())
+                    .map(EntityAvatar::getAvatar)
                     .forEach(
                             avatar ->
                                     this.player
@@ -381,7 +382,7 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
             this.player.addExpDirectly(count);
             case 105 -> // Companionship exp
             this.player.getTeamManager().getActiveTeam().stream()
-                    .map(e -> e.getAvatar())
+                    .map(EntityAvatar::getAvatar)
                     .forEach(
                             avatar ->
                                     this.player

@@ -253,11 +253,11 @@ public final class Language {
                 TextStrings.LIST_LANGUAGES.parallelStream()
                                 .collect(
                                         Collectors.toConcurrentMap(
-                                                s -> TextStrings.MAP_LANGUAGES.getInt(s),
+                                            TextStrings.MAP_LANGUAGES::getInt,
                                                 s -> loadTextMapFile(s, nameHashes)));
         List<Int2ObjectMap<String>> languageMaps =
                 IntStream.range(0, TextStrings.NUM_LANGUAGES)
-                        .mapToObj(i -> mapLanguageMaps.get(i))
+                        .mapToObj(mapLanguageMaps::get)
                         .collect(Collectors.toList());
 
         Map<TextStrings, TextStrings> canonicalTextStrings = new HashMap<>();

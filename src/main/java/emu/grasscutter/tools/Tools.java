@@ -54,7 +54,7 @@ public final class Tools {
                         GameData.getMainQuestDataMap().int2ObjectEntrySet().stream()
                                 .collect(
                                         Collectors.toMap(
-                                                e -> e.getIntKey(), e -> (int) e.getValue().getTitleTextMapHash())));
+                                            Int2ObjectMap.Entry::getIntKey, e -> (int) e.getValue().getTitleTextMapHash())));
         // val questDescs = new
         // Int2IntRBTreeMap(GameData.getQuestDataMap().int2ObjectEntrySet().stream().collect(Collectors.toMap(e -> (int) e.getIntKey(), e -> (int) e.getValue().getDescTextMapHash())));
 
@@ -99,7 +99,7 @@ public final class Tools {
                         newTranslatedLine(
                                 template,
                                 LongStream.of(hashes)
-                                        .mapToObj(hash -> getTextMapKey(hash))
+                                        .mapToObj(Language::getTextMapKey)
                                         .toArray(TextStrings[]::new));
                     }
                 };

@@ -4,6 +4,7 @@ import dev.morphia.annotations.*;
 import emu.grasscutter.*;
 import emu.grasscutter.data.GameData;
 import emu.grasscutter.data.excels.PlayerLevelData;
+import emu.grasscutter.data.excels.scene.SceneTagData;
 import emu.grasscutter.data.excels.world.WeatherData;
 import emu.grasscutter.database.DatabaseHelper;
 import emu.grasscutter.game.*;
@@ -596,7 +597,7 @@ public class Player implements PlayerHook, FieldFetch {
      */
     private void applyStartingSceneTags() {
         GameData.getSceneTagDataMap().values().stream()
-                .filter(sceneTag -> sceneTag.isDefaultValid())
+                .filter(SceneTagData::isDefaultValid)
                 .forEach(sceneTag -> {
                     if (this.getSceneTags().get(sceneTag.getSceneId()) == null) {
                         this.getSceneTags().put(sceneTag.getSceneId(), new HashSet<>());
@@ -1551,7 +1552,7 @@ public class Player implements PlayerHook, FieldFetch {
     }
 
     public void unfreezeUnlockedScenePoints() {
-        unlockedScenePoints.keySet().forEach(sceneId -> unfreezeUnlockedScenePoints(sceneId));
+        unlockedScenePoints.keySet().forEach(this::unfreezeUnlockedScenePoints);
     }
 
     public int getLegendaryKey() {

@@ -257,7 +257,7 @@ public final class TeamManager extends BasePlayerDataManager {
         }
 
         // Convert avatars into a collection of avatar IDs, then add
-        team.getAvatars().addAll(avatars.stream().map(a -> a.getAvatarId()).toList());
+        team.getAvatars().addAll(avatars.stream().map(Avatar::getAvatarId).toList());
 
         // Update team
         if (this.getPlayer().isInMultiplayer()) {
@@ -332,7 +332,7 @@ public final class TeamManager extends BasePlayerDataManager {
         // Dual element resonances
         elementCounts.object2IntEntrySet().stream()
                 .filter(e -> e.getIntValue() >= 2)
-                .map(e -> e.getKey())
+                .map(Map.Entry::getKey)
                 .filter(elementType -> elementType.getTeamResonanceId() != 0)
                 .forEach(
                         elementType -> {

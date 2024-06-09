@@ -630,15 +630,15 @@ public final class GameData {
 
     // Non-nullable value getters
     public static int getAvatarLevelExpRequired(int level) {
-        return Optional.ofNullable(avatarLevelDataMap.get(level)).map(d -> d.getExp()).orElse(0);
+        return Optional.ofNullable(avatarLevelDataMap.get(level)).map(AvatarLevelData::getExp).orElse(0);
     }
 
     public static int getAvatarFetterLevelExpRequired(int level) {
-        return Optional.ofNullable(avatarFetterLevelDataMap.get(level)).map(d -> d.getExp()).orElse(0);
+        return Optional.ofNullable(avatarFetterLevelDataMap.get(level)).map(AvatarFetterLevelData::getExp).orElse(0);
     }
 
     public static int getRelicExpRequired(int rankLevel, int level) {
-        return Optional.ofNullable(getRelicLevelData(rankLevel, level)).map(d -> d.getExp()).orElse(0);
+        return Optional.ofNullable(getRelicLevelData(rankLevel, level)).map(ReliquaryLevelData::getExp).orElse(0);
     }
 
     // Generic getter
