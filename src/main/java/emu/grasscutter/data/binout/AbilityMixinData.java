@@ -3,10 +3,13 @@ package emu.grasscutter.data.binout;
 import com.google.gson.*;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.reflect.TypeToken;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
 public class AbilityMixinData implements Serializable {
+    @Serial
     private static final long serialVersionUID = -2001232313615923575L;
 
     public enum Type {
