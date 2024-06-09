@@ -1997,7 +1997,7 @@ public class ScriptLib {
         logger.debug("[LUA] Call DropSubfield with {}", printTable(table));
         String subfield_name = table.get("subfield_name").toString();
         var entity = getCurrentEntity();
-        if (!entity.isPresent()) return -1;
+        if (entity.isEmpty()) return -1;
 
         entity.get().dropSubfield(subfield_name);
 
