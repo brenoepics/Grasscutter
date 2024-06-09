@@ -27,7 +27,7 @@ public class PacketPlayerWorldSceneInfoListNotify extends BasePacket {
             /* Add scene-specific data */
 
             // Scenetags
-            if (sceneTags.keySet().contains(scene)) {
+            if (sceneTags.containsKey(scene)) {
                 worldInfoBuilder.addAllSceneTagIdList(
                         sceneTags.entrySet().stream()
                                 .filter(e -> e.getKey().equals(scene))
