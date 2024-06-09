@@ -73,7 +73,7 @@ public final class Tools {
         var h =
                 new Object() {
                     void newLine(String line) {
-                        handbookBuilders.forEach(b -> b.append(line + "\n"));
+                        handbookBuilders.forEach(b -> b.append(line).append("\n"));
                     }
 
                     void newSection(String title) {
@@ -91,7 +91,7 @@ public final class Tools {
                                     j--; // Retry the action.
                                     Language.loadTextMaps(true);
                                 }
-                            handbookBuilders.get(i).append(s + "\n");
+                            handbookBuilders.get(i).append(s).append("\n");
                         }
                     }
 
@@ -127,7 +127,7 @@ public final class Tools {
             for (int i = 0; i < TextStrings.NUM_LANGUAGES; i++) {
                 String desc =
                         languages.get(i).get(descKey).replace("\n", "\n\t\t\t\t").replace("\t", "    ");
-                handbookBuilders.get(i).append(label + desc + "\n");
+                handbookBuilders.get(i).append(label).append(desc).append("\n");
             }
         }
         // Avatars
@@ -334,7 +334,7 @@ public final class Tools {
                     locale)) { // Some locales fallback to en-us, we don't want to redefine en-us with
                 // vietnamese strings
                 sb.append("\t\"%s\": ".formatted(locale));
-                sb.append(jsons.get(i).replace("\n", "\n\t") + ",\n");
+                sb.append(jsons.get(i).replace("\n", "\n\t")).append(",\n");
             }
         }
         sb.setLength(sb.length() - 2); // Delete trailing ",\n"
