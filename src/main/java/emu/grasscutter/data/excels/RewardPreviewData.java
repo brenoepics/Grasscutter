@@ -25,7 +25,7 @@ public class RewardPreviewData extends GameResource {
                     Arrays.stream(this.previewItems)
                             .filter(d -> d.getId() > 0 && d.getCount() != null && !d.getCount().isEmpty())
                             .map(ItemParamStringData::toItemParamData)
-                            .toArray(size -> new ItemParamData[size]);
+                            .toArray(ItemParamData[]::new);
         } else {
             this.previewItemsArray = new ItemParamData[0];
         }

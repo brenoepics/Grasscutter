@@ -58,7 +58,7 @@ public class InventorySystem extends BaseGameSystem {
         } else {
             avatarId =
                     Optional.ofNullable(GameData.getItemDataMap().get(id))
-                            .map(itemData -> itemData.getItemUseActions())
+                            .map(ItemData::getItemUseActions)
                             .flatMap(
                                     actions ->
                                             actions.stream()
