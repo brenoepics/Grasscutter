@@ -49,9 +49,9 @@ public class RefreshPolicyExcelConfigData extends GameResource {
                                 upperBound(
                                         params, (int) params.get(0), (int) params.get(params.size() - 1), (int) temp);
                         var upper_bound = params.get(upper_bound_idx);
-                        if (params.get(params.size() - 1) == upper_bound) {
+                        if (params.get(params.size() - 1).equals(upper_bound)) {
                             return (params.get(params.size() - 1) - params.get(0)) + 60 * 60 * 24 * 7;
-                        } else if (params.get(0) == upper_bound) {
+                        } else if (params.get(0).equals(upper_bound)) {
                             return (params.get(params.size() - 1) - params.get(0)) + 60 * 60 * 24 * 7;
                         }
                         return (params.get(upper_bound_idx - 1) - params.get(0));
@@ -65,9 +65,9 @@ public class RefreshPolicyExcelConfigData extends GameResource {
                                 upperBound(
                                         params, (int) params.get(0), (int) params.get(params.size() - 1), (int) temp);
                         var upper_bound = params.get(upper_bound_idx);
-                        if (params.get(params.size() - 1) == upper_bound) {
+                        if (params.get(params.size() - 1).equals(upper_bound)) {
                             return (params.get(params.size() - 1) - params.get(0)) + 60 * 60 * 24 * 7;
-                        } else if (params.get(0) == upper_bound) {
+                        } else if (params.get(0).equals(upper_bound)) {
                             return (params.get(params.size() - 1) - params.get(0)) + 60 * 60 * 24 * 7;
                         }
                         return (params.get(upper_bound_idx - 1) - params.get(0));
