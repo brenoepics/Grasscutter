@@ -1,59 +1,43 @@
 package emu.grasscutter.command.commands;
 
+import emu.grasscutter.command.Command;
+import emu.grasscutter.command.CommandHandler;
+import emu.grasscutter.data.GameData;
+import emu.grasscutter.data.GameDepot;
+import emu.grasscutter.data.excels.ItemData;
+import emu.grasscutter.data.excels.avatar.AvatarData;
+import emu.grasscutter.data.excels.reliquary.ReliquaryAffixData;
+import emu.grasscutter.data.excels.reliquary.ReliquaryMainPropData;
+import emu.grasscutter.game.avatar.Avatar;
+import emu.grasscutter.game.inventory.GameItem;
+import emu.grasscutter.game.inventory.ItemType;
+import emu.grasscutter.game.player.Player;
+import emu.grasscutter.game.props.ActionReason;
+import emu.grasscutter.game.props.FightProperty;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.BiConsumer;
+import java.util.regex.Pattern;
+
 import static emu.grasscutter.GameConstants.*;
 import static emu.grasscutter.command.CommandHelpers.*;
 
-import emu.grasscutter.command.*;
-import emu.grasscutter.data.*;
-import emu.grasscutter.data.excels.ItemData;
-import emu.grasscutter.data.excels.avatar.AvatarData;
-import emu.grasscutter.data.excels.reliquary.*;
-import emu.grasscutter.game.avatar.Avatar;
-import emu.grasscutter.game.inventory.*;
-import emu.grasscutter.game.player.Player;
-import emu.grasscutter.game.props.*;
-import java.util.*;
-import java.util.function.BiConsumer;
-import java.util.regex.Pattern;
-import lombok.Setter;
-
-@Command(
-        label = "give",
-        aliases = {"g", "item", "giveitem"},
-        usage = {
-            "(<itemId>|<avatarId>|all|weapons|mats|avatars) [lv<level>] [r<refinement>] [x<amount>] [c<constellation>] [sl<skilllevel>]",
-            "<artifactId> [lv<level>] [x<amount>] [<mainPropId>] [<appendPropId>[,<times>]]..."
-        },
-        permission = "player.give",
-        permissionTargeted = "player.give.others",
-        threading = true)
+@Command(label = "give", aliases = {"g", "item", "giveitem"}, usage = {"(<itemId>|<avatarId>|all|weapons|mats|avatars) [lv<level>] [r<refinement>] [x<amount>] [c<constellation>] [sl<skilllevel>]", "<artifactId> [lv<level>] [x<amount>] [<mainPropId>] [<appendPropId>[,<times>]]..."}, permission = "player.give", permissionTargeted = "player.give.others", threading = true)
 public final class GiveCommand implements CommandHandler {
-    private static final Map<Pattern, BiConsumer<GiveItemParameters, Integer>> intCommandHandlers =
-            Map.ofEntries(
-                    Map.entry(lvlRegex, GiveItemParameters::setLvl),
-                    Map.entry(refineRegex, GiveItemParameters::setRefinement),
-                    Map.entry(amountRegex, GiveItemParameters::setAmount),
-                    Map.entry(constellationRegex, GiveItemParameters::setConstellation),
-                    Map.entry(skillLevelRegex, GiveItemParameters::setSkillLevel));
+    private static final Map<Pattern, BiConsumer<GiveItemParameters, Integer>> intCommandHandlers = Map.ofEntries(Map.entry(lvlRegex, GiveItemParameters::setLvl), Map.entry(refineRegex, GiveItemParameters::setRefinement), Map.entry(amountRegex, GiveItemParameters::setAmount), Map.entry(constellationRegex, GiveItemParameters::setConstellation), Map.entry(skillLevelRegex, GiveItemParameters::setSkillLevel));
 
     private static Avatar makeAvatar(GiveItemParameters param) {
-        return makeAvatar(
-                param.avatarData,
-                param.lvl,
-                Avatar.getMinPromoteLevel(param.lvl),
-                param.constellation,
-                param.skillLevel);
+        return makeAvatar(param.avatarData, param.lvl, Avatar.getMinPromoteLevel(param.lvl), param.constellation, param.skillLevel);
     }
 
-    private static Avatar makeAvatar(
-            AvatarData avatarData, int level, int promoteLevel, int constellation, int skillLevel) {
+    private static Avatar makeAvatar(AvatarData avatarData, int level, int promoteLevel, int constellation, int skillLevel) {
         Avatar avatar = new Avatar(avatarData);
         avatar.setLevel(level);
         avatar.setPromoteLevel(promoteLevel);
-        avatar
-                .getSkillDepot()
-                .getSkillsAndEnergySkill()
-                .forEach(id -> avatar.setSkillLevel(id, skillLevel));
+        avatar.getSkillDepot().getSkillsAndEnergySkill().forEach(id -> avatar.setSkillLevel(id, skillLevel));
         avatar.forceConstellationLevel(constellation);
         avatar.recalcStats(true);
         avatar.save();
@@ -63,16 +47,13 @@ public final class GiveCommand implements CommandHandler {
     private static void giveAllAvatars(Player player, GiveItemParameters param) {
         int promoteLevel = Avatar.getMinPromoteLevel(param.lvl);
         if (param.constellation < 0 || param.constellation > 6)
-            param.constellation =
-                    6; // constellation's default is -1 so if no parameters set for constellations it'll
+            param.constellation = 6; // constellation's default is -1 so if no parameters set for constellations it'll
         // automatically be 6
         for (AvatarData avatarData : GameData.getAvatarDataMap().values()) {
             int id = avatarData.getId();
             if (id < 10000002 || id >= 11000000) continue; // Exclude test avatars
             // Don't try to add each avatar to the current team
-            player.addAvatar(
-                    makeAvatar(avatarData, param.lvl, promoteLevel, param.constellation, param.skillLevel),
-                    false);
+            player.addAvatar(makeAvatar(avatarData, param.lvl, promoteLevel, param.constellation, param.skillLevel), false);
         }
     }
 
@@ -112,7 +93,7 @@ public final class GiveCommand implements CommandHandler {
             item.setTotalExp(totalExp);
             int numAffixes = param.data.getAppendPropNum() + (param.lvl - 1) / 4;
             if (param.mainPropId > 0) // Keep random mainProp if we didn't specify one
-            item.setMainPropId(param.mainPropId);
+                item.setMainPropId(param.mainPropId);
             if (param.appendPropIdList != null) {
                 item.getAppendPropIdList().clear();
                 item.getAppendPropIdList().addAll(param.appendPropIdList);
@@ -124,17 +105,14 @@ public final class GiveCommand implements CommandHandler {
         return items;
     }
 
-    private static int getArtifactMainProp(ItemData itemData, FightProperty prop)
-            throws IllegalArgumentException {
+    private static int getArtifactMainProp(ItemData itemData, FightProperty prop) throws IllegalArgumentException {
         if (prop != FightProperty.FIGHT_PROP_NONE)
-            for (ReliquaryMainPropData data :
-                    GameDepot.getRelicMainPropList(itemData.getMainPropDepotId()))
+            for (ReliquaryMainPropData data : GameDepot.getRelicMainPropList(itemData.getMainPropDepotId()))
                 if (data.getWeight() > 0 && data.getFightProp() == prop) return data.getId();
         throw new IllegalArgumentException();
     }
 
-    private static List<Integer> getArtifactAffixes(ItemData itemData, FightProperty prop)
-            throws IllegalArgumentException {
+    private static List<Integer> getArtifactAffixes(ItemData itemData, FightProperty prop) throws IllegalArgumentException {
         if (prop == FightProperty.FIGHT_PROP_NONE) {
             throw new IllegalArgumentException();
         }
@@ -147,8 +125,7 @@ public final class GiveCommand implements CommandHandler {
         return affixes;
     }
 
-    private static int getAppendPropId(String substatText, ItemData itemData)
-            throws IllegalArgumentException {
+    private static int getAppendPropId(String substatText, ItemData itemData) throws IllegalArgumentException {
         // If the given substat text is an integer, we just use that as the append prop ID.
         try {
             return Integer.parseInt(substatText);
@@ -165,8 +142,7 @@ public final class GiveCommand implements CommandHandler {
                 substatTier = Integer.parseInt(substatArgs[1]);
             }
 
-            List<Integer> substats =
-                    getArtifactAffixes(itemData, FightProperty.getPropByShortName(substatType));
+            List<Integer> substats = getArtifactAffixes(itemData, FightProperty.getPropByShortName(substatType));
 
             if (substats.isEmpty()) {
                 throw new IllegalArgumentException();
@@ -178,8 +154,7 @@ public final class GiveCommand implements CommandHandler {
         }
     }
 
-    private static void parseRelicArgs(GiveItemParameters param, List<String> args)
-            throws IllegalArgumentException {
+    private static void parseRelicArgs(GiveItemParameters param, List<String> args) throws IllegalArgumentException {
         // Get the main stat from the arguments.
         // If the given argument is an integer, we use that.
         // If not, we check if the argument string is in the main prop map.
@@ -189,8 +164,7 @@ public final class GiveCommand implements CommandHandler {
             param.mainPropId = Integer.parseInt(mainPropIdString);
         } catch (NumberFormatException ignored) {
             // This can in turn throw an exception which we don't want to catch here.
-            param.mainPropId =
-                    getArtifactMainProp(param.data, FightProperty.getPropByShortName(mainPropIdString));
+            param.mainPropId = getArtifactMainProp(param.data, FightProperty.getPropByShortName(mainPropIdString));
         }
 
         // Get substats.
@@ -271,8 +245,7 @@ public final class GiveCommand implements CommandHandler {
         giveAllWeapons(player, param);
     }
 
-    private GiveItemParameters parseArgs(Player sender, List<String> args)
-            throws IllegalArgumentException {
+    private GiveItemParameters parseArgs(Player sender, List<String> args) throws IllegalArgumentException {
         GiveItemParameters param = new GiveItemParameters();
 
         // Extract any tagged arguments (e.g. "lv90", "x100", "r5")
@@ -314,9 +287,7 @@ public final class GiveCommand implements CommandHandler {
                     param.avatarData = GameData.getAvatarDataMap().get(param.id - 1000 + 10_000_000);
                 isRelic = ((param.data != null) && (param.data.getItemType() == ItemType.ITEM_RELIQUARY));
 
-                if (!isRelic
-                        && !args.isEmpty()
-                        && (param.amount == 1)) { // A concession for the people that truly hate [x<amount>].
+                if (!isRelic && !args.isEmpty() && (param.amount == 1)) { // A concession for the people that truly hate [x<amount>].
                     try {
                         param.amount = Integer.parseInt(args.remove(0));
                     } catch (NumberFormatException e) {
@@ -394,8 +365,7 @@ public final class GiveCommand implements CommandHandler {
             if (param.avatarData != null) {
                 Avatar avatar = makeAvatar(param);
                 targetPlayer.addAvatar(avatar);
-                CommandHandler.sendTranslatedMessage(
-                        sender, "commands.give.given_avatar", param.id, param.lvl, targetPlayer.getUid());
+                CommandHandler.sendTranslatedMessage(sender, "commands.give.given_avatar", param.id, param.lvl, targetPlayer.getUid());
                 return;
             }
             // If it's not an avatar, it needs to be a valid item
@@ -406,54 +376,37 @@ public final class GiveCommand implements CommandHandler {
 
             switch (param.data.getItemType()) {
                 case ITEM_WEAPON:
-                    targetPlayer
-                            .getInventory()
-                            .addItems(makeUnstackableItems(param), ActionReason.SubfieldDrop);
-                    CommandHandler.sendTranslatedMessage(
-                            sender,
-                            "commands.give.given_with_level_and_refinement",
-                            param.id,
-                            param.lvl,
-                            param.refinement,
-                            param.amount,
-                            targetPlayer.getUid());
+                    targetPlayer.getInventory().addItems(makeUnstackableItems(param), ActionReason.SubfieldDrop);
+                    CommandHandler.sendTranslatedMessage(sender, "commands.give.given_with_level_and_refinement", param.id, param.lvl, param.refinement, param.amount, targetPlayer.getUid());
                     return;
                 case ITEM_RELIQUARY:
                     targetPlayer.getInventory().addItems(makeArtifacts(param), ActionReason.SubfieldDrop);
-                    CommandHandler.sendTranslatedMessage(
-                            sender,
-                            "commands.give.given_level",
-                            param.id,
-                            param.lvl,
-                            param.amount,
-                            targetPlayer.getUid());
+                    CommandHandler.sendTranslatedMessage(sender, "commands.give.given_level", param.id, param.lvl, param.amount, targetPlayer.getUid());
                     return;
                 default:
-                    targetPlayer
-                            .getInventory()
-                            .addItem(new GameItem(param.data, param.amount), ActionReason.SubfieldDrop);
-                    CommandHandler.sendTranslatedMessage(
-                            sender, "commands.give.given", param.amount, param.id, targetPlayer.getUid());
+                    targetPlayer.getInventory().addItem(new GameItem(param.data, param.amount), ActionReason.SubfieldDrop);
+                    CommandHandler.sendTranslatedMessage(sender, "commands.give.given", param.amount, param.id, targetPlayer.getUid());
             }
         } catch (IllegalArgumentException ignored) {
         }
     }
 
     private enum GiveAllType {
-        NONE,
-        ALL,
-        WEAPONS,
-        MATS,
-        AVATARS
+        NONE, ALL, WEAPONS, MATS, AVATARS
     }
 
     private static class GiveItemParameters {
         public int id;
-        @Setter public int lvl = 0;
-        @Setter public int amount = 1;
-        @Setter public int refinement = 1;
-        @Setter public int constellation = -1;
-        @Setter public int skillLevel = 1;
+        @Setter
+        public int lvl = 0;
+        @Setter
+        public int amount = 1;
+        @Setter
+        public int refinement = 1;
+        @Setter
+        public int constellation = -1;
+        @Setter
+        public int skillLevel = 1;
         public int mainPropId = -1;
         public List<Integer> appendPropIdList;
         public ItemData data;

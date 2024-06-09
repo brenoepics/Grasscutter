@@ -1,13 +1,17 @@
 package emu.grasscutter.server.game;
 
-import static emu.grasscutter.config.Configuration.GAME_INFO;
-
 import emu.grasscutter.Grasscutter;
 import emu.grasscutter.Grasscutter.ServerDebugMode;
-import emu.grasscutter.net.packet.*;
+import emu.grasscutter.net.packet.Opcodes;
+import emu.grasscutter.net.packet.PacketHandler;
+import emu.grasscutter.net.packet.PacketOpcodes;
+import emu.grasscutter.net.packet.PacketOpcodesUtils;
 import emu.grasscutter.server.event.game.ReceivePacketEvent;
 import emu.grasscutter.server.game.GameSession.SessionState;
-import it.unimi.dsi.fastutil.ints.*;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+
+import static emu.grasscutter.config.Configuration.GAME_INFO;
 
 public final class GameServerPacketHandler {
     private final Int2ObjectMap<PacketHandler> handlers;
@@ -29,7 +33,7 @@ public final class GameServerPacketHandler {
             this.handlers.put(opcode.value(), packetHandler);
         } catch (Exception e) {
             Grasscutter.getLogger()
-                    .warn("Unable to register handler {}.", handlerClass.getSimpleName(), e);
+                .warn("Unable to register handler {}.", handlerClass.getSimpleName(), e);
         }
     }
 
@@ -79,7 +83,7 @@ public final class GameServerPacketHandler {
                 ReceivePacketEvent event = new ReceivePacketEvent(session, opcode, payload);
                 event.call();
                 if (!event.isCanceled()) // If event is not canceled, continue.
-                handler.handle(session, header, event.getPacketData());
+                    handler.handle(session, header, event.getPacketData());
             } catch (Exception ex) {
                 // TODO Remove this when no more needed
                 ex.printStackTrace();
@@ -89,7 +93,7 @@ public final class GameServerPacketHandler {
 
         // Log unhandled packets
         if (GAME_INFO.logPackets == ServerDebugMode.MISSING
-                || GAME_INFO.logPackets == ServerDebugMode.ALL) {
+            || GAME_INFO.logPackets == ServerDebugMode.ALL) {
             Grasscutter.getLogger()
                 .info("Unhandled packet ({}): {}", opcode, PacketOpcodesUtils.getOpcodeName(opcode));
         }
