@@ -122,7 +122,7 @@ public class InventorySystem extends BaseGameSystem {
         int moraCost = 0;
         int expGain = 0;
 
-        List<GameItem> foodRelics = new ArrayList<GameItem>();
+        List<GameItem> foodRelics = new ArrayList<>();
         for (long guid : foodRelicList) {
             // Add to delete queue
             GameItem food = player.getInventory().getItemByGuid(guid);
@@ -139,7 +139,7 @@ public class InventorySystem extends BaseGameSystem {
             }
             foodRelics.add(food);
         }
-        List<ItemParamData> payList = new ArrayList<ItemParamData>();
+        List<ItemParamData> payList = new ArrayList<>();
         for (ItemParam itemParam : list) {
             int amount =
                     itemParam
@@ -347,7 +347,7 @@ public class InventorySystem extends BaseGameSystem {
 
         // Get exp gain
         int expGain = 0, expGainFree = 0;
-        List<GameItem> foodWeapons = new ArrayList<GameItem>();
+        List<GameItem> foodWeapons = new ArrayList<>();
         for (long guid : foodWeaponGuidList) {
             GameItem food = player.getInventory().getItemByGuid(guid);
             if (food == null || !food.isDestroyable()) {
@@ -359,7 +359,7 @@ public class InventorySystem extends BaseGameSystem {
             }
             foodWeapons.add(food);
         }
-        List<ItemParamData> payList = new ArrayList<ItemParamData>();
+        List<ItemParamData> payList = new ArrayList<>();
         for (ItemParam param : itemParamList) {
             int amount =
                     param.getCount(); // Previously this capped to inventory amount, but rejecting the payment

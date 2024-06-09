@@ -270,7 +270,7 @@ public class SceneScriptManager {
         // If that trigger has been refreshed, ensure it does not get
         // deregistered anyway when the trigger completes its invocation.
         for (var triggerSet : currentTriggers.values()) {
-            var toSave = new HashSet<SceneTrigger>(triggerSet);
+            var toSave = new HashSet<>(triggerSet);
             toSave.retainAll(ongoingTriggers);
             toSave.forEach(t -> t.setPreserved(true));
         }

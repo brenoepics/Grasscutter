@@ -261,22 +261,22 @@ public final class Language {
                         .collect(Collectors.toList());
 
         Map<TextStrings, TextStrings> canonicalTextStrings = new HashMap<>();
-        return new Int2ObjectOpenHashMap<TextStrings>(
-                nameHashes
-                        .intStream()
-                        .boxed()
-                        .collect(
-                                Collectors.toMap(
-                                        key -> key,
-                                        key -> {
-                                            TextStrings t =
-                                                    new TextStrings(
-                                                            IntStream.range(0, TextStrings.NUM_LANGUAGES)
-                                                                    .mapToObj(i -> languageMaps.get(i).get((int) key))
-                                                                    .collect(Collectors.toList()),
-                                                            key);
-                                            return canonicalTextStrings.computeIfAbsent(t, x -> t);
-                                        })));
+        return new Int2ObjectOpenHashMap<>(
+            nameHashes
+                .intStream()
+                .boxed()
+                .collect(
+                    Collectors.toMap(
+                        key -> key,
+                        key -> {
+                            TextStrings t =
+                                new TextStrings(
+                                    IntStream.range(0, TextStrings.NUM_LANGUAGES)
+                                        .mapToObj(i -> languageMaps.get(i).get((int) key))
+                                        .collect(Collectors.toList()),
+                                    key);
+                            return canonicalTextStrings.computeIfAbsent(t, x -> t);
+                        })));
     }
 
     @SuppressWarnings("unchecked")

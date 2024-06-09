@@ -30,7 +30,7 @@ public final class Mail {
     public Mail() {
         this(
                 new MailContent(),
-                new ArrayList<MailItem>(),
+            new ArrayList<>(),
                 (int) Instant.now().getEpochSecond()
                         + 604800); // TODO: add expire time to send mail command
     }

@@ -1204,7 +1204,7 @@ public class Player implements PlayerHook, FieldFetch {
 
     public Map<String, MapMark> getMapMarks() {
         if (this.mapMarks == null) {
-            this.mapMarks = new HashMap<String, MapMark>();
+            this.mapMarks = new HashMap<>();
         }
         return mapMarks;
     }

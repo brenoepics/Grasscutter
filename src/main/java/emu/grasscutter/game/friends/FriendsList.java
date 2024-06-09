@@ -15,8 +15,8 @@ public class FriendsList extends BasePlayerManager {
 
     public FriendsList(Player player) {
         super(player);
-        this.friends = new Int2ObjectOpenHashMap<Friendship>();
-        this.pendingFriends = new Int2ObjectOpenHashMap<Friendship>();
+        this.friends = new Int2ObjectOpenHashMap<>();
+        this.pendingFriends = new Int2ObjectOpenHashMap<>();
     }
 
     public boolean hasLoaded() {

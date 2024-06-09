@@ -56,7 +56,7 @@ public class AvatarTalentData extends GameResource {
 
     @Override
     public void onLoad() {
-        ArrayList<FightPropData> parsed = new ArrayList<FightPropData>(getAddProps().length);
+        ArrayList<FightPropData> parsed = new ArrayList<>(getAddProps().length);
         for (FightPropData prop : getAddProps()) {
             if (prop.getPropType() != null || prop.getValue() == 0f) {
                 prop.onLoad();
