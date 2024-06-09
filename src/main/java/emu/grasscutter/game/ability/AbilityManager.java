@@ -177,15 +177,7 @@ public final class AbilityManager extends BasePlayerManager {
 
     public void onAbilityInvoke(AbilityInvokeEntry invoke) throws Exception {
         Grasscutter.getLogger()
-                .trace(
-                        "Ability invoke: "
-                                + invoke
-                                + " "
-                                + invoke.getArgumentType()
-                                + " ("
-                                + invoke.getArgumentTypeValue()
-                                + "): "
-                                + this.player.getScene().getEntityById(invoke.getEntityId()));
+            .trace("Ability invoke: {} {} ({}): {}", invoke, invoke.getArgumentType(), invoke.getArgumentTypeValue(), this.player.getScene().getEntityById(invoke.getEntityId()));
         var entity = this.player.getScene().getEntityById(invoke.getEntityId());
         if (entity != null) {
             Grasscutter.getLogger()
@@ -212,7 +204,7 @@ public final class AbilityManager extends BasePlayerManager {
 
         if (invoke.getHead().getTargetId() != 0) {
             Grasscutter.getLogger()
-                    .trace("Target: " + this.player.getScene().getEntityById(invoke.getHead().getTargetId()));
+                .trace("Target: {}", this.player.getScene().getEntityById(invoke.getHead().getTargetId()));
         }
         if (invoke.getHead().getLocalId() != 0) {
             this.handleServerInvoke(invoke);

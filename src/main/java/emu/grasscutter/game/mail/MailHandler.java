@@ -35,12 +35,7 @@ public class MailHandler extends BasePlayerManager {
         this.mail.add(message);
 
         Grasscutter.getLogger()
-                .debug(
-                        "Mail sent to user ["
-                                + this.getPlayer().getUid()
-                                + ":"
-                                + this.getPlayer().getNickname()
-                                + "]!");
+            .debug("Mail sent to user [{}:{}]!", this.getPlayer().getUid(), this.getPlayer().getNickname());
 
         if (this.getPlayer().isOnline()) {
             this.getPlayer().sendPacket(new PacketMailChangeNotify(this.getPlayer(), message));

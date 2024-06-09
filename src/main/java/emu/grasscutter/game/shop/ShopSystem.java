@@ -93,7 +93,7 @@ public class ShopSystem extends BaseGameSystem {
                         }
                         this.shopChestData.put((int) chestId, list);
                     });
-            Grasscutter.getLogger().debug("Loaded " + chestMap.size() + " ShopChest entries.");
+            Grasscutter.getLogger().debug("Loaded {} ShopChest entries.", chestMap.size());
         } catch (Exception e) {
             Grasscutter.getLogger().error("Unable to load ShopChest data.", e);
         }

@@ -155,12 +155,11 @@ public final class TaskMap {
                             }
                         } else {
                             Grasscutter.getLogger()
-                                    .error("Class " + annotated.getName() + " is not a TaskHandler!");
+                                .error("Class {} is not a TaskHandler!", annotated.getName());
                         }
                     } catch (Exception exception) {
                         Grasscutter.getLogger()
-                                .error(
-                                        "Failed to register task handler for " + annotated.getSimpleName(), exception);
+                            .error("Failed to register task handler for {}", annotated.getSimpleName(), exception);
                     }
                 });
         try {

@@ -41,7 +41,7 @@ public final class GameServerPacketHandler {
 
         // Debug
         Grasscutter.getLogger()
-                .debug("Registered " + this.handlers.size() + " " + handlerClass.getSimpleName() + "s");
+            .debug("Registered {} {}s", this.handlers.size(), handlerClass.getSimpleName());
     }
 
     public void handle(GameSession session, int opcode, byte[] header, byte[] payload) {
@@ -91,11 +91,7 @@ public final class GameServerPacketHandler {
         if (GAME_INFO.logPackets == ServerDebugMode.MISSING
                 || GAME_INFO.logPackets == ServerDebugMode.ALL) {
             Grasscutter.getLogger()
-                    .info(
-                            "Unhandled packet ("
-                                    + opcode
-                                    + "): "
-                                    + emu.grasscutter.net.packet.PacketOpcodesUtils.getOpcodeName(opcode));
+                .info("Unhandled packet ({}): {}", opcode, PacketOpcodesUtils.getOpcodeName(opcode));
         }
     }
 }

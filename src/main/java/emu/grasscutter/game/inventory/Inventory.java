@@ -322,10 +322,7 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
                     case MATERIAL_COSTUME:
                     case MATERIAL_NAMECARD:
                         Grasscutter.getLogger()
-                                .warn(
-                                        "Attempted to add a "
-                                                + item.getItemData().getMaterialType().name()
-                                                + " to inventory, but item definition lacks isUseOnGain. This indicates a Resources error.");
+                            .warn("Attempted to add a {} to inventory, but item definition lacks isUseOnGain. This indicates a Resources error.", item.getItemData().getMaterialType().name());
                         return null;
                     default:
                         if (tab == null) {

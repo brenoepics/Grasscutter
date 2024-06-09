@@ -314,10 +314,10 @@ public final class Tools {
         var path = GachaHandler.getGachaMappingsPath();
         if (!Files.exists(path)) {
             try {
-                Grasscutter.getLogger().debug("Creating default '" + path + "' data");
+                Grasscutter.getLogger().debug("Creating default '{}' data", path);
                 Tools.createGachaMappings(path);
             } catch (Exception exception) {
-                Grasscutter.getLogger().warn("Failed to create gacha mappings. \n" + exception);
+                Grasscutter.getLogger().warn("Failed to create gacha mappings. \n{}", exception);
             }
         }
     }
@@ -342,7 +342,7 @@ public final class Tools {
 
         Files.createDirectories(location.getParent());
         Files.writeString(location, sb);
-        Grasscutter.getLogger().debug("Mappings generated to " + location);
+        Grasscutter.getLogger().debug("Mappings generated to {}", location);
     }
 
     public static List<String> getAvailableLanguage() {

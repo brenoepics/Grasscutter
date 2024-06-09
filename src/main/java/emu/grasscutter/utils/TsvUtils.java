@@ -228,12 +228,10 @@ public final class TsvUtils {
                                     return tree.toClass(classType, null);
                                 } catch (Exception e) {
                                     Grasscutter.getLogger()
-                                            .warn(
-                                                    "Error deserializing an instance of class "
-                                                            + classType.getCanonicalName());
-                                    Grasscutter.getLogger().warn("At token #" + t + " of #" + m);
-                                    Grasscutter.getLogger().warn("Header names are: " + headerNames);
-                                    Grasscutter.getLogger().warn("Tokens are: " + tokens);
+                                        .warn("Error deserializing an instance of class {}", classType.getCanonicalName());
+                                    Grasscutter.getLogger().warn("At token #{} of #{}", t, m);
+                                    Grasscutter.getLogger().warn("Header names are: {}", headerNames);
+                                    Grasscutter.getLogger().warn("Tokens are: {}", tokens);
                                     Grasscutter.getLogger().warn("Stacktrace is: ", e);
                                     // System.out.println("Error deserializing an instance of class
                                     // "+classType.getCanonicalName());
@@ -247,7 +245,7 @@ public final class TsvUtils {
                             })
                     .toList();
         } catch (Exception e) {
-            Grasscutter.getLogger().error("Error loading file '" + filename + "' - Stacktrace is: ", e);
+            Grasscutter.getLogger().error("Error loading file '{}' - Stacktrace is: ", filename, e);
             return null;
         }
     }
@@ -285,12 +283,10 @@ public final class TsvUtils {
                                     return obj;
                                 } catch (Exception e) {
                                     Grasscutter.getLogger()
-                                            .warn(
-                                                    "Error deserializing an instance of class "
-                                                            + classType.getCanonicalName());
-                                    Grasscutter.getLogger().warn("At token #" + t + " of #" + m);
-                                    Grasscutter.getLogger().warn("Header names are: " + headerNames);
-                                    Grasscutter.getLogger().warn("Tokens are: " + tokens);
+                                        .warn("Error deserializing an instance of class {}", classType.getCanonicalName());
+                                    Grasscutter.getLogger().warn("At token #{} of #{}", t, m);
+                                    Grasscutter.getLogger().warn("Header names are: {}", headerNames);
+                                    Grasscutter.getLogger().warn("Tokens are: {}", tokens);
                                     Grasscutter.getLogger().warn("Stacktrace is: ", e);
                                     return null;
                                 }
@@ -298,17 +294,14 @@ public final class TsvUtils {
                     .toList();
         } catch (NoSuchFileException e) {
             Grasscutter.getLogger()
-                    .error(
-                            "Error loading file '"
-                                    + filename
-                                    + "' - File does not exist. You are missing resources. Note that this file may exist in JSON, TSV, or TSJ format, any of which are suitable.");
+                .error("Error loading file '{}' - File does not exist. You are missing resources. Note that this file may exist in JSON, TSV, or TSJ format, any of which are suitable.", filename);
             return null;
         } catch (IOException e) {
-            Grasscutter.getLogger().error("Error loading file '" + filename + "' - Stacktrace is: ", e);
+            Grasscutter.getLogger().error("Error loading file '{}' - Stacktrace is: ", filename, e);
             return null;
         } catch (NoSuchMethodException e) {
             Grasscutter.getLogger()
-                    .error("Error loading file '" + filename + "' - Class is missing NoArgsConstructor");
+                .error("Error loading file '{}' - Class is missing NoArgsConstructor", filename);
             return null;
         }
     }
@@ -336,7 +329,7 @@ public final class TsvUtils {
             throws Exception {
         val pair = getAllArgsConstructor(classType);
         if (pair == null) {
-            Grasscutter.getLogger().error("No AllArgsContructor found for class: " + classType);
+            Grasscutter.getLogger().error("No AllArgsContructor found for class: {}", classType);
             return null;
         }
         val constructor = pair.left();
@@ -405,27 +398,21 @@ public final class TsvUtils {
                                                         return constructor.newInstance(args);
                                                     } catch (Exception e) {
                                                         Grasscutter.getLogger()
-                                                                .warn(
-                                                                        "Error deserializing an instance of class "
-                                                                                + classType.getCanonicalName()
-                                                                                + " : "
-                                                                                + constructor.getName());
-                                                        Grasscutter.getLogger().warn("At token #" + t + " of #" + m);
+                                                            .warn("Error deserializing an instance of class {} : {}", classType.getCanonicalName(), constructor.getName());
+                                                        Grasscutter.getLogger().warn("At token #{} of #{}", t, m);
                                                         Grasscutter.getLogger()
-                                                                .warn("Arg names are: " + Arrays.toString(conArgNames));
+                                                            .warn("Arg names are: {}", Arrays.toString(conArgNames));
                                                         Grasscutter.getLogger()
-                                                                .warn("Arg types are: " + Arrays.toString(argTypes));
+                                                            .warn("Arg types are: {}", Arrays.toString(argTypes));
                                                         Grasscutter.getLogger()
-                                                                .warn("Default Args are: " + Arrays.toString(defaultArgs));
-                                                        Grasscutter.getLogger().warn("Args are: " + Arrays.toString(args));
-                                                        Grasscutter.getLogger().warn("Header names are: " + headerNames);
+                                                            .warn("Default Args are: {}", Arrays.toString(defaultArgs));
+                                                        Grasscutter.getLogger().warn("Args are: {}", Arrays.toString(args));
+                                                        Grasscutter.getLogger().warn("Header names are: {}", headerNames);
                                                         Grasscutter.getLogger()
-                                                                .warn(
-                                                                        "Header types are: "
-                                                                                + IntStream.of(argPositions)
-                                                                                        .mapToObj(i -> (i >= 0) ? argTypes[i] : null)
-                                                                                        .toList());
-                                                        Grasscutter.getLogger().warn("Tokens are: " + tokens);
+                                                            .warn("Header types are: {}", IntStream.of(argPositions)
+                                                                .mapToObj(i -> (i >= 0) ? argTypes[i] : null)
+                                                                .toList());
+                                                        Grasscutter.getLogger().warn("Tokens are: {}", tokens);
                                                         Grasscutter.getLogger().warn("Stacktrace is: ", e);
                                                         return null;
                                                     }
@@ -433,7 +420,7 @@ public final class TsvUtils {
                                         .toList();
                             } catch (IOException e) {
                                 Grasscutter.getLogger()
-                                        .error("Error loading file '" + filename + "' - Stacktrace is: ", e);
+                                    .error("Error loading file '{}' - Stacktrace is: ", filename, e);
                                 return null;
                             }
                         })
@@ -582,23 +569,14 @@ public final class TsvUtils {
                                 // System.out.println("Exception while setting field "+name+" for class "+objClass+"
                                 // - "+e);
                                 Grasscutter.getLogger()
-                                        .error(
-                                                "Exception while setting field "
-                                                        + name
-                                                        + " ("
-                                                        + field.classType
-                                                        + ")"
-                                                        + " for class "
-                                                        + objClass
-                                                        + " - ",
-                                                e);
+                                    .error("Exception while setting field {} ({}) for class {} - ", name, field.classType, objClass, e);
                             }
                         });
                 return obj;
             } catch (Exception e) {
                 // System.out.println("Exception while creating object of class "+objClass+" - "+e);
                 Grasscutter.getLogger()
-                        .error("Exception while creating object of class " + objClass + " - ", e);
+                    .error("Exception while creating object of class {} - ", objClass, e);
                 return null;
             }
         }

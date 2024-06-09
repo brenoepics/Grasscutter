@@ -88,7 +88,7 @@ public class DataLoader {
 
     public static <T> List<T> loadTableToList(String resourcePath, Class<T> classType) throws IOException {
         val path = FileUtils.getDataPathTsjJsonTsv(resourcePath);
-        Grasscutter.getLogger().trace("Loading data table from: " + path);
+        Grasscutter.getLogger().trace("Loading data table from: {}", path);
         return switch (FileUtils.getFileExtension(path)) {
             case "json" -> JsonUtils.loadToList(path, classType);
             case "tsj" -> TsvUtils.loadTsjToListSetField(path, classType);
@@ -119,9 +119,9 @@ public class DataLoader {
 
         if (!Files.exists(filePath)) {
             var root = filePath.getParent();
-            if (root.toFile().mkdirs()) Grasscutter.getLogger().info("Created data folder '" + root + "'");
+            if (root.toFile().mkdirs()) Grasscutter.getLogger().info("Created data folder '{}'", root);
 
-            Grasscutter.getLogger().debug("Creating default '" + name + "' data");
+            Grasscutter.getLogger().debug("Creating default '{}' data", name);
             FileUtils.copyResource("/defaults/data/" + name, filePath.toString());
         }
     }

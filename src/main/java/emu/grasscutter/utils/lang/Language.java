@@ -44,7 +44,7 @@ public final class Language {
                     .forEach(entry -> putFlattenedKey(translations, entry.getKey(), entry.getValue()));
         } catch (Exception exception) {
             Grasscutter.getLogger()
-                    .warn("Failed to load language file: " + description.getLanguageCode(), exception);
+                .warn("Failed to load language file: {}", description.getLanguageCode(), exception);
         }
     }
 
@@ -99,7 +99,7 @@ public final class Language {
         try {
             return translated.formatted(args);
         } catch (Exception exception) {
-            Grasscutter.getLogger().error("Failed to format string: " + key, exception);
+            Grasscutter.getLogger().error("Failed to format string: {}", key, exception);
             return translated;
         }
     }
@@ -134,7 +134,7 @@ public final class Language {
         try {
             return translated.formatted(args);
         } catch (Exception exception) {
-            Grasscutter.getLogger().error("Failed to format string: " + key, exception);
+            Grasscutter.getLogger().error("Failed to format string: {}", key, exception);
             return translated;
         }
     }
@@ -194,7 +194,7 @@ public final class Language {
 
         if (file == null) { // Provided fallback language.
             Grasscutter.getLogger()
-                    .warn("Failed to load language file: " + fileName + ", falling back to: " + fallback);
+                .warn("Failed to load language file: {}, falling back to: {}", fileName, fallback);
             actualLanguageCode = fallbackLanguageCode;
             if (cachedLanguages.containsKey(actualLanguageCode)) {
                 return new LanguageStreamDescription(actualLanguageCode, null);
@@ -205,7 +205,7 @@ public final class Language {
 
         if (file == null) { // Fallback the fallback language.
             Grasscutter.getLogger()
-                    .warn("Failed to load language file: " + fallback + ", falling back to: en-US.json");
+                .warn("Failed to load language file: {}, falling back to: en-US.json", fallback);
             actualLanguageCode = "en-US";
             if (cachedLanguages.containsKey(actualLanguageCode)) {
                 return new LanguageStreamDescription(actualLanguageCode, null);
@@ -241,7 +241,7 @@ public final class Language {
                                             m -> (int) Long.parseLong(m.group(1)),
                                             m -> m.group(2).replace("\\\"", "\""))));
         } catch (Exception e) {
-            Grasscutter.getLogger().error("Error loading textmap: " + language);
+            Grasscutter.getLogger().error("Error loading textmap: {}", language);
             Grasscutter.getLogger().error(e.toString());
         }
         return output;
@@ -361,7 +361,7 @@ public final class Language {
             } catch (NoSuchFileException ignored) {
                 // Cache doesn't exist, generate it.
             } catch (Exception exception) {
-                Grasscutter.getLogger().error("Error loading textmaps cache: " + exception);
+                Grasscutter.getLogger().error("Error loading textmaps cache: {}", exception);
             }
 
         // Regenerate cache

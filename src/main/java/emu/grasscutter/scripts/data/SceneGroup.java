@@ -168,8 +168,7 @@ public final class SceneGroup {
             this.suites.forEach(i -> i.init(this));
         } catch (ScriptException e) {
             Grasscutter.getLogger()
-                    .error(
-                            "An error occurred while loading group " + this.id + " in scene " + sceneId + ".", e);
+                .error("An error occurred while loading group {} in scene {}.", this.id, sceneId, e);
         } catch (LuaError luaError) {
             Grasscutter.getLogger()
                     .error(

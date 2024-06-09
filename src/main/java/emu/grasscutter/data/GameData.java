@@ -655,7 +655,7 @@ public final class GameData {
             field.setAccessible(false);
         } catch (Exception e) {
             Grasscutter.getLogger()
-                    .error("Error fetching resource map for " + resourceDefinition.getSimpleName(), e);
+                .error("Error fetching resource map for {}", resourceDefinition.getSimpleName(), e);
         }
 
         return map;

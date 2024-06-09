@@ -63,7 +63,7 @@ public final class ResourceLoader {
     private static List<Set<Class<?>>> getResourceDefClassesPrioritySets() {
         val classes = Grasscutter.reflector.getSubTypesOf(GameResource.class);
         val priorities = ResourceType.LoadPriority.getInOrder();
-        Grasscutter.getLogger().debug("Priorities are " + priorities);
+        Grasscutter.getLogger().debug("Priorities are {}", priorities);
         val map = new LinkedHashMap<ResourceType.LoadPriority, Set<Class<?>>>(priorities.size());
         priorities.forEach(p -> map.put(p, new HashSet<>()));
 
@@ -159,11 +159,11 @@ public final class ResourceLoader {
                                         }));
         errors.forEach(
                 pair ->
-                        Grasscutter.getLogger()
-                                .error("Error loading resource file: " + pair.left(), pair.right()));
+                    Grasscutter.getLogger()
+                        .error("Error loading resource file: {}", pair.left(), pair.right()));
         long endTime = System.nanoTime();
         long ns = (endTime - startTime); // divide by 1000000 to get milliseconds.
-        Grasscutter.getLogger().debug("Loading resources took " + ns + "ns == " + ns / 1000000 + "ms");
+        Grasscutter.getLogger().debug("Loading resources took {}ns == {}ms", ns, ns / 1000000);
     }
 
     @SuppressWarnings("rawtypes")
@@ -281,7 +281,7 @@ public final class ResourceLoader {
                                 }
                             });
             Grasscutter.getLogger()
-                    .debug("Loaded " + GameData.getSceneNpcBornData().size() + " SceneRouteDatas.");
+                .debug("Loaded {} SceneRouteDatas.", GameData.getSceneNpcBornData().size());
         } catch (IOException e) {
             Grasscutter.getLogger().error("Failed to load SceneRouteData folder.");
         }
@@ -402,7 +402,7 @@ public final class ResourceLoader {
                     .forEach(data -> loadAbilityData(data.Default));
         } catch (IOException e) {
             Grasscutter.getLogger()
-                    .error("Error loading ability modifiers from path " + path.toString() + ": ", e);
+                .error("Error loading ability modifiers from path {}: ", path.toString(), e);
         }
     }
 
@@ -464,7 +464,7 @@ public final class ResourceLoader {
                                     path, String.class, new TypeToken<List<TalentData>>() {}.getType()));
         } catch (IOException e) {
             Grasscutter.getLogger()
-                    .error("Error loading ability modifiers from path " + path.toString() + ": ", e);
+                .error("Error loading ability modifiers from path {}: ", path.toString(), e);
         }
     }
 
@@ -531,7 +531,7 @@ public final class ResourceLoader {
                                     });
                 } catch (IOException e) {
                     Grasscutter.getLogger()
-                            .error("Error loading open config: no files found in " + folderName);
+                        .error("Error loading open config: no files found in {}", folderName);
                     return;
                 }
             }
@@ -587,7 +587,7 @@ public final class ResourceLoader {
         }
 
         Grasscutter.getLogger()
-                .debug("Loaded " + GameData.getMainQuestDataMap().size() + " MainQuestDatas.");
+            .debug("Loaded {} MainQuestDatas.", GameData.getMainQuestDataMap().size());
     }
 
     public static void loadScriptSceneData() {
@@ -605,7 +605,7 @@ public final class ResourceLoader {
                                 }
                             });
             Grasscutter.getLogger()
-                    .debug("Loaded " + GameData.getScriptSceneDataMap().size() + " ScriptSceneDatas.");
+                .debug("Loaded {} ScriptSceneDatas.", GameData.getScriptSceneDataMap().size());
         } catch (IOException e) {
             Grasscutter.getLogger().debug("ScriptSceneData folder missing or empty.");
         }
@@ -629,10 +629,7 @@ public final class ResourceLoader {
                                 }
                             });
             Grasscutter.getLogger()
-                    .debug(
-                            "Loaded "
-                                    + GameData.getHomeworldDefaultSaveData().size()
-                                    + " HomeworldDefaultSaveDatas.");
+                .debug("Loaded {} HomeworldDefaultSaveDatas.", GameData.getHomeworldDefaultSaveData().size());
         } catch (IOException e) {
             Grasscutter.getLogger().error("Failed to load HomeworldDefaultSave folder.");
         }
@@ -657,7 +654,7 @@ public final class ResourceLoader {
                                 }
                             });
             Grasscutter.getLogger()
-                    .debug("Loaded " + GameData.getSceneNpcBornData().size() + " SceneNpcBornDatas.");
+                .debug("Loaded {} SceneNpcBornDatas.", GameData.getSceneNpcBornData().size());
         } catch (IOException e) {
             Grasscutter.getLogger().error("Failed to load SceneNpcBorn folder.");
         }

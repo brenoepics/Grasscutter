@@ -887,7 +887,7 @@ public class SceneScriptManager {
             }
         } catch (Throwable throwable) {
             Grasscutter.getLogger()
-                    .error("Condition Trigger " + params.type + " triggered exception", throwable);
+                .error("Condition Trigger {} triggered exception", params.type, throwable);
         } finally {
             // make sure it is removed
             ScriptLoader.getScriptLib().removeSceneScriptManager();
@@ -913,7 +913,7 @@ public class SceneScriptManager {
             return false;
         } catch (Throwable ex) {
             Grasscutter.getLogger()
-                    .error("Condition Trigger " + trigger.getName() + " triggered exception", ex);
+                .error("Condition Trigger {} triggered exception", trigger.getName(), ex);
             return false;
         } finally {
             ScriptLoader.getScriptLib().removeCurrentGroup();

@@ -73,9 +73,7 @@ public class SceneBlock {
                     SceneIndexManager.buildIndex(3, this.groups.values(), g -> g.pos.toPoint());
         } catch (ScriptException exception) {
             Grasscutter.getLogger()
-                    .error(
-                            "An error occurred while loading block " + this.id + " in scene " + sceneId,
-                            exception);
+                .error("An error occurred while loading block {} in scene {}", this.id, sceneId, exception);
         }
         Grasscutter.getLogger().trace("Successfully loaded block {} in scene {}.", this.id, sceneId);
         return this;

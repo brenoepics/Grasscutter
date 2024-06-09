@@ -38,13 +38,11 @@ public final class HttpJsonResponse implements Handler {
                 && Arrays.stream(missingRoutes)
                         .anyMatch(x -> Objects.equals(x, ctx.endpointHandlerPath()))) {
             Grasscutter.getLogger()
-                    .info(
-                            translate(
-                                            "messages.dispatch.request",
-                                            Utils.address(ctx),
-                                            ctx.method(),
-                                            ctx.endpointHandlerPath())
-                                    + (DISPATCH_INFO.logRequests == ServerDebugMode.MISSING ? "(MISSING)" : ""));
+                .info("{}{}", translate(
+                    "messages.dispatch.request",
+                    Utils.address(ctx),
+                    ctx.method(),
+                    ctx.endpointHandlerPath()), DISPATCH_INFO.logRequests == ServerDebugMode.MISSING ? "(MISSING)" : "");
         }
         ctx.result(response);
     }
