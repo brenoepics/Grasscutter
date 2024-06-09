@@ -78,17 +78,17 @@ public class Player implements PlayerHook, FieldFetch {
     @Getter private String signature;
     @Getter private int headImage;
     @Getter private int nameCardId = 210001;
-    @Getter private Position position;
+    @Getter private final Position position;
     @Getter @Setter private Position prevPos;
     @Getter @Setter private Position prevPosForHome;
     @Getter @Setter private int prevScene;
-    @Getter private Position rotation;
+    @Getter private final Position rotation;
     @Getter private PlayerBirthday birthday;
     @Getter private PlayerCodex codex;
     @Getter @Setter private boolean showAvatars;
     @Getter @Setter private List<Integer> showAvatarList;
     @Getter @Setter private List<Integer> showNameCardList;
-    @Getter private Map<Integer, Integer> properties;
+    @Getter private final Map<Integer, Integer> properties;
     @Getter @Setter private int currentRealmId;
     @Getter @Setter private transient boolean isInEditMode;
     @Getter @Setter private int widgetId;
@@ -98,25 +98,25 @@ public class Player implements PlayerHook, FieldFetch {
     @Getter @Setter private boolean inGodMode;
     @Getter @Setter private boolean unlimitedStamina;
 
-    @Getter private Set<Integer> nameCardList;
-    @Getter private Set<Integer> flyCloakList;
-    @Getter private Set<Integer> costumeList;
-    @Getter private Set<Integer> personalLineList;
+    @Getter private final Set<Integer> nameCardList;
+    @Getter private final Set<Integer> flyCloakList;
+    @Getter private final Set<Integer> costumeList;
+    @Getter private final Set<Integer> personalLineList;
     @Getter @Setter private Set<Integer> rewardedLevels;
     @Getter @Setter private Set<Integer> homeRewardedLevels;
     @Getter @Setter private Set<Integer> realmList;
     @Getter @Setter private Set<Integer> seenRealmList;
-    @Getter private Set<Integer> unlockedForgingBlueprints;
-    @Getter private Set<Integer> unlockedCombines;
-    @Getter private Set<Integer> unlockedFurniture;
-    @Getter private Set<Integer> unlockedFurnitureSuite;
-    @Getter private Map<Long, ExpeditionInfo> expeditionInfo;
-    @Getter private Map<Integer, Integer> unlockedRecipies;
-    @Getter private List<ActiveForgeData> activeForges;
-    @Getter private Map<Integer, ActiveCookCompoundData> activeCookCompounds;
-    @Getter private Map<Integer, Integer> questGlobalVariables;
-    @Getter private Map<Integer, Integer> openStates;
-    @Getter private Map<Integer, Set<Integer>> sceneTags;
+    @Getter private final Set<Integer> unlockedForgingBlueprints;
+    @Getter private final Set<Integer> unlockedCombines;
+    @Getter private final Set<Integer> unlockedFurniture;
+    @Getter private final Set<Integer> unlockedFurnitureSuite;
+    @Getter private final Map<Long, ExpeditionInfo> expeditionInfo;
+    @Getter private final Map<Integer, Integer> unlockedRecipies;
+    @Getter private final List<ActiveForgeData> activeForges;
+    @Getter private final Map<Integer, ActiveCookCompoundData> activeCookCompounds;
+    @Getter private final Map<Integer, Integer> questGlobalVariables;
+    @Getter private final Map<Integer, Integer> openStates;
+    @Getter private final Map<Integer, Set<Integer>> sceneTags;
     @Getter @Setter private Map<Integer, Set<Integer>> unlockedSceneAreas;
     @Getter @Setter private Map<Integer, Set<Integer>> unlockedScenePoints;
     @Getter @Setter private List<Integer> chatEmojiIdList;
@@ -133,13 +133,13 @@ public class Player implements PlayerHook, FieldFetch {
     @Transient @Getter private int areaType = 0;
 
     // Player managers go here
-    @Getter private transient AvatarStorage avatars;
-    @Getter private transient Inventory inventory;
-    @Getter private transient FriendsList friendsList;
-    @Getter private transient MailHandler mailHandler;
-    @Getter private transient AbilityManager abilityManager;
-    @Getter private transient QuestManager questManager;
-    @Getter private transient TowerManager towerManager;
+    @Getter private final transient AvatarStorage avatars;
+    @Getter private final transient Inventory inventory;
+    @Getter private final transient FriendsList friendsList;
+    @Getter private final transient MailHandler mailHandler;
+    @Getter private final transient AbilityManager abilityManager;
+    @Getter private final transient QuestManager questManager;
+    @Getter private final transient TowerManager towerManager;
     @Getter private transient SotSManager sotsManager;
     @Getter private transient MapMarksManager mapMarksManager;
     @Getter private transient StaminaManager staminaManager;
@@ -152,10 +152,10 @@ public class Player implements PlayerHook, FieldFetch {
     @Getter private transient CookingManager cookingManager;
     @Getter private transient CookingCompoundManager cookingCompoundManager;
     @Getter private transient ActivityManager activityManager;
-    @Getter private transient PlayerBuffManager buffManager;
+    @Getter private final transient PlayerBuffManager buffManager;
     @Getter private transient PlayerProgressManager progressManager;
     @Getter private transient SatiationManager satiationManager;
-    @Getter private transient TalkManager talkManager;
+    @Getter private final transient TalkManager talkManager;
 
     @Getter @Setter private transient Position lastCheckedPosition = null;
 
@@ -164,9 +164,9 @@ public class Player implements PlayerHook, FieldFetch {
     private PlayerProfile playerProfile;  // Getter has null-check
     @Getter private TeamManager teamManager;
     private TowerData towerData;  // Getter has null-check
-    @Getter private PlayerGachaInfo gachaInfo;
+    @Getter private final PlayerGachaInfo gachaInfo;
     private PlayerCollectionRecords collectionRecordStore;  // Getter has null-check
-    @Getter private ArrayList<ShopLimit> shopLimit;
+    @Getter private final ArrayList<ShopLimit> shopLimit;
 
     @Getter private transient GameHome home;
 
@@ -194,11 +194,11 @@ public class Player implements PlayerHook, FieldFetch {
     @Getter @Setter private int nextResinRefresh;
     @Getter @Setter private int resinBuyCount;
     @Getter @Setter private int lastDailyReset;
-    @Getter private transient MpSettingType mpSetting = MpSettingType.MP_SETTING_TYPE_ENTER_AFTER_APPLY;
+    @Getter private final transient MpSettingType mpSetting = MpSettingType.MP_SETTING_TYPE_ENTER_AFTER_APPLY;
     @Getter private long playerGameTime = 540000; // 9 in-game hours. Present at the start of the game.
 
-    @Getter private PlayerProgress playerProgress;
-    @Getter private Set<Integer> activeQuestTimers;
+    @Getter private final PlayerProgress playerProgress;
+    @Getter private final Set<Integer> activeQuestTimers;
 
     @Getter @Setter private ElementType mainCharacterElement = ElementType.None;
 

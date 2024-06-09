@@ -9,7 +9,7 @@ import java.util.*;
 
 public class Grid {
     public transient RTree<Map.Entry<GridPosition, Set<Integer>>, Geometry> gridOptimized = null;
-    private transient Set<Integer> nearbyGroups = new HashSet<>(100);
+    private final transient Set<Integer> nearbyGroups = new HashSet<>(100);
 
     public Map<GridPosition, Set<Integer>> grid = new LinkedHashMap<>();
 

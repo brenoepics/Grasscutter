@@ -4,10 +4,10 @@ import emu.grasscutter.data.binout.*;
 import lombok.Getter;
 
 public class AbilityModifierController {
-    @Getter private Ability ability;
+    @Getter private final Ability ability;
 
-    @Getter private AbilityData abilityData;
-    @Getter private AbilityModifier modifierData;
+    @Getter private final AbilityData abilityData;
+    @Getter private final AbilityModifier modifierData;
 
     public AbilityModifierController(
             Ability ability, AbilityData abilityData, AbilityModifier modifierData) {

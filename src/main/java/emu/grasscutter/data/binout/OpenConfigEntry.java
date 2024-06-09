@@ -51,8 +51,8 @@ public class OpenConfigEntry {
     }
 
     public static class SkillPointModifier {
-        private int skillId;
-        private int delta;
+        private final int skillId;
+        private final int delta;
 
         public SkillPointModifier(int skillId, int delta) {
             this.skillId = skillId;

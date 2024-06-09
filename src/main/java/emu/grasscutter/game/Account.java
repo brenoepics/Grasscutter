@@ -24,7 +24,7 @@ public class Account {
 
     private String token;
     private String sessionKey; // Session token for dispatch server
-    private List<String> permissions;
+    private final List<String> permissions;
     private Locale locale;
 
     private String banReason;

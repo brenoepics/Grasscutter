@@ -61,13 +61,13 @@ public class Avatar {
 
     private List<Integer> fetters;
 
-    private Map<Integer, Integer> skillLevelMap = new Int2IntArrayMap(7); // Talent levels
+    private final Map<Integer, Integer> skillLevelMap = new Int2IntArrayMap(7); // Talent levels
 
     @Transient @Getter
-    private Map<Integer, Integer> skillExtraChargeMap = new Int2IntArrayMap(2); // Charges
+    private final Map<Integer, Integer> skillExtraChargeMap = new Int2IntArrayMap(2); // Charges
 
     @Transient
-    private Map<Integer, Integer> proudSkillBonusMap =
+    private final Map<Integer, Integer> proudSkillBonusMap =
             new Int2IntArrayMap(2); // Talent bonus levels (from const)
 
     @Getter private int skillDepotId;

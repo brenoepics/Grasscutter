@@ -79,7 +79,7 @@ public class Scene {
     private final List<Runnable> afterLoadedCallbacks = new ArrayList<>();
     private final List<Runnable> afterHostInitCallbacks = new ArrayList<>();
 
-    @Getter private GameEntity sceneEntity;
+    @Getter private final GameEntity sceneEntity;
     @Getter private final ServerTaskScheduler scheduler;
 
     public Scene(World world, SceneData sceneData) {

@@ -55,7 +55,7 @@ public class SceneScriptManager {
     private final Map<Integer, SceneGroupInstance> sceneGroupsInstances;
     private final Map<Integer, SceneGroupInstance> cachedSceneGroupsInstances;
     private ScriptMonsterTideService scriptMonsterTideService;
-    private ScriptMonsterSpawnService scriptMonsterSpawnService;
+    private final ScriptMonsterSpawnService scriptMonsterSpawnService;
     /** blockid - loaded groupSet */
     private final Map<Integer, Set<SceneGroup>> loadedGroupSetPerBlock;
 

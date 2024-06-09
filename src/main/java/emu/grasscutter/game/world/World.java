@@ -48,7 +48,7 @@ public class World implements Iterable<Player> {
     @Getter private final List<Player> players;
     @Getter private final Int2ObjectMap<Scene> scenes;
 
-    @Getter private EntityWorld entity;
+    @Getter private final EntityWorld entity;
     private int nextEntityId = 0;
     private int nextPeerId = 0;
     private int worldLevel;

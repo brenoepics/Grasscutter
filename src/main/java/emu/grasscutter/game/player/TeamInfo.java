@@ -10,7 +10,7 @@ import java.util.*;
 @Entity
 public final class TeamInfo {
     private String name;
-    private List<Integer> avatars;
+    private final List<Integer> avatars;
 
     public TeamInfo() {
         this.name = "";
