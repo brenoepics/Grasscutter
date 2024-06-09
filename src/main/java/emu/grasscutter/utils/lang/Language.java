@@ -264,7 +264,7 @@ public final class Language {
         List<Int2ObjectMap<String>> languageMaps =
                 IntStream.range(0, TextStrings.NUM_LANGUAGES)
                         .mapToObj(mapLanguageMaps::get)
-                        .collect(Collectors.toList());
+                        .toList();
 
         Map<TextStrings, TextStrings> canonicalTextStrings = new HashMap<>();
         return new Int2ObjectOpenHashMap<>(

@@ -26,13 +26,13 @@ public class PacketCreateVehicleRsp extends BasePacket {
                                                 && ((EntityVehicle) entity).getOwner().equals(player))
                         .toList();
 
-        previousVehicles.stream()
+        previousVehicles
                 .forEach(
                         entity -> {
                             List<VehicleMember> vehicleMembers =
                                     ((EntityVehicle) entity).getVehicleMembers().stream().toList();
 
-                            vehicleMembers.stream()
+                            vehicleMembers
                                     .forEach(
                                             vehicleMember -> player
                                                     .getScene()
