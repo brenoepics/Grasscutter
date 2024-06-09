@@ -48,16 +48,14 @@ public class PlayerCodex {
         val itemData = item.getItemData();
         val itemId = item.getItemId();
         switch (itemData.getItemType()) {
-            case ITEM_WEAPON -> {
-                Optional.ofNullable(GameData.getCodexWeaponDataIdMap().get(itemId))
-                        .ifPresent(
-                                codexData -> {
-                                    if (this.getUnlockedWeapon().add(itemId)) {
-                                        this.player.save();
-                                        this.player.sendPacket(new PacketCodexDataUpdateNotify(2, codexData.getId()));
-                                    }
-                                });
-            }
+            case ITEM_WEAPON -> Optional.ofNullable(GameData.getCodexWeaponDataIdMap().get(itemId))
+                    .ifPresent(
+                            codexData -> {
+                                if (this.getUnlockedWeapon().add(itemId)) {
+                                    this.player.save();
+                                    this.player.sendPacket(new PacketCodexDataUpdateNotify(2, codexData.getId()));
+                                }
+                            });
             case ITEM_MATERIAL -> {
                 switch (itemData.getMaterialType()) {
                         // Is this check even needed?
@@ -65,17 +63,15 @@ public class PlayerCodex {
                             MATERIAL_WIDGET,
                             MATERIAL_EXCHANGE,
                             MATERIAL_AVATAR_MATERIAL,
-                            MATERIAL_NOTICE_ADD_HP -> {
-                        Optional.ofNullable(GameData.getCodexMaterialDataIdMap().get(itemId))
-                                .ifPresent(
-                                        codexData -> {
-                                            if (this.getUnlockedMaterial().add(itemId)) {
-                                                this.player.save();
-                                                this.player.sendPacket(
-                                                        new PacketCodexDataUpdateNotify(4, codexData.getId()));
-                                            }
-                                        });
-                    }
+                            MATERIAL_NOTICE_ADD_HP -> Optional.ofNullable(GameData.getCodexMaterialDataIdMap().get(itemId))
+                                    .ifPresent(
+                                            codexData -> {
+                                                if (this.getUnlockedMaterial().add(itemId)) {
+                                                    this.player.save();
+                                                    this.player.sendPacket(
+                                                            new PacketCodexDataUpdateNotify(4, codexData.getId()));
+                                                }
+                                            });
                     default -> {}
                 }
             }

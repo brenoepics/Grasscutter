@@ -106,14 +106,12 @@ public final class SendMailCommand implements CommandHandler {
                                             getConstructionArgs(mailBuilder.constructionStage, sender)));
                         }
                     }
-                    case "help" -> {
-                        CommandHandler.sendMessage(
-                                sender,
-                                translate(
-                                        sender,
-                                        "commands.sendMail.please_use",
-                                        getConstructionArgs(mailBuilder.constructionStage, sender)));
-                    }
+                    case "help" -> CommandHandler.sendMessage(
+                            sender,
+                            translate(
+                                    sender,
+                                    "commands.sendMail.please_use",
+                                    getConstructionArgs(mailBuilder.constructionStage, sender)));
                     default -> {
                         switch (mailBuilder.constructionStage) {
                             case 0 -> {

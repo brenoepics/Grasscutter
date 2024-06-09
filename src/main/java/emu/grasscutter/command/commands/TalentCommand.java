@@ -45,9 +45,7 @@ public final class TalentCommand implements CommandHandler {
 
         String cmdSwitch = args.get(0).toLowerCase();
         switch (cmdSwitch) {
-            default -> {
-                sendUsageMessage(sender);
-            }
+            default -> sendUsageMessage(sender);
             case "set" -> {
                 if (args.size() < 3) {
                     sendUsageMessage(sender);
