@@ -277,9 +277,9 @@ public class GameItem {
                         .setGuid(this.getGuid())
                         .setLevel(this.getLevel())
                         .setGadgetId(this.getItemData().getGadgetId())
-                        .setAbilityInfo(AbilitySyncStateInfo.newBuilder().setIsInited(getAffixes().size() > 0));
+                        .setAbilityInfo(AbilitySyncStateInfo.newBuilder().setIsInited(!getAffixes().isEmpty()));
 
-        if (this.getAffixes() != null && this.getAffixes().size() > 0) {
+        if (this.getAffixes() != null && !this.getAffixes().isEmpty()) {
             for (int affix : this.getAffixes()) {
                 weaponInfo.putAffixMap(affix, this.getRefinement());
             }
@@ -306,7 +306,7 @@ public class GameItem {
                         .setExp(this.getExp())
                         .setPromoteLevel(this.getPromoteLevel());
 
-        if (this.getAffixes() != null && this.getAffixes().size() > 0) {
+        if (this.getAffixes() != null && !this.getAffixes().isEmpty()) {
             for (int affix : this.getAffixes()) {
                 weapon.putAffixMap(affix, this.getRefinement());
             }

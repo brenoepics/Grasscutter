@@ -31,7 +31,7 @@ public class DropSystemLegacy extends BaseGameSystem {
         getDropData().clear();
         try {
             List<DropInfo> banners = DataLoader.loadList("Drop.json", DropInfo.class);
-            if (banners.size() > 0) {
+            if (!banners.isEmpty()) {
                 for (DropInfo di : banners) {
                     getDropData().put(di.getMonsterId(), di.getDropDataList());
                 }

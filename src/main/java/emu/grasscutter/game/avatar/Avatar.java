@@ -636,7 +636,7 @@ public class Avatar {
                 }
             }
             // Add weapon skill from affixes
-            if (weapon.getAffixes() != null && weapon.getAffixes().size() > 0) {
+            if (weapon.getAffixes() != null && !weapon.getAffixes().isEmpty()) {
                 // Weapons usually dont have more than one affix but just in case...
                 for (int af : weapon.getAffixes()) {
                     if (af == 0) {
@@ -740,7 +740,7 @@ public class Avatar {
     }
 
     public void addToExtraAbilityEmbryos(String openConfig, boolean forceAdd) {
-        if (openConfig == null || openConfig.length() == 0) {
+        if (openConfig == null || openConfig.isEmpty()) {
             return;
         }
 
@@ -801,7 +801,7 @@ public class Avatar {
                 .filter(Objects::nonNull)
                 .map(AvatarTalentData::getOpenConfig)
                 .filter(Objects::nonNull)
-                .filter(openConfig -> openConfig.length() > 0)
+                .filter(openConfig -> !openConfig.isEmpty())
                 .map(GameData.getOpenConfigEntries()::get)
                 .filter(Objects::nonNull)
                 .forEach(e -> this.calcConstellation(e, false));
@@ -830,7 +830,7 @@ public class Avatar {
                     case 2 -> (this.skillDepot.getSkills().size() >= 2)
                             ? this.skillDepot.getSkills().get(1)
                             : 0; // E skill
-                    case 1 -> (this.skillDepot.getSkills().size() >= 1)
+                    case 1 -> (!this.skillDepot.getSkills().isEmpty())
                             ? this.skillDepot.getSkills().get(0)
                             : 0; // Normal Attack (Liney)
                     default -> 0;

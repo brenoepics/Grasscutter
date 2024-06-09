@@ -178,7 +178,7 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
                 changedItems.add(result);
             }
         }
-        if (changedItems.size() == 0) {
+        if (changedItems.isEmpty()) {
             return;
         }
         if (reason != null) {

@@ -51,7 +51,7 @@ public final class ClearCommand implements CommandHandler {
         // Extract any tagged int arguments (e.g. "lv90", "x100", "r5")
         parseIntParameters(args, param, intCommandHandlers);
 
-        if (args.size() < 1) {
+        if (args.isEmpty()) {
             sendUsageMessage(sender);
             return;
         }

@@ -83,14 +83,12 @@ public final class AbilityManager extends BasePlayerManager {
         boolean skillInvincibility = modifier.state == AbilityModifier.State.Invincible;
         if (modifier.onAdded != null) {
             skillInvincibility |=
-                    Arrays.stream(modifier.onAdded)
-                                    .filter(
-                                            action ->
-                                                    action.type == AbilityModifierAction.Type.AttachAbilityStateResistance
-                                                            && action.resistanceListID == 11002)
-                                    .toList()
-                                    .size()
-                            > 0;
+                !Arrays.stream(modifier.onAdded)
+                    .filter(
+                        action ->
+                            action.type == AbilityModifierAction.Type.AttachAbilityStateResistance
+                                && action.resistanceListID == 11002)
+                    .toList().isEmpty();
         }
 
         if (this.burstCasterId == entityId

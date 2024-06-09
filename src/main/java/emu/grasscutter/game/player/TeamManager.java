@@ -98,7 +98,7 @@ public final class TeamManager extends BasePlayerDataManager {
         }
 
         // same as avatar ability hash (add frm levelEntityConfig data)
-        if (this.getTeamAbilityEmbryos().size() > 0) {
+        if (!this.getTeamAbilityEmbryos().isEmpty()) {
             for (String skill : this.getTeamAbilityEmbryos()) {
                 AbilityEmbryoOuterClass.AbilityEmbryo emb =
                         AbilityEmbryoOuterClass.AbilityEmbryo.newBuilder()
@@ -495,7 +495,7 @@ public final class TeamManager extends BasePlayerDataManager {
 
     public void setupMpTeam(List<Long> list) {
         // Sanity checks
-        if (list.size() == 0
+        if (list.isEmpty()
                 || list.size() > this.getMaxTeamSize()
                 || !this.getPlayer().isInMultiplayer()) {
             return;
@@ -696,7 +696,7 @@ public final class TeamManager extends BasePlayerDataManager {
                         .map(
                                 list -> {
                                     // Sanity checks
-                                    if (list.size() == 0 || list.size() > this.getMaxTeamSize()) {
+                                    if (list.isEmpty() || list.size() > this.getMaxTeamSize()) {
                                         return null;
                                     }
 
@@ -744,7 +744,7 @@ public final class TeamManager extends BasePlayerDataManager {
 
         // Get team
         TeamInfo teamInfo = this.getTeams().get(teamId);
-        if (teamInfo == null || teamInfo.getAvatars().size() == 0) {
+        if (teamInfo == null || teamInfo.getAvatars().isEmpty()) {
             return;
         }
 
@@ -1054,7 +1054,7 @@ public final class TeamManager extends BasePlayerDataManager {
             var avatarIds = scene.getSceneData().getSpecifiedAvatarList();
             var specifiedAvatarList = this.getActiveTeam();
 
-            if (avatarIds != null && avatarIds.size() > 0) {
+            if (avatarIds != null && !avatarIds.isEmpty()) {
                 // certain scene could limit specific avatars' entry
                 specifiedAvatarList.clear();
                 for (int id : avatarIds) {

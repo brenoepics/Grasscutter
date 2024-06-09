@@ -882,12 +882,12 @@ public class Scene {
             }
         }
 
-        if (toAdd.size() > 0) {
+        if (!toAdd.isEmpty()) {
             toAdd.forEach(this::addEntityDirectly);
             this.broadcastPacket(new PacketSceneEntityAppearNotify(toAdd, VisionType.VISION_TYPE_BORN));
         }
 
-        if (toRemove.size() > 0) {
+        if (!toRemove.isEmpty()) {
             toRemove.forEach(this::removeEntityDirectly);
             this.broadcastPacket(
                     new PacketSceneEntityDisappearNotify(toRemove, VisionType.VISION_TYPE_REMOVE));
@@ -1110,7 +1110,7 @@ public class Scene {
                         .filter(e -> e != null && (e.getBlockId() == block.id && e.getGroupId() == group_id))
                         .toList();
 
-        if (toRemove.size() > 0) {
+        if (!toRemove.isEmpty()) {
             toRemove.forEach(this::removeEntityDirectly);
             this.broadcastPacket(
                     new PacketSceneEntityDisappearNotify(toRemove, VisionType.VISION_TYPE_REMOVE));
@@ -1253,7 +1253,7 @@ public class Scene {
                     sceneNpcBornEntries.add(i);
                 });
 
-        if (sceneNpcBornEntries.size() > 0) {
+        if (!sceneNpcBornEntries.isEmpty()) {
             this.broadcastPacket(new PacketGroupSuiteNotify(sceneNpcBornEntries));
             Grasscutter.getLogger().trace("Loaded Npc Group Suite {}", sceneNpcBornEntries);
         }

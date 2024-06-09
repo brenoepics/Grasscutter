@@ -482,7 +482,7 @@ public class InventorySystem extends BaseGameSystem {
 
         if (weapon.getRefinement() >= 4
                 || weapon.getAffixes() == null
-                || weapon.getAffixes().size() == 0) {
+                || weapon.getAffixes().isEmpty()) {
             return;
         }
 
@@ -818,7 +818,7 @@ public class InventorySystem extends BaseGameSystem {
         }
 
         // Give back items
-        if (returnMaterialMap.size() > 0) {
+        if (!returnMaterialMap.isEmpty()) {
             returnMaterialMap.forEach((id, count) -> inventory.addItem(new GameItem(id, count)));
         }
 

@@ -413,7 +413,7 @@ public final class ResourceLoader {
         GameData.getAbilityHashes().put(Utils.abilityHash(data.abilityName), data.abilityName);
 
         var modifiers = data.modifiers;
-        if (modifiers == null || modifiers.size() == 0) return;
+        if (modifiers == null || modifiers.isEmpty()) return;
 
         var name = data.abilityName;
         var modifierEntry = new AbilityModifierEntry(name);
@@ -647,7 +647,7 @@ public final class ResourceLoader {
                             path -> {
                                 try {
                                     val data = JsonUtils.loadToClass(path, SceneNpcBornData.class);
-                                    if (data.getBornPosList() == null || data.getBornPosList().size() == 0) {
+                                    if (data.getBornPosList() == null || data.getBornPosList().isEmpty()) {
                                         return;
                                     }
 

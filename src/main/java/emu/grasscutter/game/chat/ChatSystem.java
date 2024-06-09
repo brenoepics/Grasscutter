@@ -88,7 +88,7 @@ public class ChatSystem implements ChatSystemHandler {
      ********************/
     public void sendPrivateMessageFromServer(int targetUid, String message) {
         // Sanity checks.
-        if (message == null || message.length() == 0) {
+        if (message == null || message.isEmpty()) {
             return;
         }
 
@@ -123,7 +123,7 @@ public class ChatSystem implements ChatSystemHandler {
 
     public void sendPrivateMessage(Player player, int targetUid, String message) {
         // Sanity checks.
-        if (message == null || message.length() == 0) {
+        if (message == null || message.isEmpty()) {
             return;
         }
 
@@ -146,7 +146,7 @@ public class ChatSystem implements ChatSystemHandler {
 
         // Fetch the new message.
         message = event.getMessage();
-        if (message == null || message.length() == 0) return;
+        if (message == null || message.isEmpty()) return;
 
         // Create chat packet.
         var packet = new PacketPrivateChatNotify(player.getUid(), targetUid, message);
@@ -200,7 +200,7 @@ public class ChatSystem implements ChatSystemHandler {
 
     public void sendTeamMessage(Player player, int channel, String message) {
         // Sanity checks
-        if (message == null || message.length() == 0) {
+        if (message == null || message.isEmpty()) {
             return;
         }
 
@@ -216,7 +216,7 @@ public class ChatSystem implements ChatSystemHandler {
 
         // Fetch the new message.
         message = event.getMessage();
-        if (message == null || message.length() == 0) return;
+        if (message == null || message.isEmpty()) return;
         // Fetch the new channel.
         channel = event.getChannel();
         if (channel == -1) return;
@@ -254,7 +254,7 @@ public class ChatSystem implements ChatSystemHandler {
                     joinOptions.welcomeEmotes[Utils.randomRange(0, joinOptions.welcomeEmotes.length - 1)]);
         }
 
-        if (joinOptions.welcomeMessage != null && joinOptions.welcomeMessage.length() > 0) {
+        if (joinOptions.welcomeMessage != null && !joinOptions.welcomeMessage.isEmpty()) {
             this.sendPrivateMessageFromServer(player.getUid(), joinOptions.welcomeMessage);
         }
     }

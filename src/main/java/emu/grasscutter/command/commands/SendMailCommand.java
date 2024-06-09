@@ -69,7 +69,7 @@ public final class SendMailCommand implements CommandHandler {
         } else {
             MailBuilder mailBuilder = mailBeingConstructed.get(senderId);
 
-            if (args.size() >= 1) {
+            if (!args.isEmpty()) {
                 switch (args.get(0).toLowerCase()) {
                     case "stop" -> {
                         mailBeingConstructed.remove(senderId);

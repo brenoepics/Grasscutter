@@ -50,7 +50,7 @@ public class GameDepot {
             list.add(data);
         }
         // Let the server owner know if theyre missing weights
-        if (relicMainPropDepot.size() == 0 || relicAffixDepot.size() == 0) {
+        if (relicMainPropDepot.isEmpty() || relicAffixDepot.isEmpty()) {
             Grasscutter.getLogger()
                     .error(
                             "Relic properties are missing weights! Please check your ReliquaryMainPropExcelConfigData or ReliquaryAffixExcelConfigData files in your ExcelBinOutput folder.");

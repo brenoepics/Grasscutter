@@ -13,7 +13,7 @@ public class HandlerQueryPathReq extends PacketHandler {
         var req = QueryPathReq.parseFrom(payload);
 
         /** It is not the actual work */
-        if (req.getDestinationPosList().size() > 0) {
+        if (!req.getDestinationPosList().isEmpty()) {
             session.send(new PacketQueryPathRsp(req));
         }
     }

@@ -363,7 +363,7 @@ public class EntityAvatar extends GameEntity {
             }
         }
         // Add equip abilities
-        if (this.getAvatar().getExtraAbilityEmbryos().size() > 0) {
+        if (!this.getAvatar().getExtraAbilityEmbryos().isEmpty()) {
             for (String skill : this.getAvatar().getExtraAbilityEmbryos()) {
                 AbilityEmbryo emb =
                         AbilityEmbryo.newBuilder()

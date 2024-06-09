@@ -678,7 +678,7 @@ public class SceneScriptManager {
     }
 
     public void checkRegions() {
-        if (this.regions.size() == 0) {
+        if (this.regions.isEmpty()) {
             return;
         }
 

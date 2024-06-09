@@ -48,7 +48,7 @@ public class ShopSystem extends BaseGameSystem {
         getShopData().clear();
         try {
             List<ShopTable> banners = DataLoader.loadList("Shop.json", ShopTable.class);
-            if (banners.size() > 0) {
+            if (!banners.isEmpty()) {
                 for (ShopTable shopTable : banners) {
                     shopTable.getItems().forEach(ShopInfo::removeVirtualCosts);
                     getShopData().put(shopTable.getShopId(), shopTable.getItems());

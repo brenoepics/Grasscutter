@@ -296,7 +296,7 @@ public class World implements Iterable<Player> {
         scene.removePlayer(player);
 
         // Info packet for other players
-        if (this.getPlayers().size() > 0) {
+        if (!this.getPlayers().isEmpty()) {
             this.updatePlayerInfos(player);
         }
 

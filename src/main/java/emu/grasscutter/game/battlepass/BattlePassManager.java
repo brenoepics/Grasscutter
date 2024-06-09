@@ -176,7 +176,7 @@ public class BattlePassManager extends BasePlayerDataManager {
     private void takeRewardsFromSelectChest(
             ItemData rewardItemData, int index, ItemParamData entry, List<GameItem> rewardItems) {
         // Sanity checks.
-        if (rewardItemData.getItemUse().size() < 1) {
+        if (rewardItemData.getItemUse().isEmpty()) {
             return;
         }
 

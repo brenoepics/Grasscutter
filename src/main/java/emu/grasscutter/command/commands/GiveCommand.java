@@ -279,7 +279,7 @@ public final class GiveCommand implements CommandHandler {
         parseIntParameters(args, param, intCommandHandlers);
 
         // At this point, first remaining argument MUST be itemId/avatarId
-        if (args.size() < 1) {
+        if (args.isEmpty()) {
             sendUsageMessage(sender); // Reachable if someone does `/give lv90` or similar
             throw new IllegalArgumentException();
         }
@@ -362,7 +362,7 @@ public final class GiveCommand implements CommandHandler {
 
     @Override
     public void execute(Player sender, Player targetPlayer, List<String> args) {
-        if (args.size() < 1) { // *No args*
+        if (args.isEmpty()) { // *No args*
             sendUsageMessage(sender);
             return;
         }

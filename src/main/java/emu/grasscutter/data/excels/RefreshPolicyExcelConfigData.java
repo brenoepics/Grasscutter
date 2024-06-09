@@ -72,7 +72,7 @@ public class RefreshPolicyExcelConfigData extends GameResource {
                         return (params.get(upper_bound_idx - 1) - params.get(0));
                     }
                 case REFRESH_DAYBEGIN_INTERVAL:
-                    if (params.size() == 0) return -1;
+                    if (params.isEmpty()) return -1;
                     return params.get(0) * 60 * 60 * 24;
             }
         } catch (Exception e) {

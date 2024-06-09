@@ -25,11 +25,11 @@ public class OpenConfigEntry {
             }
         }
 
-        if (abilityList.size() > 0) {
+        if (!abilityList.isEmpty()) {
             this.addAbilities = abilityList.toArray(new String[0]);
         }
 
-        if (modList.size() > 0) {
+        if (!modList.isEmpty()) {
             this.skillPointModifiers = modList.toArray(new SkillPointModifier[0]);
         }
     }

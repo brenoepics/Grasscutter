@@ -30,6 +30,6 @@ public class EnvAnimalGatherConfigData extends GameResource {
     }
 
     public ItemParamData getGatherItem() {
-        return gatherItemId.size() > 0 ? gatherItemId.get(0) : null;
+        return !gatherItemId.isEmpty() ? gatherItemId.get(0) : null;
     }
 }
