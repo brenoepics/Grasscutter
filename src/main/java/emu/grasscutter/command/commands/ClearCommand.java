@@ -93,9 +93,10 @@ public final class ClearCommand implements CommandHandler {
         }
     }
 
+    @Setter
     private static class ClearItemParameters {
-        @Setter public int lvl = 1;
-        @Setter public int refinement = 1;
-        @Setter public int rank = 4;
+        public int lvl = 1;
+        public int refinement = 1;
+        public int rank = 4;
     }
 }

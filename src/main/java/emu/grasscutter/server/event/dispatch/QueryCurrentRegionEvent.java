@@ -2,7 +2,9 @@ package emu.grasscutter.server.event.dispatch;
 
 import emu.grasscutter.server.event.types.ServerEvent;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 public final class QueryCurrentRegionEvent extends ServerEvent {
     private String regionInfo;
@@ -13,7 +15,4 @@ public final class QueryCurrentRegionEvent extends ServerEvent {
         this.regionInfo = regionInfo;
     }
 
-    public void setRegionInfo(String regionInfo) {
-        this.regionInfo = regionInfo;
-    }
 }

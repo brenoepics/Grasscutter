@@ -9,24 +9,30 @@ import java.util.*;
 import java.util.stream.Stream;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.bson.Document;
 
 @Entity(value = "accounts", useDiscriminator = false)
 public class Account {
+    @Setter
     @Getter
     @Id private String id;
 
+    @Setter
     @Getter
     @Indexed(options = @IndexOptions(unique = true))
     @Collation(locale = "simple", caseLevel = true)
     private String username;
 
+    @Setter
     @Getter
     private String password; // Unused for now
 
     private int reservedPlayerId;
+    @Setter
     private String email;
 
+    @Setter
     @Getter
     private String token;
     @Getter
@@ -37,13 +43,17 @@ public class Account {
      */
     @Getter
     private final List<String> permissions;
+    @Setter
     @Getter
     private Locale locale;
 
+    @Setter
     @Getter
     private String banReason;
+    @Setter
     @Getter
     private int banEndTime;
+    @Setter
     @Getter
     private int banStartTime;
     private boolean isBanned;
@@ -80,22 +90,6 @@ public class Account {
         return (wildcardParts.length == permissionParts.length);
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public int getReservedPlayerUid() {
         return this.reservedPlayerId;
     }
@@ -113,30 +107,10 @@ public class Account {
         }
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String generateSessionKey() {
         this.sessionKey = Utils.bytesToHex(Crypto.createSessionKey(32));
         this.save();
         return this.sessionKey;
-    }
-
-    public void setLocale(Locale locale) {
-        this.locale = locale;
-    }
-
-    public void setBanReason(String banReason) {
-        this.banReason = banReason;
-    }
-
-    public void setBanEndTime(int banEndTime) {
-        this.banEndTime = banEndTime;
-    }
-
-    public void setBanStartTime(int banStartTime) {
-        this.banStartTime = banStartTime;
     }
 
     public boolean isBanned() {

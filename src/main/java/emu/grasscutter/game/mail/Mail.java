@@ -13,12 +13,14 @@ import java.time.Instant;
 import java.util.*;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 
 @Entity(value = "mail", useDiscriminator = false)
 public final class Mail {
     @Getter
     @Id private ObjectId id;
+    @Setter
     @Getter
     @Indexed private int ownerUid;
     public final MailContent mailContent;
@@ -61,10 +63,6 @@ public final class Mail {
         this.isRead = false;
         this.isAttachmentGot = false;
         this.stateValue = state; // Different mailboxes, 1 = Default, 3 = Gift-box.
-    }
-
-    public void setOwnerUid(int ownerUid) {
-        this.ownerUid = ownerUid;
     }
 
     public MailDataOuterClass.MailData toProto(Player player) {

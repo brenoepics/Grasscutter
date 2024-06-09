@@ -1,19 +1,14 @@
 package emu.grasscutter.game.dungeons;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Setter
 @Getter
 public class DungeonDrop {
     private int dungeonId;
     private List<DungeonDropEntry> drops;
 
-    public void setDungeonId(int dungeonId) {
-        this.dungeonId = dungeonId;
-    }
-
-    public void setDrops(List<DungeonDropEntry> drops) {
-        this.drops = drops;
-    }
 }

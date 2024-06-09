@@ -1,9 +1,11 @@
 package emu.grasscutter.game.tower;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 
+@Setter
 @Getter
 public class TowerScheduleConfig {
     private int scheduleId;
@@ -11,15 +13,4 @@ public class TowerScheduleConfig {
     private Date scheduleStartTime;
     private Date nextScheduleChangeTime;
 
-    public void setScheduleId(int scheduleId) {
-        this.scheduleId = scheduleId;
-    }
-
-    public void setScheduleStartTime(Date scheduleStartTime) {
-        this.scheduleStartTime = scheduleStartTime;
-    }
-
-    public void setNextScheduleChangeTime(Date nextScheduleChangeTime) {
-        this.nextScheduleChangeTime = nextScheduleChangeTime;
-    }
 }

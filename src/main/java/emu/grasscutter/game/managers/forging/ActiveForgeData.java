@@ -2,22 +2,29 @@ package emu.grasscutter.game.managers.forging;
 
 import dev.morphia.annotations.Entity;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 public class ActiveForgeData {
+    @Setter
     @Getter
     private int forgeId;
+    @Setter
     @Getter
     private int avatarId;
+    @Setter
     @Getter
     private int count;
 
+    @Setter
     @Getter
     private int startTime;
+    @Setter
     @Getter
     private int forgeTime;
 
     private int lastUnfinishedCount;
+    @Setter
     @Getter
     private boolean changed;
 
@@ -40,30 +47,6 @@ public class ActiveForgeData {
 
     public int getTotalFinishTimestamp() {
         return this.startTime + this.forgeTime * this.count;
-    }
-
-    public void setForgeId(int value) {
-        this.forgeId = value;
-    }
-
-    public void setAvatarId(int value) {
-        this.avatarId = value;
-    }
-
-    public void setCount(int value) {
-        this.count = value;
-    }
-
-    public void setStartTime(int value) {
-        this.startTime = value;
-    }
-
-    public void setForgeTime(int value) {
-        this.forgeTime = value;
-    }
-
-    public void setChanged(boolean value) {
-        this.changed = value;
     }
 
     public boolean updateChanged(int currentTime) {

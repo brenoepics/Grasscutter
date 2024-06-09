@@ -4,8 +4,10 @@ import dev.morphia.annotations.*;
 import java.util.Date;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 
+@Setter
 @Getter
 @Entity(value = "gachas", useDiscriminator = false)
 public class GachaRecord {
@@ -24,26 +26,6 @@ public class GachaRecord {
         this.itemID = itemId;
         this.ownerId = ownerId;
         this.gachaType = gachaType;
-    }
-
-    public void setOwnerId(int ownerId) {
-        this.ownerId = ownerId;
-    }
-
-    public void setGachaType(int type) {
-        this.gachaType = type;
-    }
-
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
-    }
-
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
     }
 
     public String toString() {

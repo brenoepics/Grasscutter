@@ -5,7 +5,9 @@ import emu.grasscutter.game.player.Player;
 import emu.grasscutter.server.event.Cancellable;
 import emu.grasscutter.server.event.types.PlayerEvent;
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 public final class PlayerReceiveMailEvent extends PlayerEvent implements Cancellable {
     private Mail message;
@@ -16,7 +18,4 @@ public final class PlayerReceiveMailEvent extends PlayerEvent implements Cancell
         this.message = message;
     }
 
-    public void setMessage(Mail message) {
-        this.message = message;
-    }
 }

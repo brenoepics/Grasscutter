@@ -4,11 +4,13 @@ import emu.grasscutter.game.player.Player;
 import emu.grasscutter.server.event.Cancellable;
 import emu.grasscutter.server.event.types.ServerEvent;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.annotation.Nullable;
 
 public final class ReceiveCommandFeedbackEvent extends ServerEvent implements Cancellable {
     @Nullable private final Player player;
+    @Setter
     @Getter
     private String message;
 
@@ -16,10 +18,6 @@ public final class ReceiveCommandFeedbackEvent extends ServerEvent implements Ca
         super(Type.GAME);
 
         this.player = player;
-        this.message = message;
-    }
-
-    public void setMessage(String message) {
         this.message = message;
     }
 

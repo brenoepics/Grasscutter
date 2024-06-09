@@ -2,9 +2,11 @@ package emu.grasscutter.game.tower;
 
 import dev.morphia.annotations.Entity;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.*;
 
+@Setter
 @Getter
 @Entity
 public class TowerLevelRecord {
@@ -36,15 +38,4 @@ public class TowerLevelRecord {
         return passedLevelMap.values().stream().mapToInt(Integer::intValue).sum();
     }
 
-    public void setFloorId(int floorId) {
-        this.floorId = floorId;
-    }
-
-    public void setPassedLevelMap(Map<Integer, Integer> passedLevelMap) {
-        this.passedLevelMap = passedLevelMap;
-    }
-
-    public void setFloorStarRewardProgress(int floorStarRewardProgress) {
-        this.floorStarRewardProgress = floorStarRewardProgress;
-    }
 }

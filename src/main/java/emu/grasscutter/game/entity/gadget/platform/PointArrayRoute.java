@@ -6,11 +6,12 @@ import emu.grasscutter.scripts.data.SceneGadget;
 import lombok.*;
 
 /** TODO implement point array routes, read from missing resources */
+@Setter
 @Getter
 public class PointArrayRoute extends BaseRoute {
 
-    @Setter int currentPoint;
-    @Setter int pointArrayId;
+    int currentPoint;
+    int pointArrayId;
 
     public PointArrayRoute(SceneGadget gadget) {
         super(gadget);

@@ -5,9 +5,11 @@ import emu.grasscutter.game.dungeons.enums.DungeonPassConditionType;
 import emu.grasscutter.game.world.Scene;
 import emu.grasscutter.scripts.data.SceneGroup;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
+@Setter
 @Getter
 public final class DungeonChallenge extends WorldChallenge {
 
@@ -22,10 +24,6 @@ public final class DungeonChallenge extends WorldChallenge {
                             int timeLimit, int goal,
                             List<ChallengeTrigger> challengeTriggers) {
         super(scene, group, challengeId, challengeIndex, paramList, timeLimit, goal, challengeTriggers);
-    }
-
-    public void setStage(boolean stage) {
-        this.stage = stage;
     }
 
     @Override

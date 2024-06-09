@@ -5,9 +5,11 @@ import ch.qos.logback.core.AppenderBase;
 import ch.qos.logback.core.encoder.Encoder;
 import emu.grasscutter.server.event.internal.ServerLogEvent;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.nio.charset.StandardCharsets;
 
+@Setter
 @Getter
 public final class ServerLogEventAppender<E> extends AppenderBase<E> {
     private Encoder<E> encoder;
@@ -20,7 +22,4 @@ public final class ServerLogEventAppender<E> extends AppenderBase<E> {
         sle.call();
     }
 
-    public void setEncoder(Encoder<E> encoder) {
-        this.encoder = encoder;
-    }
 }

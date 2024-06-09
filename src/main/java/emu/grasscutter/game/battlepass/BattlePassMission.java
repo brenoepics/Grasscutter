@@ -5,13 +5,16 @@ import emu.grasscutter.data.GameData;
 import emu.grasscutter.data.excels.BattlePassMissionData;
 import emu.grasscutter.game.props.BattlePassMissionStatus;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 public class BattlePassMission {
     @Getter
     private int id;
+    @Setter
     @Getter
     private int progress;
+    @Setter
     private BattlePassMissionStatus status;
 
     @Transient private BattlePassMissionData data;
@@ -30,10 +33,6 @@ public class BattlePassMission {
         return this.data;
     }
 
-    public void setProgress(int value) {
-        this.progress = value;
-    }
-
     public void addProgress(int addProgress, int maxProgress) {
         this.progress = Math.min(addProgress + this.progress, maxProgress);
     }
@@ -41,10 +40,6 @@ public class BattlePassMission {
     public BattlePassMissionStatus getStatus() {
         if (status == null) status = BattlePassMissionStatus.MISSION_STATUS_UNFINISHED;
         return status;
-    }
-
-    public void setStatus(BattlePassMissionStatus status) {
-        this.status = status;
     }
 
     public boolean isFinshed() {

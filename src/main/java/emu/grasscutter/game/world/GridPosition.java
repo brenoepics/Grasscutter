@@ -6,17 +6,18 @@ import java.io.*;
 import java.util.List;
 import lombok.*;
 
+@Setter
 @Getter
 @Entity
 public final class GridPosition implements Serializable {
     @Serial
     private static final long serialVersionUID = -2001232300615923575L;
 
-    @Setter private int x;
+    private int x;
 
-    @Setter private int z;
+    private int z;
 
-    @Setter private int width;
+    private int width;
 
     public GridPosition() {}
 

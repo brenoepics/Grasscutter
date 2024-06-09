@@ -37,6 +37,7 @@ public final class SceneGroup {
     public SceneReplaceable is_replaceable;
 
     /* These are not script variables. */
+    @Setter
     @Getter
     private transient boolean loaded;
     @Getter
@@ -49,10 +50,6 @@ public final class SceneGroup {
         var group = new SceneGroup();
         group.id = groupId;
         return group;
-    }
-
-    public void setLoaded(boolean loaded) {
-        this.loaded = loaded;
     }
 
     public int getBusinessType() {

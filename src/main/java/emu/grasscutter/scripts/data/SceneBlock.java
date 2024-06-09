@@ -22,12 +22,9 @@ public class SceneBlock {
     public Map<Integer, SceneGroup> groups;
     public RTree<SceneGroup, Geometry> sceneGroupIndex;
 
+    @Setter
     @Getter
     private transient boolean loaded; // Not an actual variable in the scripts either
-
-    public void setLoaded(boolean loaded) {
-        this.loaded = loaded;
-    }
 
     public boolean contains(Position pos) {
         int range = Grasscutter.getConfig().server.game.loadEntitiesForPlayerRange;

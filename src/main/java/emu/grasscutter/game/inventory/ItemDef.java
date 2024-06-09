@@ -1,7 +1,9 @@
 package emu.grasscutter.game.inventory;
 
 import lombok.Getter;
+import lombok.Setter;
 
+@Setter
 @Getter
 public class ItemDef {
     private int itemId;
@@ -12,11 +14,4 @@ public class ItemDef {
         this.count = count;
     }
 
-    public void setItemId(int itemId) {
-        this.itemId = itemId;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
 }
