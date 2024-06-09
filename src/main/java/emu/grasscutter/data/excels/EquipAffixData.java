@@ -2,6 +2,8 @@ package emu.grasscutter.data.excels;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.FightPropData;
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 @ResourceType(name = "EquipAffixExcelConfigData.json")
@@ -9,10 +11,15 @@ public class EquipAffixData extends GameResource {
 
     private int affixId;
     private int id;
+    @Getter
     private int level;
+    @Getter
     private long nameTextMapHash;
+    @Getter
     private String openConfig;
+    @Getter
     private FightPropData[] addProps;
+    @Getter
     private float[] paramList;
 
     @Override
@@ -22,26 +29,6 @@ public class EquipAffixData extends GameResource {
 
     public int getMainId() {
         return id;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public long getNameTextMapHash() {
-        return nameTextMapHash;
-    }
-
-    public String getOpenConfig() {
-        return openConfig;
-    }
-
-    public FightPropData[] getAddProps() {
-        return addProps;
-    }
-
-    public float[] getParamList() {
-        return paramList;
     }
 
     @Override

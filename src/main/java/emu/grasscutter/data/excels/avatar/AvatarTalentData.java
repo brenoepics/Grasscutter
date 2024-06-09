@@ -3,18 +3,27 @@ package emu.grasscutter.data.excels.avatar;
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.ResourceType.LoadPriority;
 import emu.grasscutter.data.common.FightPropData;
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 @ResourceType(name = "AvatarTalentExcelConfigData.json", loadPriority = LoadPriority.HIGHEST)
 public class AvatarTalentData extends GameResource {
     private int talentId;
     private int prevTalent;
+    @Getter
     private long nameTextMapHash;
+    @Getter
     private String icon;
+    @Getter
     private int mainCostItemId;
+    @Getter
     private int mainCostItemCount;
+    @Getter
     private String openConfig;
+    @Getter
     private FightPropData[] addProps;
+    @Getter
     private float[] paramList;
 
     @Override
@@ -24,34 +33,6 @@ public class AvatarTalentData extends GameResource {
 
     public int PrevTalent() {
         return prevTalent;
-    }
-
-    public long getNameTextMapHash() {
-        return nameTextMapHash;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public int getMainCostItemId() {
-        return mainCostItemId;
-    }
-
-    public int getMainCostItemCount() {
-        return mainCostItemCount;
-    }
-
-    public String getOpenConfig() {
-        return openConfig;
-    }
-
-    public FightPropData[] getAddProps() {
-        return addProps;
-    }
-
-    public float[] getParamList() {
-        return paramList;
     }
 
     @Override

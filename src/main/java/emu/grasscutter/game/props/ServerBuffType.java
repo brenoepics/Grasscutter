@@ -1,8 +1,11 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.stream.Stream;
 
+@Getter
 public enum ServerBuffType {
     SERVER_BUFF_NONE(0),
     SERVER_BUFF_AVATAR(1),
@@ -27,7 +30,4 @@ public enum ServerBuffType {
         return map.getOrDefault(value, SERVER_BUFF_NONE);
     }
 
-    public int getValue() {
-        return value;
-    }
 }

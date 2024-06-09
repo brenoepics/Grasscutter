@@ -2,12 +2,15 @@ package emu.grasscutter.data.excels.reliquary;
 
 import com.google.gson.annotations.SerializedName;
 import emu.grasscutter.data.*;
+import lombok.Getter;
 
 @ResourceType(name = "ReliquarySetExcelConfigData.json")
 public class ReliquarySetData extends GameResource {
     private int setId;
+    @Getter
     private int[] setNeedNum;
 
+    @Getter
     @SerializedName(
             value = "equipAffixId",
             alternate = {"EquipAffixId"})
@@ -16,14 +19,6 @@ public class ReliquarySetData extends GameResource {
     @Override
     public int getId() {
         return setId;
-    }
-
-    public int[] getSetNeedNum() {
-        return setNeedNum;
-    }
-
-    public int getEquipAffixId() {
-        return equipAffixId;
     }
 
     @Override

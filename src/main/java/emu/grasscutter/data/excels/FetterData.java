@@ -3,6 +3,8 @@ package emu.grasscutter.data.excels;
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.ResourceType.LoadPriority;
 import emu.grasscutter.data.common.OpenCondData;
+import lombok.Getter;
+
 import java.util.List;
 
 @ResourceType(
@@ -15,6 +17,7 @@ import java.util.List;
         },
         loadPriority = LoadPriority.HIGHEST)
 public class FetterData extends GameResource {
+    @Getter
     private int avatarId;
     private int fetterId;
     private List<OpenCondData> openCond;
@@ -22,10 +25,6 @@ public class FetterData extends GameResource {
     @Override
     public int getId() {
         return fetterId;
-    }
-
-    public int getAvatarId() {
-        return avatarId;
     }
 
     public List<OpenCondData> getOpenConds() {

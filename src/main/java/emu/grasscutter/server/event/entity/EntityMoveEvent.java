@@ -4,7 +4,9 @@ import emu.grasscutter.game.entity.GameEntity;
 import emu.grasscutter.game.world.Position;
 import emu.grasscutter.net.proto.MotionStateOuterClass.MotionState;
 import emu.grasscutter.server.event.types.EntityEvent;
+import lombok.Getter;
 
+@Getter
 public final class EntityMoveEvent extends EntityEvent {
     private final Position position, rotation;
     private final MotionState motionState;
@@ -18,15 +20,4 @@ public final class EntityMoveEvent extends EntityEvent {
         this.motionState = motionState;
     }
 
-    public Position getPosition() {
-        return this.position;
-    }
-
-    public Position getRotation() {
-        return this.rotation;
-    }
-
-    public MotionState getMotionState() {
-        return this.motionState;
-    }
 }

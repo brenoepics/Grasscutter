@@ -1,9 +1,11 @@
 package emu.grasscutter.data.common;
 
 import emu.grasscutter.game.props.ItemUseOp;
+import lombok.Getter;
 
 public class ItemUseData {
     private ItemUseOp useOp;
+    @Getter
     private String[] useParam;
 
     public ItemUseOp getUseOp() {
@@ -13,7 +15,4 @@ public class ItemUseData {
         return useOp;
     }
 
-    public String[] getUseParam() {
-        return useParam;
-    }
 }

@@ -1,9 +1,12 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.*;
 import java.util.stream.Stream;
 
+@Getter
 public enum LifeState {
     LIFE_NONE(0),
     LIFE_ALIVE(1),
@@ -36,7 +39,4 @@ public enum LifeState {
         return stringMap.getOrDefault(name, LIFE_NONE);
     }
 
-    public int getValue() {
-        return value;
-    }
 }

@@ -5,8 +5,11 @@ import static emu.grasscutter.config.Configuration.GAME_OPTIONS;
 import dev.morphia.annotations.Entity;
 import emu.grasscutter.game.avatar.Avatar;
 import emu.grasscutter.net.proto.AvatarTeamOuterClass.AvatarTeam;
+import lombok.Getter;
+
 import java.util.*;
 
+@Getter
 @Entity
 public final class TeamInfo {
     private String name;
@@ -22,16 +25,8 @@ public final class TeamInfo {
         this.avatars = avatars;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Integer> getAvatars() {
-        return avatars;
     }
 
     public int size() {

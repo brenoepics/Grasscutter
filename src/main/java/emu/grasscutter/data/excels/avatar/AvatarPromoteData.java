@@ -2,17 +2,25 @@ package emu.grasscutter.data.excels.avatar;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.*;
+import lombok.Getter;
+
 import java.util.ArrayList;
 
 @ResourceType(name = "AvatarPromoteExcelConfigData.json")
 public class AvatarPromoteData extends GameResource {
 
+    @Getter
     private int avatarPromoteId;
+    @Getter
     private int promoteLevel;
     private int scoinCost;
+    @Getter
     private ItemParamData[] costItems;
+    @Getter
     private int unlockMaxLevel;
+    @Getter
     private FightPropData[] addProps;
+    @Getter
     private int requiredPlayerLevel;
 
     @Override
@@ -20,32 +28,8 @@ public class AvatarPromoteData extends GameResource {
         return (avatarPromoteId << 8) + promoteLevel;
     }
 
-    public int getAvatarPromoteId() {
-        return avatarPromoteId;
-    }
-
-    public int getPromoteLevel() {
-        return promoteLevel;
-    }
-
-    public ItemParamData[] getCostItems() {
-        return costItems;
-    }
-
     public int getCoinCost() {
         return scoinCost;
-    }
-
-    public FightPropData[] getAddProps() {
-        return addProps;
-    }
-
-    public int getUnlockMaxLevel() {
-        return unlockMaxLevel;
-    }
-
-    public int getRequiredPlayerLevel() {
-        return requiredPlayerLevel;
     }
 
     @Override

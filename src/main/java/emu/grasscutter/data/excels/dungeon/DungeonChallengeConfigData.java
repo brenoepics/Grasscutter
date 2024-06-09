@@ -9,6 +9,7 @@ import lombok.Getter;
 @Getter
 @ResourceType(name = "DungeonChallengeConfigData.json")
 public class DungeonChallengeConfigData extends GameResource {
+    @Getter
     private int id;
     private ChallengeType challengeType;
     private boolean noSuccessHint;
@@ -42,11 +43,7 @@ public class DungeonChallengeConfigData extends GameResource {
             alternate = {"NJBJIKAIENN"})
     private AllowAnimationType animationOnSubFail;
 
-    public int getId() {
-        return id;
-    }
-
-    public enum InterruptButtonType {
+		public enum InterruptButtonType {
         INTERRUPT_BUTTON_TYPE_NONE,
         INTERRUPT_BUTTON_TYPE_HOST,
         INTERRUPT_BUTTON_TYPE_ALL

@@ -19,6 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.*;
 import java.util.stream.*;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
 public final class Language {
     private static final Map<String, Language> cachedLanguages = new ConcurrentHashMap<>();
@@ -28,6 +29,11 @@ public final class Language {
     private static boolean scannedTextmaps =
             false; // Ensure that we don't infinitely rescan on cache misses that don't exist
     private static Int2ObjectMap<TextStrings> textMapStrings;
+    /**
+     * -- GETTER --
+     * get language code
+     */
+    @Getter
     private final String languageCode;
     private final Map<String, String> translations = new ConcurrentHashMap<>();
 
@@ -404,11 +410,6 @@ public final class Language {
         } catch (IOException e) {
             Grasscutter.getLogger().error("Failed to save TextMap cache: ", e);
         }
-    }
-
-    /** get language code */
-    public String getLanguageCode() {
-        return languageCode;
     }
 
     /**

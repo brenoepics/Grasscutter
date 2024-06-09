@@ -9,11 +9,14 @@ import emu.grasscutter.data.excels.ShopGoodsData;
 import emu.grasscutter.server.game.*;
 import emu.grasscutter.utils.Utils;
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.*;
 
 public class ShopSystem extends BaseGameSystem {
     private static final int REFRESH_HOUR = 4; // In GMT+8 server
     private static final String TIME_ZONE = "Asia/Shanghai"; // GMT+8 Timezone
+    @Getter
     private final Int2ObjectMap<List<ShopInfo>> shopData;
     private final Int2ObjectMap<List<ItemParamData>> shopChestData;
 
@@ -34,10 +37,6 @@ public class ShopSystem extends BaseGameSystem {
                     REFRESH_HOUR, TIME_ZONE, shopInfo.getShopRefreshParam());
             default -> 0;
         };
-    }
-
-    public Int2ObjectMap<List<ShopInfo>> getShopData() {
-        return shopData;
     }
 
     public List<ItemParamData> getShopChestData(int chestId) {

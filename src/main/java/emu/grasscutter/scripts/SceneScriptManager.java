@@ -30,11 +30,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 import javax.annotation.*;
 import kotlin.Pair;
+import lombok.Getter;
 import lombok.val;
 import org.luaj.vm2.*;
 import org.luaj.vm2.lib.jse.CoerceJavaToLua;
 
 public class SceneScriptManager {
+    @Getter
     private final Scene scene;
     private final Map<String, Integer> variables;
     private SceneMeta meta;
@@ -54,9 +56,12 @@ public class SceneScriptManager {
     private final Map<Integer, SceneGroup> sceneGroups;
     private final Map<Integer, SceneGroupInstance> sceneGroupsInstances;
     private final Map<Integer, SceneGroupInstance> cachedSceneGroupsInstances;
+    @Getter
     private ScriptMonsterTideService scriptMonsterTideService;
+    @Getter
     private final ScriptMonsterSpawnService scriptMonsterSpawnService;
     /** blockid - loaded groupSet */
+    @Getter
     private final Map<Integer, Set<SceneGroup>> loadedGroupSetPerBlock;
 
     private static final Int2ObjectMap<List<Grid>> groupGridsCache = new Int2ObjectOpenHashMap<>();
@@ -98,10 +103,6 @@ public class SceneScriptManager {
 
         // Create
         new Thread(this::init).start();
-    }
-
-    public Scene getScene() {
-        return scene;
     }
 
     public SceneConfig getConfig() {
@@ -383,10 +384,6 @@ public class SceneScriptManager {
                 .filter(r -> r.getMetaRegion().equals(region))
                 .findFirst()
                 .ifPresent(entityRegion -> this.regions.remove(entityRegion.getId()));
-    }
-
-    public Map<Integer, Set<SceneGroup>> getLoadedGroupSetPerBlock() {
-        return loadedGroupSetPerBlock;
     }
 
     // TODO optimize
@@ -1007,14 +1004,6 @@ public class SceneScriptManager {
                     "[LUA] call trigger failed in group {} with {},{}", group.id, name, args, error);
             return LuaValue.valueOf(-1);
         }
-    }
-
-    public ScriptMonsterTideService getScriptMonsterTideService() {
-        return scriptMonsterTideService;
-    }
-
-    public ScriptMonsterSpawnService getScriptMonsterSpawnService() {
-        return scriptMonsterSpawnService;
     }
 
     public EntityGadget createGadget(int groupId, int blockId, SceneGadget g) {

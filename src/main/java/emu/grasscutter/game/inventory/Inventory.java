@@ -21,10 +21,13 @@ import it.unimi.dsi.fastutil.ints.*;
 import it.unimi.dsi.fastutil.longs.*;
 import java.util.*;
 import javax.annotation.Nullable;
+
+import lombok.Getter;
 import lombok.val;
 
 public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
     private final Long2ObjectMap<GameItem> store;
+    @Getter
     private final Int2ObjectMap<InventoryTab> inventoryTypes;
 
     public Inventory(Player player) {
@@ -48,10 +51,6 @@ public class Inventory extends BasePlayerManager implements Iterable<GameItem> {
 
     public Long2ObjectMap<GameItem> getItems() {
         return store;
-    }
-
-    public Int2ObjectMap<InventoryTab> getInventoryTypes() {
-        return inventoryTypes;
     }
 
     public InventoryTab getInventoryTab(ItemType type) {

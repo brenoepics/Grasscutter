@@ -16,8 +16,10 @@ import emu.grasscutter.scripts.constants.EventType;
 import emu.grasscutter.scripts.data.ScriptArgs;
 import emu.grasscutter.server.packet.send.PacketGadgetInteractRsp;
 import emu.grasscutter.utils.Utils;
+import lombok.Getter;
 
 public final class GadgetGatherObject extends GadgetContent {
+    @Getter
     private int itemId;
     private boolean isForbidGuest;
 
@@ -37,10 +39,6 @@ public final class GadgetGatherObject extends GadgetContent {
         } else {
             Grasscutter.getLogger().trace("invalid gather object: {}", gadget.getConfigId());
         }
-    }
-
-    public int getItemId() {
-        return this.itemId;
     }
 
     public boolean isForbidGuest() {

@@ -2,13 +2,17 @@ package emu.grasscutter.data.excels;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.ItemParamData;
+import lombok.Getter;
+
 import java.util.List;
 
 @ResourceType(
         name = "EnvAnimalGatherExcelConfigData.json",
         loadPriority = ResourceType.LoadPriority.LOW)
 public class EnvAnimalGatherConfigData extends GameResource {
+    @Getter
     private int animalId;
+    @Getter
     private String entityType;
     private List<ItemParamData> gatherItemId;
     private String excludeWeathers;
@@ -19,14 +23,6 @@ public class EnvAnimalGatherConfigData extends GameResource {
     @Override
     public int getId() {
         return animalId;
-    }
-
-    public int getAnimalId() {
-        return animalId;
-    }
-
-    public String getEntityType() {
-        return entityType;
     }
 
     public ItemParamData getGatherItem() {

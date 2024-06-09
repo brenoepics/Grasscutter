@@ -16,9 +16,10 @@ import java.util.*;
 import java.util.stream.Stream;
 import lombok.*;
 
+@Getter
 @GameActivity(ActivityType.NEW_ACTIVITY_TRIAL_AVATAR)
 public class TrialAvatarActivityHandler extends ActivityHandler {
-    @Getter @Setter private int selectedTrialAvatarIndex;
+    @Setter private int selectedTrialAvatarIndex;
 
     @Override
     public void onInitPlayerActivityData(PlayerActivityData playerActivityData) {

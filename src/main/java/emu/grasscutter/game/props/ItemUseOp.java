@@ -1,8 +1,11 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.stream.Stream;
 
+@Getter
 public enum ItemUseOp {
     ITEM_USE_NONE(0),
     ITEM_USE_ACCEPT_QUEST(1),
@@ -65,7 +68,4 @@ public enum ItemUseOp {
         return map.getOrDefault(value, ITEM_USE_NONE);
     }
 
-    public int getValue() {
-        return value;
-    }
 }

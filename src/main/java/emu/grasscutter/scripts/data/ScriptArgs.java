@@ -1,11 +1,15 @@
 package emu.grasscutter.scripts.data;
 
+import lombok.Getter;
 import lombok.ToString;
 
 @ToString
 public class ScriptArgs {
+    @Getter
     public int param1;
+    @Getter
     public int param2;
+    @Getter
     public int param3;
     public int source_eid; // Source entity
     public int target_eid;
@@ -28,26 +32,14 @@ public class ScriptArgs {
         this.param2 = param2;
     }
 
-    public int getParam1() {
-        return param1;
-    }
-
     public ScriptArgs setParam1(int param1) {
         this.param1 = param1;
         return this;
     }
 
-    public int getParam2() {
-        return param2;
-    }
-
     public ScriptArgs setParam2(int param2) {
         this.param2 = param2;
         return this;
-    }
-
-    public int getParam3() {
-        return param3;
     }
 
     public ScriptArgs setParam3(int param3) {

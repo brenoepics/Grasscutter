@@ -2,22 +2,34 @@ package emu.grasscutter.data.excels;
 
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.ItemParamData;
+import lombok.Getter;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 @ResourceType(name = "CombineExcelConfigData.json")
 public class CombineData extends GameResource {
 
+    @Getter
     private int combineId;
+    @Getter
     private int playerLevel;
     private boolean isDefaultShow;
+    @Getter
     private int combineType;
+    @Getter
     private int subCombineType;
+    @Getter
     private int resultItemId;
+    @Getter
     private int resultItemCount;
+    @Getter
     private int scoinCost;
+    @Getter
     private List<ItemParamData> randomItems;
+    @Getter
     private List<ItemParamData> materialItems;
+    @Getter
     private String recipeType;
 
     @Override
@@ -35,47 +47,8 @@ public class CombineData extends GameResource {
                 materialItems.stream().filter(item -> item.getId() > 0).collect(Collectors.toList());
     }
 
-    public int getCombineId() {
-        return combineId;
-    }
-
-    public int getPlayerLevel() {
-        return playerLevel;
-    }
-
     public boolean isDefaultShow() {
         return isDefaultShow;
     }
 
-    public int getCombineType() {
-        return combineType;
-    }
-
-    public int getSubCombineType() {
-        return subCombineType;
-    }
-
-    public int getResultItemId() {
-        return resultItemId;
-    }
-
-    public int getResultItemCount() {
-        return resultItemCount;
-    }
-
-    public int getScoinCost() {
-        return scoinCost;
-    }
-
-    public List<ItemParamData> getRandomItems() {
-        return randomItems;
-    }
-
-    public List<ItemParamData> getMaterialItems() {
-        return materialItems;
-    }
-
-    public String getRecipeType() {
-        return recipeType;
-    }
 }

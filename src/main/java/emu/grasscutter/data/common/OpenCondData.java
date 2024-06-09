@@ -1,21 +1,16 @@
 package emu.grasscutter.data.common;
 
+import lombok.Getter;
+
 import java.util.List;
 
+@Getter
 public class OpenCondData {
     private String condType;
     private List<Integer> paramList;
 
-    public String getCondType() {
-        return condType;
-    }
-
     public void setCondType(String cType) {
         condType = cType;
-    }
-
-    public List<Integer> getParamList() {
-        return paramList;
     }
 
     public void setParamList(List<Integer> pList) {

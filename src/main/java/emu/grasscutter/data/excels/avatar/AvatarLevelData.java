@@ -1,7 +1,9 @@
 package emu.grasscutter.data.excels.avatar;
 
 import emu.grasscutter.data.*;
+import lombok.Getter;
 
+@Getter
 @ResourceType(name = "AvatarLevelExcelConfigData.json")
 public class AvatarLevelData extends GameResource {
     private int level;
@@ -12,11 +14,4 @@ public class AvatarLevelData extends GameResource {
         return this.level;
     }
 
-    public int getLevel() {
-        return level;
-    }
-
-    public int getExp() {
-        return exp;
-    }
 }

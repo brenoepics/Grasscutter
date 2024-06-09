@@ -7,17 +7,22 @@ import emu.grasscutter.net.proto.FriendBriefOuterClass.FriendBrief;
 import emu.grasscutter.net.proto.FriendOnlineStateOuterClass.FriendOnlineState;
 import emu.grasscutter.net.proto.PlatformTypeOuterClass;
 import emu.grasscutter.net.proto.ProfilePictureOuterClass.ProfilePicture;
+import lombok.Getter;
 import org.bson.types.ObjectId;
 
 @Entity(value = "friendships", useDiscriminator = false)
 public class Friendship {
     @Id private ObjectId id;
 
+    @Getter
     @Transient private Player owner;
 
+    @Getter
     @Indexed private int ownerId;
+    @Getter
     @Indexed private int friendId;
     private boolean isFriend;
+    @Getter
     private int askerId;
 
     private PlayerProfile profile;
@@ -33,10 +38,6 @@ public class Friendship {
         this.askerId = asker.getUid();
     }
 
-    public Player getOwner() {
-        return owner;
-    }
-
     public void setOwner(Player owner) {
         this.owner = owner;
     }
@@ -47,18 +48,6 @@ public class Friendship {
 
     public void setIsFriend(boolean b) {
         this.isFriend = b;
-    }
-
-    public int getOwnerId() {
-        return ownerId;
-    }
-
-    public int getFriendId() {
-        return friendId;
-    }
-
-    public int getAskerId() {
-        return askerId;
     }
 
     public void setAskerId(int askerId) {

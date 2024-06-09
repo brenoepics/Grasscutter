@@ -1,13 +1,17 @@
 package emu.grasscutter.data.excels;
 
 import emu.grasscutter.data.*;
+import lombok.Getter;
 
 @ResourceType(name = "GatherExcelConfigData.json")
 public class GatherData extends GameResource {
     private int pointType;
     private int id;
+    @Getter
     private int gadgetId;
+    @Getter
     private int itemId;
+    @Getter
     private int cd; // Probably hours
     private boolean isForbidGuest;
     private boolean initDisableInteract;
@@ -19,18 +23,6 @@ public class GatherData extends GameResource {
 
     public int getGatherId() {
         return id;
-    }
-
-    public int getGadgetId() {
-        return gadgetId;
-    }
-
-    public int getItemId() {
-        return itemId;
-    }
-
-    public int getCd() {
-        return cd;
     }
 
     public boolean isForbidGuest() {

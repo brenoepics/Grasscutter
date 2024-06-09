@@ -1,8 +1,11 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.stream.Stream;
 
+@Getter
 public enum ItemUseTarget {
     ITEM_USE_TARGET_NONE(0),
     ITEM_USE_TARGET_CUR_AVATAR(1),
@@ -29,7 +32,4 @@ public enum ItemUseTarget {
         return map.getOrDefault(value, ITEM_USE_TARGET_NONE);
     }
 
-    public int getValue() {
-        return value;
-    }
 }

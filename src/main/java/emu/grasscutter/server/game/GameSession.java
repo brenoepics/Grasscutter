@@ -17,6 +17,7 @@ import java.nio.file.Path;
 import lombok.*;
 
 public class GameSession implements GameSessionManager.KcpChannel {
+    @Getter
     private final GameServer server;
     private GameSessionManager.KcpTunnel tunnel;
 
@@ -42,10 +43,6 @@ public class GameSession implements GameSessionManager.KcpChannel {
             this.encryptKey = new byte[4096];
             this.encryptSeed = Crypto.generateEncryptKeyAndSeed(this.encryptKey);
         }
-    }
-
-    public GameServer getServer() {
-        return server;
     }
 
     public InetSocketAddress getAddress() {

@@ -1645,10 +1645,10 @@ public class Player implements PlayerHook, FieldFetch {
                 .formatted(this.id, this.nickname, this.account);
     }
 
+    @Getter
     public enum SceneLoadState {
         NONE(0), LOADING(1), INIT(2), LOADED(3);
 
-        @Getter
         private final int value;
 
         SceneLoadState(int value) {

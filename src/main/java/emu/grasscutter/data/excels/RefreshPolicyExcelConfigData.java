@@ -6,11 +6,12 @@ import emu.grasscutter.game.world.World;
 import java.util.*;
 import lombok.Getter;
 
+@Getter
 @ResourceType(name = "RefreshPolicyExcelConfigData.json")
 public class RefreshPolicyExcelConfigData extends GameResource {
-    @Getter private int id;
-    @Getter private RefreshType type;
-    @Getter private String time;
+    private int id;
+    private RefreshType type;
+    private String time;
 
     private static int upperBound(List<Integer> list, int low, int high, int value) {
         while (low < high) {

@@ -1,5 +1,8 @@
 package emu.grasscutter.data.binout;
 
+import lombok.Getter;
+
+@Getter
 public class AbilityEmbryoEntry {
     private String name;
     private String[] abilities;
@@ -11,11 +14,4 @@ public class AbilityEmbryoEntry {
         this.abilities = array;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String[] getAbilities() {
-        return abilities;
-    }
 }

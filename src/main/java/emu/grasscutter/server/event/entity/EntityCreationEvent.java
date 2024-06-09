@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 import lombok.*;
 
 /** Invoked when an entity is created. */
+@Getter
 @AllArgsConstructor
 public final class EntityCreationEvent extends Event {
     /**
@@ -21,9 +22,9 @@ public final class EntityCreationEvent extends Event {
         return type.cast(event.getEntity());
     }
 
-    @Getter @Setter private Class<? extends GameEntity> entityType;
-    @Getter @Setter private Class<?>[] constructorArgTypes;
-    @Getter @Setter private Object[] constructorArgs;
+    @Setter private Class<? extends GameEntity> entityType;
+    @Setter private Class<?>[] constructorArgTypes;
+    @Setter private Object[] constructorArgs;
 
     /**
      * Creates a new entity. Returns null if the entity could not be created.

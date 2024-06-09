@@ -3,7 +3,9 @@ package emu.grasscutter.server.event.game;
 import emu.grasscutter.server.event.Cancellable;
 import emu.grasscutter.server.event.types.ServerEvent;
 import emu.grasscutter.server.game.GameSession;
+import lombok.Getter;
 
+@Getter
 public final class ReceivePacketEvent extends ServerEvent implements Cancellable {
     private final GameSession gameSession;
     private final int packetId;
@@ -15,18 +17,6 @@ public final class ReceivePacketEvent extends ServerEvent implements Cancellable
         this.gameSession = gameSession;
         this.packetId = packetId;
         this.packetData = packetData;
-    }
-
-    public GameSession getGameSession() {
-        return this.gameSession;
-    }
-
-    public int getPacketId() {
-        return this.packetId;
-    }
-
-    public byte[] getPacketData() {
-        return this.packetData;
     }
 
     public void setPacketData(byte[] packetData) {

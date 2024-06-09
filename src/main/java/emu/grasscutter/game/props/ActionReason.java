@@ -1,9 +1,12 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.*;
 import java.util.stream.Stream;
 
+@Getter
 public enum ActionReason {
     None(0),
     QuestItem(1),
@@ -206,7 +209,4 @@ public enum ActionReason {
         return stringMap.getOrDefault(name, None);
     }
 
-    public int getValue() {
-        return value;
-    }
 }

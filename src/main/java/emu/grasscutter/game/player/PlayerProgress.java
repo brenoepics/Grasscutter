@@ -83,11 +83,12 @@ public class PlayerProgress {
         return questProgressCountMap.merge(progressId, 0, Integer::min);
     }
 
+    @Getter
     @Entity
     @NoArgsConstructor
     public static class ItemEntry {
-        @Getter private int itemId;
-        @Getter @Setter private int obtainedCount;
+        private int itemId;
+        @Setter private int obtainedCount;
 
         ItemEntry(int itemId) {
             this.itemId = itemId;

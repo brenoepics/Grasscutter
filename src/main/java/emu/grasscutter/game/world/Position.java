@@ -12,6 +12,7 @@ import java.util.List;
 import lombok.*;
 import lombok.experimental.Accessors;
 
+@Getter
 @Entity
 @Accessors(chain = true)
 public class Position implements Serializable {
@@ -24,21 +25,18 @@ public class Position implements Serializable {
     @SerializedName(
             value = "x",
             alternate = {"_x", "X"})
-    @Getter
     @Setter
     private float x;
 
     @SerializedName(
             value = "y",
             alternate = {"_y", "Y"})
-    @Getter
     @Setter
     private float y;
 
     @SerializedName(
             value = "z",
             alternate = {"_z", "Z"})
-    @Getter
     @Setter
     private float z;
 

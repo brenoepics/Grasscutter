@@ -8,12 +8,16 @@ import emu.grasscutter.game.props.FightProperty;
 import emu.grasscutter.game.world.*;
 import emu.grasscutter.scripts.data.*;
 import emu.grasscutter.utils.Utils;
+import lombok.Getter;
+
 import java.util.*;
 
 public final class BlossomActivity {
 
     private final SceneGroup tempSceneGroup;
+    @Getter
     private final WorldChallenge challenge;
+    @Getter
     private final EntityGadget gadget;
     private EntityGadget chest;
     private int step;
@@ -47,10 +51,6 @@ public final class BlossomActivity {
                         challengeTriggers);
         challengeTriggers.add(new KillMonsterCountTrigger());
         // this.challengeTriggers.add(new InTimeTrigger());
-    }
-
-    public WorldChallenge getChallenge() {
-        return this.challenge;
     }
 
     public void setMonsters(List<EntityMonster> monsters) {
@@ -117,10 +117,6 @@ public final class BlossomActivity {
                 }
             }
         }
-    }
-
-    public EntityGadget getGadget() {
-        return gadget;
     }
 
     public EntityGadget getChest() {

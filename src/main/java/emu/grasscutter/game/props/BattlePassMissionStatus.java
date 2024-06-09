@@ -1,7 +1,9 @@
 package emu.grasscutter.game.props;
 
 import emu.grasscutter.net.proto.BattlePassMissionOuterClass.BattlePassMission.MissionStatus;
+import lombok.Getter;
 
+@Getter
 public enum BattlePassMissionStatus {
     MISSION_STATUS_INVALID(0, MissionStatus.MISSION_STATUS_INVALID),
     MISSION_STATUS_UNFINISHED(1, MissionStatus.MISSION_STATUS_UNFINISHED),
@@ -16,11 +18,4 @@ public enum BattlePassMissionStatus {
         this.missionStatus = missionStatus; // In case proto enum values change later
     }
 
-    public int getValue() {
-        return value;
-    }
-
-    public MissionStatus getMissionStatus() {
-        return missionStatus;
-    }
 }

@@ -6,12 +6,13 @@ import emu.grasscutter.net.proto.PlatformInfoOuterClass.PlatformInfo;
 import emu.grasscutter.scripts.data.SceneGadget;
 import lombok.*;
 
+@Getter
 public abstract class BaseRoute {
-    @Getter @Setter private boolean isStarted;
-    @Getter @Setter private boolean isActive;
-    @Getter @Setter private Position startRot;
-    @Getter @Setter private int startSceneTime;
-    @Getter @Setter private int stopSceneTime;
+    @Setter private boolean isStarted;
+    @Setter private boolean isActive;
+    @Setter private Position startRot;
+    @Setter private int startSceneTime;
+    @Setter private int stopSceneTime;
 
     BaseRoute(Position startRot, boolean isStarted, boolean isActive) {
         this.startRot = startRot;

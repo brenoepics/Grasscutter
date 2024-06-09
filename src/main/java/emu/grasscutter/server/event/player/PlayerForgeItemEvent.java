@@ -5,8 +5,9 @@ import emu.grasscutter.game.player.Player;
 import emu.grasscutter.server.event.types.PlayerEvent;
 import lombok.*;
 
+@Getter
 public final class PlayerForgeItemEvent extends PlayerEvent {
-    @Getter @Setter private GameItem itemForged;
+    @Setter private GameItem itemForged;
 
     public PlayerForgeItemEvent(Player player, GameItem itemForged) {
         super(player);

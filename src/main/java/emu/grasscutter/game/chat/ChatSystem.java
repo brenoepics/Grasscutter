@@ -10,6 +10,8 @@ import emu.grasscutter.server.event.player.PlayerChatEvent;
 import emu.grasscutter.server.game.GameServer;
 import emu.grasscutter.server.packet.send.*;
 import emu.grasscutter.utils.Utils;
+import lombok.Getter;
+
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -22,14 +24,11 @@ public class ChatSystem implements ChatSystemHandler {
     //    user id -> chat partner id -> [messages]
     private final Map<Integer, Map<Integer, List<ChatInfo>>> history = new HashMap<>();
 
+    @Getter
     private final GameServer server;
 
     public ChatSystem(GameServer server) {
         this.server = server;
-    }
-
-    public GameServer getServer() {
-        return server;
     }
 
     private boolean tryInvokeCommand(Player sender, Player target, String rawMessage) {

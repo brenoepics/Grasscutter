@@ -22,11 +22,8 @@ public class SceneBlock {
     public Map<Integer, SceneGroup> groups;
     public RTree<SceneGroup, Geometry> sceneGroupIndex;
 
+    @Getter
     private transient boolean loaded; // Not an actual variable in the scripts either
-
-    public boolean isLoaded() {
-        return this.loaded;
-    }
 
     public void setLoaded(boolean loaded) {
         this.loaded = loaded;

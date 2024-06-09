@@ -5,8 +5,11 @@ import emu.grasscutter.database.DatabaseHelper;
 import emu.grasscutter.game.player.*;
 import emu.grasscutter.server.event.player.PlayerReceiveMailEvent;
 import emu.grasscutter.server.packet.send.*;
+import lombok.Getter;
+
 import java.util.*;
 
+@Getter
 public class MailHandler extends BasePlayerManager {
     private final List<Mail> mail;
 
@@ -14,10 +17,6 @@ public class MailHandler extends BasePlayerManager {
         super(player);
 
         this.mail = new ArrayList<>();
-    }
-
-    public List<Mail> getMail() {
-        return mail;
     }
 
     // ---------------------MAIL------------------------

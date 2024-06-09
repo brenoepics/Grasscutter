@@ -4,26 +4,40 @@ import com.google.gson.annotations.SerializedName;
 import emu.grasscutter.data.*;
 import emu.grasscutter.data.common.ItemParamData;
 import emu.grasscutter.game.shop.ShopInfo;
+import lombok.Getter;
+
 import java.util.List;
 
 @ResourceType(name = "ShopGoodsExcelConfigData.json")
 public class ShopGoodsData extends GameResource {
+    @Getter
     private int goodsId;
+    @Getter
     private int shopType;
+    @Getter
     private int itemId;
 
+    @Getter
     private int itemCount;
 
+    @Getter
     private int costScoin;
+    @Getter
     private int costHcoin;
+    @Getter
     private int costMcoin;
 
+    @Getter
     private List<ItemParamData> costItems;
+    @Getter
     private int minPlayerLevel;
+    @Getter
     private int maxPlayerLevel;
 
+    @Getter
     private int buyLimit;
 
+    @Getter
     @SerializedName(
             value = "subTabId",
             alternate = {"secondarySheetId"})
@@ -32,6 +46,7 @@ public class ShopGoodsData extends GameResource {
     private String refreshType;
     private transient ShopInfo.ShopRefreshType refreshTypeEnum;
 
+    @Getter
     private int refreshParam;
 
     @Override
@@ -53,59 +68,8 @@ public class ShopGoodsData extends GameResource {
         return getGoodsId();
     }
 
-    public int getGoodsId() {
-        return goodsId;
-    }
-
-    public int getShopType() {
-        return shopType;
-    }
-
-    public int getItemId() {
-        return itemId;
-    }
-
-    public int getItemCount() {
-        return itemCount;
-    }
-
-    public int getCostScoin() {
-        return costScoin;
-    }
-
-    public int getCostHcoin() {
-        return costHcoin;
-    }
-
-    public int getCostMcoin() {
-        return costMcoin;
-    }
-
-    public List<ItemParamData> getCostItems() {
-        return costItems;
-    }
-
-    public int getMinPlayerLevel() {
-        return minPlayerLevel;
-    }
-
-    public int getMaxPlayerLevel() {
-        return maxPlayerLevel;
-    }
-
-    public int getBuyLimit() {
-        return buyLimit;
-    }
-
-    public int getSubTabId() {
-        return subTabId;
-    }
-
     public ShopInfo.ShopRefreshType getRefreshType() {
         return refreshTypeEnum;
     }
 
-    public int getRefreshParam() {
-        return refreshParam;
-    }
 }

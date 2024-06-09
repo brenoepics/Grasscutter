@@ -3,11 +3,12 @@ package emu.grasscutter.game.ability;
 import emu.grasscutter.data.binout.*;
 import lombok.Getter;
 
+@Getter
 public class AbilityModifierController {
-    @Getter private final Ability ability;
+    private final Ability ability;
 
-    @Getter private final AbilityData abilityData;
-    @Getter private final AbilityModifier modifierData;
+    private final AbilityData abilityData;
+    private final AbilityModifier modifierData;
 
     public AbilityModifierController(
             Ability ability, AbilityData abilityData, AbilityModifier modifierData) {

@@ -11,8 +11,11 @@ import emu.grasscutter.game.world.*;
 import emu.grasscutter.server.game.*;
 import emu.grasscutter.utils.Utils;
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.List;
 
+@Getter
 @SuppressWarnings("deprecation")
 public class DropSystemLegacy extends BaseGameSystem {
     private final Int2ObjectMap<List<DropData>> dropData;
@@ -21,10 +24,6 @@ public class DropSystemLegacy extends BaseGameSystem {
         super(server);
         this.dropData = new Int2ObjectOpenHashMap<>();
         this.load();
-    }
-
-    public Int2ObjectMap<List<DropData>> getDropData() {
-        return dropData;
     }
 
     public synchronized void load() {

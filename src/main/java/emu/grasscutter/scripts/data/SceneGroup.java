@@ -37,8 +37,11 @@ public final class SceneGroup {
     public SceneReplaceable is_replaceable;
 
     /* These are not script variables. */
+    @Getter
     private transient boolean loaded;
+    @Getter
     private transient CompiledScript script;
+    @Getter
     private transient Bindings bindings;
     public String overrideScriptPath;
 
@@ -46,10 +49,6 @@ public final class SceneGroup {
         var group = new SceneGroup();
         group.id = groupId;
         return group;
-    }
-
-    public boolean isLoaded() {
-        return this.loaded;
     }
 
     public void setLoaded(boolean loaded) {
@@ -64,19 +63,11 @@ public final class SceneGroup {
         return this.garbages == null ? null : this.garbages.gadgets;
     }
 
-    public CompiledScript getScript() {
-        return this.script;
-    }
-
     public SceneSuite getSuiteByIndex(int index) {
         if (index < 1 || index > suites.size()) {
             return null;
         }
         return this.suites.get(index - 1);
-    }
-
-    public Bindings getBindings() {
-        return this.bindings;
     }
 
     public synchronized SceneGroup load(int sceneId) {

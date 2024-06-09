@@ -11,11 +11,15 @@ import emu.grasscutter.net.proto.MailCollectStateOuterClass.MailCollectState;
 import emu.grasscutter.net.proto.MailTextContentOuterClass.MailTextContent;
 import java.time.Instant;
 import java.util.*;
+
+import lombok.Getter;
 import org.bson.types.ObjectId;
 
 @Entity(value = "mail", useDiscriminator = false)
 public final class Mail {
+    @Getter
     @Id private ObjectId id;
+    @Getter
     @Indexed private int ownerUid;
     public final MailContent mailContent;
     public final List<MailItem> itemList;
@@ -57,14 +61,6 @@ public final class Mail {
         this.isRead = false;
         this.isAttachmentGot = false;
         this.stateValue = state; // Different mailboxes, 1 = Default, 3 = Gift-box.
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public int getOwnerUid() {
-        return ownerUid;
     }
 
     public void setOwnerUid(int ownerUid) {

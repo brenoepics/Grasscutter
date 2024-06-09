@@ -7,28 +7,44 @@ import emu.grasscutter.database.DatabaseHelper;
 import emu.grasscutter.utils.*;
 import java.util.*;
 import java.util.stream.Stream;
+
+import lombok.Getter;
 import org.bson.Document;
 
 @Entity(value = "accounts", useDiscriminator = false)
 public class Account {
+    @Getter
     @Id private String id;
 
+    @Getter
     @Indexed(options = @IndexOptions(unique = true))
     @Collation(locale = "simple", caseLevel = true)
     private String username;
 
+    @Getter
     private String password; // Unused for now
 
     private int reservedPlayerId;
     private String email;
 
+    @Getter
     private String token;
+    @Getter
     private String sessionKey; // Session token for dispatch server
+    /**
+     * -- GETTER --
+     * The collection of a player's permissions.
+     */
+    @Getter
     private final List<String> permissions;
+    @Getter
     private Locale locale;
 
+    @Getter
     private String banReason;
+    @Getter
     private int banEndTime;
+    @Getter
     private int banStartTime;
     private boolean isBanned;
 
@@ -64,32 +80,16 @@ public class Account {
         return (wildcardParts.length == permissionParts.length);
     }
 
-    public String getId() {
-        return id;
-    }
-
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getToken() {
-        return token;
     }
 
     public void setToken(String token) {
@@ -117,42 +117,22 @@ public class Account {
         this.email = email;
     }
 
-    public String getSessionKey() {
-        return this.sessionKey;
-    }
-
     public String generateSessionKey() {
         this.sessionKey = Utils.bytesToHex(Crypto.createSessionKey(32));
         this.save();
         return this.sessionKey;
     }
 
-    public Locale getLocale() {
-        return locale;
-    }
-
     public void setLocale(Locale locale) {
         this.locale = locale;
-    }
-
-    public String getBanReason() {
-        return banReason;
     }
 
     public void setBanReason(String banReason) {
         this.banReason = banReason;
     }
 
-    public int getBanEndTime() {
-        return banEndTime;
-    }
-
     public void setBanEndTime(int banEndTime) {
         this.banEndTime = banEndTime;
-    }
-
-    public int getBanStartTime() {
-        return banStartTime;
     }
 
     public void setBanStartTime(int banStartTime) {
@@ -173,11 +153,6 @@ public class Account {
 
     public void setBanned(boolean isBanned) {
         this.isBanned = isBanned;
-    }
-
-    /** The collection of a player's permissions. */
-    public List<String> getPermissions() {
-        return this.permissions;
     }
 
     public boolean addPermission(String permission) {

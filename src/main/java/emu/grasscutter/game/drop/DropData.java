@@ -1,5 +1,8 @@
 package emu.grasscutter.game.drop;
 
+import lombok.Getter;
+
+@Getter
 @Deprecated
 public class DropData {
     private int minWeight;
@@ -10,40 +13,12 @@ public class DropData {
     private boolean share = false;
     private boolean give = false;
 
-    public boolean isGive() {
-        return give;
-    }
-
     public void setGive(boolean give) {
         this.give = give;
     }
 
-    public int getItemId() {
-        return itemId;
-    }
-
     public void setItemId(int itemId) {
         this.itemId = itemId;
-    }
-
-    public int getMinCount() {
-        return minCount;
-    }
-
-    public int getMaxCount() {
-        return maxCount;
-    }
-
-    public int getMinWeight() {
-        return minWeight;
-    }
-
-    public int getMaxWeight() {
-        return maxWeight;
-    }
-
-    public boolean isShare() {
-        return share;
     }
 
     public void setIsShare(boolean share) {

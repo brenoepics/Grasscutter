@@ -1,9 +1,12 @@
 package emu.grasscutter.game.props;
 
 import it.unimi.dsi.fastutil.ints.*;
+import lombok.Getter;
+
 import java.util.*;
 import java.util.stream.Stream;
 
+@Getter
 public enum FetterState {
     NONE(0),
     NOT_OPEN(1),
@@ -36,7 +39,4 @@ public enum FetterState {
         return stringMap.getOrDefault(name, NONE);
     }
 
-    public int getValue() {
-        return value;
-    }
 }

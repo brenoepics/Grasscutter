@@ -26,11 +26,14 @@ import it.unimi.dsi.fastutil.ints.*;
 import java.nio.file.*;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+
+import lombok.Getter;
 import org.greenrobot.eventbus.Subscribe;
 
 public class GachaSystem extends BaseGameSystem {
     private static final int starglitterId = 221;
     private static final int stardustId = 222;
+    @Getter
     private final Int2ObjectMap<GachaBanner> gachaBanners;
     private WatchService watchService;
 
@@ -39,10 +42,6 @@ public class GachaSystem extends BaseGameSystem {
         this.gachaBanners = new Int2ObjectOpenHashMap<>();
         this.load();
         this.startWatcher(server);
-    }
-
-    public Int2ObjectMap<GachaBanner> getGachaBanners() {
-        return gachaBanners;
     }
 
     public int randomRange(int min, int max) { // Both are inclusive

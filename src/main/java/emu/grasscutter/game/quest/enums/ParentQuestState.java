@@ -1,5 +1,8 @@
 package emu.grasscutter.game.quest.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum ParentQuestState {
     PARENT_QUEST_STATE_NONE(0),
     PARENT_QUEST_STATE_FINISHED(1),
@@ -12,7 +15,4 @@ public enum ParentQuestState {
         this.value = id;
     }
 
-    public int getValue() {
-        return value;
-    }
 }

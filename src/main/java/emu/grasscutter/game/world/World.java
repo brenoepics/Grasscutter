@@ -51,6 +51,7 @@ public class World implements Iterable<Player> {
     @Getter private final EntityWorld entity;
     private int nextEntityId = 0;
     private int nextPeerId = 0;
+    @Getter
     private int worldLevel;
 
     @Getter private boolean isMultiplayer = false;
@@ -119,10 +120,6 @@ public class World implements Iterable<Player> {
 
     public int getNextPeerId() {
         return ++this.nextPeerId;
-    }
-
-    public int getWorldLevel() {
-        return worldLevel;
     }
 
     public void setWorldLevel(int worldLevel) {

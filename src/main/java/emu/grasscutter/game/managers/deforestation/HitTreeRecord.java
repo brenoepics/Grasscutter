@@ -1,6 +1,13 @@
 package emu.grasscutter.game.managers.deforestation;
 
+import lombok.Getter;
+
 public class HitTreeRecord {
+    /**
+     * -- GETTER --
+     * get unique id
+     */
+    @Getter
     private final int unique;
     private short count; // hit this tree times
     private long time; // last available hitting time
@@ -34,11 +41,6 @@ public class HitTreeRecord {
             resetTime();
             return true;
         }
-    }
-
-    /** get unique id */
-    public int getUnique() {
-        return unique;
     }
 
     @Override

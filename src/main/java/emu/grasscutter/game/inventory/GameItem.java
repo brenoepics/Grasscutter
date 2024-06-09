@@ -28,6 +28,7 @@ import org.bson.types.ObjectId;
 @Entity(value = "items", useDiscriminator = false)
 public class GameItem {
     @Id private ObjectId id;
+    @Getter
     @Indexed private int ownerId;
     @Getter @Setter private int itemId;
     @Getter @Setter private int count;
@@ -110,10 +111,6 @@ public class GameItem {
             default:
                 this.count = Math.min(count, data.getStackLimit());
         }
-    }
-
-    public int getOwnerId() {
-        return ownerId;
     }
 
     public void setOwner(Player player) {
