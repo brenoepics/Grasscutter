@@ -713,8 +713,8 @@ public final class GameData {
     /**
      * Fetches the trial data
      *
-     * @param trialAvatarIndexId
-     * @return
+     * @param trialAvatarIndexId The ID of the trial avatar
+     * @return The trial data for the trial avatar
      */
     @Nullable public static TrialAvatarActivityDataData getTrialAvatarActivityDataByAvatarIndex(
             int trialAvatarIndexId) {

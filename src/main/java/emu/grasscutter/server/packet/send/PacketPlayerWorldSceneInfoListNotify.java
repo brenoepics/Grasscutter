@@ -24,7 +24,7 @@ public class PacketPlayerWorldSceneInfoListNotify extends BasePacket {
         for (int scene : GameData.getSceneDataMap().keySet()) {
             var worldInfoBuilder = PlayerWorldSceneInfo.newBuilder().setSceneId(scene).setIsLocked(false);
 
-            /** Add scene-specific data */
+            /* Add scene-specific data */
 
             // Scenetags
             if (sceneTags.keySet().contains(scene)) {

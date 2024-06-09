@@ -847,12 +847,12 @@ public class SceneScriptManager {
     }
 
     public Future<?> callEvent(@Nonnull ScriptArgs params) {
-        /**
-         * We use ThreadLocal to trans SceneScriptManager context to ScriptLib, to avoid eval script for
-         * every groups' trigger in every scene instances. But when callEvent is called in a ScriptLib
-         * func, it may cause NPE because the inner call cleans the ThreadLocal so that outer call could
-         * not get it. e.g. CallEvent -> set -> ScriptLib.xxx -> CallEvent -> set -> remove -> NPE ->
-         * (remove) So we use thread pool to clean the stack to avoid this new issue.
+        /*
+          We use ThreadLocal to trans SceneScriptManager context to ScriptLib, to avoid eval script for
+          every groups' trigger in every scene instances. But when callEvent is called in a ScriptLib
+          func, it may cause NPE because the inner call cleans the ThreadLocal so that outer call could
+          not get it. e.g. CallEvent -> set -> ScriptLib.xxx -> CallEvent -> set -> remove -> NPE ->
+          (remove) So we use thread pool to clean the stack to avoid this new issue.
          */
         return eventExecutor.submit(() -> this.realCallEvent(params));
     }
