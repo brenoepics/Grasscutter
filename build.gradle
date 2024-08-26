@@ -119,7 +119,7 @@ dependencies {
     implementation group: 'org.luaj', name: 'luaj-jse', version: '3.0.1'
 
     // Java HTTP server library.
-    implementation group: 'io.javalin', name: 'javalin', version: '5.5.0'
+    implementation group: 'io.javalin', name: 'javalin', version: '6.3.0'
     // Java WebSocket server & client library.
     implementation group: 'org.java-websocket', name: 'Java-WebSocket', version: '1.5.6'
 
